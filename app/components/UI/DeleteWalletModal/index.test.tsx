@@ -61,7 +61,7 @@ jest.mock('@react-native-cookies/cookies', () => ({
 
 jest.mock('../../../actions/browser', () => ({
   clearHistory: jest.fn(),
-  BrowserActionTypes: {
+  BrowserActionType: {
     ADD_TO_VIEWED_DAPP: 'ADD_TO_VIEWED_DAPP',
   },
 }));
