@@ -31,6 +31,7 @@ import { strings } from '../../../locales/i18n';
 import { resemblesAddress, safeToChecksumAddress } from '../../util/address';
 import { store } from '../../store';
 import { removeBookmark } from '../../actions/bookmarks';
+import { BookmarksState, Bookmark } from '../../reducers/bookmarks/types';
 import { v1 as random } from 'uuid';
 import { getPermittedAccounts } from '../Permissions';
 import AppConstants from '../AppConstants';
@@ -117,7 +118,7 @@ export interface RPCMethodsMiddleParameters {
   isWalletConnect: boolean;
   // For MM SDK
   isMMSDK: boolean;
-  injectHomePageScripts: (bookmarks?: []) => void;
+  injectHomePageScripts: (bookmarks?: Bookmark[]) => void;
   analytics: { [key: string]: string | boolean };
 }
 
@@ -946,7 +947,7 @@ export const getRpcMethodMiddleware = ({
               {
                 text: strings('browser.yes'),
                 onPress: () => {
-                  const bookmark = { url: req.params[0] };
+                  const bookmark = { name: '', url: req.params[0] };
 
                   store.dispatch(removeBookmark(bookmark));
 

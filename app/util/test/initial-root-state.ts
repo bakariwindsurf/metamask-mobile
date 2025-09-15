@@ -14,6 +14,7 @@ import { initialOnboardingState } from '../../reducers/onboarding';
 import { initialState as initialPerformanceState } from '../../core/redux/slices/performance';
 import { isTest } from './utils';
 import { initialState as initialRewardsState } from '../../reducers/rewards';
+import { bookmarksInitialState } from '../../reducers/bookmarks';
 // A cast is needed here because we use enums in some controllers, and TypeScript doesn't consider
 // the string value of an enum as satisfying an enum type.
 export const backgroundState: EngineState =
@@ -27,7 +28,7 @@ const initialRootState: RootState = {
     storage: undefined,
   },
   privacy: undefined,
-  bookmarks: undefined,
+  bookmarks: bookmarksInitialState,
   browser: undefined,
   modals: undefined,
   settings: undefined,
