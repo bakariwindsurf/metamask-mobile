@@ -6,7 +6,12 @@ const currentDate = new Date(Date.now());
 const newPrivacyPolicyDate = new Date('2024-06-18T12:00:00Z');
 export const isPastPrivacyPolicyDate = currentDate >= newPrivacyPolicyDate;
 
-const initialState = {
+export interface LegalNoticesState {
+  newPrivacyPolicyToastClickedOrClosed: boolean;
+  newPrivacyPolicyToastShownDate: number | null;
+}
+
+const initialState: LegalNoticesState = {
   newPrivacyPolicyToastClickedOrClosed: false,
   newPrivacyPolicyToastShownDate: null,
 };
@@ -30,7 +35,7 @@ export const shouldShowNewPrivacyToastSelector = (
 
   if (newPrivacyPolicyToastClickedOrClosed) return false;
 
-  const shownDate = new Date(newPrivacyPolicyToastShownDate);
+  const shownDate = new Date(newPrivacyPolicyToastShownDate || 0);
 
   const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
   const isRecent =
@@ -43,19 +48,23 @@ export const shouldShowNewPrivacyToastSelector = (
   );
 };
 
-export interface LegalNoticesAction extends Action {
-  newPrivacyPolicyToastShownDate: boolean;
+interface StorePrivacyPolicyShownDateAction extends Action {
+  type: typeof ACTIONS.STORE_PRIVACY_POLICY_SHOWN_DATE;
   payload: number;
 }
 
+interface StorePrivacyPolicyClickedOrClosedAction extends Action {
+  type: typeof ACTIONS.STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED;
+}
+
+export type LegalNoticesAction = 
+  | StorePrivacyPolicyShownDateAction 
+  | StorePrivacyPolicyClickedOrClosedAction;
+
 const legalNoticesReducer = (
-  state = initialState,
-  action: LegalNoticesAction = {
-    type: '',
-    newPrivacyPolicyToastShownDate: false,
-    payload: 0,
-  },
-) => {
+  state: LegalNoticesState = initialState,
+  action: LegalNoticesAction,
+): LegalNoticesState => {
   switch (action.type) {
     case ACTIONS.STORE_PRIVACY_POLICY_SHOWN_DATE: {
       if (state.newPrivacyPolicyToastShownDate !== null) {
@@ -64,7 +73,7 @@ const legalNoticesReducer = (
 
       return {
         ...state,
-        newPrivacyPolicyToastShownDate: action.payload,
+        newPrivacyPolicyToastShownDate: (action as StorePrivacyPolicyShownDateAction).payload,
       };
     }
 
