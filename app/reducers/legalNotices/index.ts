@@ -1,23 +1,25 @@
 import { RootState } from '..';
-import { Action } from 'redux';
-import ACTIONS from './types';
+import { LegalNoticesAction, LegalNoticesActionType } from '../../actions/legalNotices/types';
+import { LegalNoticesState } from './types';
+
+export * from './types';
 
 const currentDate = new Date(Date.now());
 const newPrivacyPolicyDate = new Date('2024-06-18T12:00:00Z');
 export const isPastPrivacyPolicyDate = currentDate >= newPrivacyPolicyDate;
 
-const initialState = {
+const initialState: LegalNoticesState = {
   newPrivacyPolicyToastClickedOrClosed: false,
   newPrivacyPolicyToastShownDate: null,
 };
 
 export const storePrivacyPolicyShownDate = (timestamp: number) => ({
-  type: ACTIONS.STORE_PRIVACY_POLICY_SHOWN_DATE,
+  type: LegalNoticesActionType.STORE_PRIVACY_POLICY_SHOWN_DATE,
   payload: timestamp,
 });
 
 export const storePrivacyPolicyClickedOrClosed = () => ({
-  type: ACTIONS.STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED,
+  type: LegalNoticesActionType.STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED,
 });
 
 export const shouldShowNewPrivacyToastSelector = (
@@ -30,7 +32,7 @@ export const shouldShowNewPrivacyToastSelector = (
 
   if (newPrivacyPolicyToastClickedOrClosed) return false;
 
-  const shownDate = new Date(newPrivacyPolicyToastShownDate);
+  const shownDate = new Date(newPrivacyPolicyToastShownDate || 0);
 
   const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
   const isRecent =
@@ -43,21 +45,12 @@ export const shouldShowNewPrivacyToastSelector = (
   );
 };
 
-export interface LegalNoticesAction extends Action {
-  newPrivacyPolicyToastShownDate: boolean;
-  payload: number;
-}
-
 const legalNoticesReducer = (
-  state = initialState,
-  action: LegalNoticesAction = {
-    type: '',
-    newPrivacyPolicyToastShownDate: false,
-    payload: 0,
-  },
-) => {
+  state: LegalNoticesState = initialState,
+  action: LegalNoticesAction,
+): LegalNoticesState => {
   switch (action.type) {
-    case ACTIONS.STORE_PRIVACY_POLICY_SHOWN_DATE: {
+    case LegalNoticesActionType.STORE_PRIVACY_POLICY_SHOWN_DATE: {
       if (state.newPrivacyPolicyToastShownDate !== null) {
         return state;
       }
@@ -68,7 +61,7 @@ const legalNoticesReducer = (
       };
     }
 
-    case ACTIONS.STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED: {
+    case LegalNoticesActionType.STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED: {
       return { ...state, newPrivacyPolicyToastClickedOrClosed: true };
     }
 
