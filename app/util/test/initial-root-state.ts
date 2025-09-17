@@ -7,6 +7,8 @@ import { initialState as confirmationMetrics } from '../../core/redux/slices/con
 import { initialState as originThrottling } from '../../core/redux/slices/originThrottling';
 import { initialState as initialBridgeState } from '../../core/redux/slices/bridge';
 import { initialState as initialCardState } from '../../core/redux/slices/card';
+import { initialState as initialPrivacyState } from '../../reducers/privacy';
+import { initialState as initialBookmarksState } from '../../reducers/bookmarks';
 import initialBackgroundState from './initial-background-state.json';
 import { userInitialState } from '../../reducers/user';
 import { initialNavigationState } from '../../reducers/navigation';
@@ -26,8 +28,8 @@ const initialRootState: RootState = {
   cronjobController: {
     storage: undefined,
   },
-  privacy: undefined,
-  bookmarks: undefined,
+  privacy: initialPrivacyState,
+  bookmarks: initialBookmarksState,
   browser: undefined,
   modals: undefined,
   settings: undefined,
