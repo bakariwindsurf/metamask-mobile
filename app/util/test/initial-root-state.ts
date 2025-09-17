@@ -14,13 +14,17 @@ import { initialOnboardingState } from '../../reducers/onboarding';
 import { initialState as initialPerformanceState } from '../../core/redux/slices/performance';
 import { isTest } from './utils';
 import { initialState as initialRewardsState } from '../../reducers/rewards';
+import { LegalNoticesState } from '../../reducers/legalNotices';
 // A cast is needed here because we use enums in some controllers, and TypeScript doesn't consider
 // the string value of an enum as satisfying an enum type.
 export const backgroundState: EngineState =
   initialBackgroundState as unknown as EngineState;
 
 const initialRootState: RootState = {
-  legalNotices: undefined,
+  legalNotices: {
+    newPrivacyPolicyToastClickedOrClosed: false,
+    newPrivacyPolicyToastShownDate: null,
+  } as LegalNoticesState,
   collectibles: undefined,
   engine: { backgroundState },
   cronjobController: {

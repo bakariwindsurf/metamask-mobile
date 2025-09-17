@@ -1,5 +1,7 @@
-export default {
-  STORE_PRIVACY_POLICY_SHOWN_DATE: 'STORE_PRIVACY_POLICY_SHOWN_DATE',
-  STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED:
-    'STORE_PRIVACY_POLICY_CLICKED_OR_CLOSED',
-};
+/**
+ * Legal notices state
+ */
+export interface LegalNoticesState {
+  newPrivacyPolicyToastClickedOrClosed: boolean;
+  newPrivacyPolicyToastShownDate: number | null;
+}
