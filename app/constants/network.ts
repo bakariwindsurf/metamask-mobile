@@ -21,9 +21,6 @@ export const PRIVATENETWORK = 'PRIVATENETWORK';
 export const DEFAULT_MAINNET_CUSTOM_NAME = 'Ethereum Main Custom';
 export const IPFS_DEFAULT_GATEWAY_URL = 'https://dweb.link/ipfs/';
 
-/**
- * @enum {string}
- */
 export const NETWORKS_CHAIN_ID = {
   MAINNET: toHex('1'),
   OPTIMISM: toHex('10'),
@@ -54,7 +51,7 @@ export const NETWORKS_CHAIN_ID = {
   MEGAETH_TESTNET: toHex('6342'),
   SEI: toHex('1329'),
   MONAD_TESTNET: toHex('10143'),
-};
+} as const;
 
 // To add a deprecation warning to a network, add it to the array
 export const DEPRECATED_NETWORKS = [
@@ -63,7 +60,7 @@ export const DEPRECATED_NETWORKS = [
   NETWORKS_CHAIN_ID.OPTIMISM_GOERLI,
   NETWORKS_CHAIN_ID.LINEA_GOERLI,
   NETWORKS_CHAIN_ID.MUMBAI,
-];
+] as const;
 export const CHAINLIST_CURRENCY_SYMBOLS_MAP = {
   MAINNET: 'ETH',
   OPTIMISM: 'ETH',
@@ -85,7 +82,7 @@ export const CHAINLIST_CURRENCY_SYMBOLS_MAP = {
   MEGAETH_TESTNET: 'MegaETH',
   SEI: 'SEI',
   MONAD_TESTNET: 'MON',
-};
+} as const;
 
 export const CURRENCY_SYMBOL_BY_CHAIN_ID = {
   [NETWORKS_CHAIN_ID.MAINNET]: CHAINLIST_CURRENCY_SYMBOLS_MAP.MAINNET,
@@ -111,7 +108,7 @@ export const CURRENCY_SYMBOL_BY_CHAIN_ID = {
   [NETWORKS_CHAIN_ID.SEI]: CHAINLIST_CURRENCY_SYMBOLS_MAP.SEI,
   [NETWORKS_CHAIN_ID.MONAD_TESTNET]:
     CHAINLIST_CURRENCY_SYMBOLS_MAP.MONAD_TESTNET,
-};
+} as const;
 
 export const TEST_NETWORK_IDS = [
   NETWORKS_CHAIN_ID.GOERLI,
@@ -120,4 +117,4 @@ export const TEST_NETWORK_IDS = [
   NETWORKS_CHAIN_ID.LINEA_SEPOLIA,
   NETWORKS_CHAIN_ID.MEGAETH_TESTNET,
   NETWORKS_CHAIN_ID.MONAD_TESTNET,
-];
+] as const;
