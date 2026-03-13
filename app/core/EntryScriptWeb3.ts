@@ -1,7 +1,11 @@
 // eslint-disable-next-line import/no-namespace
 import * as FileSystem from 'expo-file-system';
 
-const EntryScriptWeb3 = {
+const EntryScriptWeb3: {
+  entryScriptWeb3: string | null;
+  init(): Promise<string>;
+  get(): Promise<string>;
+} = {
   entryScriptWeb3: null,
   // Cache InpageBridgeWeb3 so that it is immediately available
   async init() {

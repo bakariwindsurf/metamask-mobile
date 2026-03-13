@@ -3,7 +3,12 @@ import { isQa } from '../util/test/utils';
 
 const isAndroid = Platform.OS === 'android';
 
-export default {
+interface PreventScreenshotModule {
+  forbid: () => boolean;
+  allow: () => boolean;
+}
+
+const PreventScreenshot: PreventScreenshotModule = {
   forbid: isQa
     ? () => true
     : isAndroid
@@ -15,3 +20,5 @@ export default {
     ? NativeModules.PreventScreenshot.allow
     : () => true,
 };
+
+export default PreventScreenshot;
