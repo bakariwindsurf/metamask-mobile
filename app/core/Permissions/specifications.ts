@@ -10,58 +10,32 @@ import {
   Caip25CaveatType,
   caip25EndowmentBuilder,
   createCaip25Caveat,
+  InternalScopeString,
 } from '@metamask/chain-agnostic-permission';
+import type { InternalAccount } from '@metamask/keyring-api';
+import type { Json, CaipAccountId } from '@metamask/utils';
 
-/**
- * This file contains the specifications of the permissions and caveats
- * that are recognized by our permission system. See the PermissionController
- * README in @metamask/snaps-controllers for details.
- */
-
-/**
- * The "keys" of all of permissions recognized by the PermissionController.
- * Permission keys and names have distinct meanings in the permission system.
- */
+interface CaveatSpecificationOptions {
+  listAccounts?: () => InternalAccount[];
+  findNetworkClientIdByChainId?: (chainId: `0x${string}`) => string;
+  isNonEvmScopeSupported?: (scope: InternalScopeString) => Json | unknown;
+  getNonEvmAccountAddresses?: (scope: InternalScopeString) => CaipAccountId[] | unknown;
+}
 export const PermissionKeys = Object.freeze({
   ...RestrictedMethods,
   permittedChains: 'endowment:permitted-chains',
 });
 
-/**
- * Factory functions for all caveat types recognized by the
- * PermissionController.
- */
 export const CaveatFactories = Object.freeze({
   [Caip25CaveatType]: createCaip25Caveat,
 });
 
-/**
- * A PreferencesController identity object.
- *
- * @typedef {Object} Identity
- * @property {string} address - The address of the identity.
- * @property {string} name - The name of the identity.
- * @property {number} [lastSelected] - Unix timestamp of when the identity was
- * last selected in the UI.
- */
-
-/**
- * Gets the specifications for all caveats that will be recognized by the
- * PermissionController.
- *
- * @param {{
- * listAccounts: () => import('@metamask/keyring-api').InternalAccount[],
- * findNetworkClientIdByChainId: (chainId: `0x${string}`) => string,
- * isNonEvmScopeSupported: (scope: import('@metamask/chain-agnostic-permission').InternalScopeString) => import('@metamask/utils').Json | unknown
- * getNonEvmAccountAddresses: (scope: import('@metamask/chain-agnostic-permission').InternalScopeString) => import('@metamask/utils').CaipAccountId[] | unknown,
- * }} options - Options bag.
- */
 export const getCaveatSpecifications = ({
   listAccounts,
   findNetworkClientIdByChainId,
   isNonEvmScopeSupported,
   getNonEvmAccountAddresses,
-}) => ({
+}: CaveatSpecificationOptions) => ({
   [Caip25CaveatType]: caip25CaveatBuilder({
     listAccounts,
     findNetworkClientIdByChainId,
@@ -74,23 +48,12 @@ export const getCaveatSpecifications = ({
   ///: END:ONLY_INCLUDE_IF
 });
 
-/**
- * Gets the specifications for all permissions that will be recognized by the
- * PermissionController.
- *
- */
-export const getPermissionSpecifications = () => ({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getPermissionSpecifications = (..._args: any[]) => ({
   [caip25EndowmentBuilder.targetName]:
     caip25EndowmentBuilder.specificationBuilder({}),
 });
 
-/**
- * All unrestricted methods recognized by the PermissionController.
- * Unrestricted methods are ignored by the permission system, but every
- * JSON-RPC request seen by the permission system must correspond to a
- * restricted or unrestricted method, or the request will be rejected with a
- * "method not found" error.
- */
 export const unrestrictedMethods = Object.freeze([
   'eth_blockNumber',
   'eth_call',
