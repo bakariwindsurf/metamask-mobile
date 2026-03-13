@@ -1,8 +1,10 @@
 import { NativeModules } from 'react-native';
 import mockRNAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
+// @ts-ignore - no declaration file for clipboard mock
 import mockClipboard from '@react-native-clipboard/clipboard/jest/clipboard-mock.js';
 /* eslint-disable import/no-namespace */
 import { mockTheme } from '../theme';
+// @ts-ignore - no declaration file for enzyme-adapter-react-16
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import base64js from 'base64-js';
@@ -10,8 +12,8 @@ import base64js from 'base64-js';
 Enzyme.configure({ adapter: new Adapter() });
 
 // Set up global polyfills for base64 functions
-global.base64FromArrayBuffer = base64js.fromByteArray;
-global.base64ToArrayBuffer = base64js.toByteArray;
+(global as any).base64FromArrayBuffer = base64js.fromByteArray;
+(global as any).base64ToArrayBuffer = base64js.toByteArray;
 
 // Mock the redux-devtools-expo-dev-plugin module
 jest.mock('redux-devtools-expo-dev-plugin', () => {});
@@ -78,7 +80,7 @@ jest.mock('react-native', () => {
 jest.mock('@metamask/react-native-webview', () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
   const { View } = require('react-native');
-  const WebView = (props) => <View {...props} />;
+  const WebView = (props: any) => <View {...props} />;
 
   return {
     WebView,
@@ -171,7 +173,7 @@ jest.mock('../../store', () => ({
     getState: jest.fn().mockImplementation(() => mockState),
     dispatch: jest.fn(),
   },
-  _updateMockState: (state) => {
+  _updateMockState: (state: any) => {
     mockState = state;
   },
 }));
@@ -213,12 +215,12 @@ jest.mock('react-native-keychain', () => ({
   },
   getSupportedBiometryType: jest.fn().mockReturnValue('FaceID'),
   setInternetCredentials: jest
-    .fn(('server', 'username', 'password'))
+    .fn()
     .mockResolvedValue({ service: 'metamask', storage: 'storage' }),
   getInternetCredentials: jest
     .fn()
     .mockResolvedValue({ password: 'mock-credentials-password' }),
-  resetInternetCredentials: jest.fn().mockResolvedValue(),
+  resetInternetCredentials: jest.fn().mockResolvedValue(undefined),
   ACCESSIBLE: {
     WHEN_UNLOCKED: 'AccessibleWhenUnlocked',
     AFTER_FIRST_UNLOCK: 'AccessibleAfterFirstUnlock',
@@ -340,10 +342,10 @@ jest.mock('../theme', () => ({
   useAppThemeFromContext: () => ({ ...mockTheme }),
 }));
 
-global.segmentMockClient = null;
+(global as any).segmentMockClient = null;
 
 const initializeMockClient = () => {
-  global.segmentMockClient = {
+  (global as any).segmentMockClient = {
     screen: jest.fn(),
     track: jest.fn(),
     identify: jest.fn(),
@@ -353,7 +355,7 @@ const initializeMockClient = () => {
     reset: jest.fn(),
     add: jest.fn(),
   };
-  return global.segmentMockClient;
+  return (global as any).segmentMockClient;
 };
 
 jest.mock('@segment/analytics-react-native', () => {
@@ -361,7 +363,7 @@ jest.mock('@segment/analytics-react-native', () => {
     type = 'utility';
     analytics = undefined;
 
-    configure(analytics) {
+    configure(analytics: any) {
       this.analytics = analytics;
     }
   }
@@ -386,15 +388,15 @@ jest.mock('@notifee/react-native', () =>
 
 jest.mock('react-native/Libraries/Image/resolveAssetSource', () => ({
   __esModule: true,
-  default: (source) => {
+  default: (source: any) => {
     return { uri: source.uri };
   },
 }));
 
 jest.mock('redux-persist', () => ({
   persistStore: jest.fn(),
-  persistReducer: (_, reducer) => {
-    return reducer || ((state) => state);
+  persistReducer: (_: any, reducer: any) => {
+    return reducer || ((state: any) => state);
   },
   createTransform: jest.fn(),
   createMigrate: jest.fn(),
@@ -407,8 +409,8 @@ jest.mock('../../store/storage-wrapper', () => ({
 
 // eslint-disable-next-line import/no-commonjs
 require('react-native-reanimated').setUpTests();
-global.__reanimatedWorkletInit = jest.fn();
-global.__DEV__ = false;
+(global as any).__reanimatedWorkletInit = jest.fn();
+(global as any).__DEV__ = false;
 
 jest.mock('../../core/Engine', () =>
   require('../../core/__mocks__/MockedEngine'),
@@ -421,11 +423,11 @@ jest.mock('react-native-safe-area-context', () => ({
 
 afterEach(() => {
   jest.restoreAllMocks();
-  global.gc && global.gc(true);
+  (global as any).gc && (global as any).gc(true);
 });
 
-global.crypto = {
-  getRandomValues: (arr) => {
+(global as any).crypto = {
+  getRandomValues: (arr: any) => {
     const uint8Max = 255;
     for (let i = 0; i < arr.length; i++) {
       arr[i] = Math.floor(Math.random() * (uint8Max + 1));
@@ -487,7 +489,7 @@ jest.mock('react-native/Libraries/TurboModule/TurboModuleRegistry', () => {
     'react-native/Libraries/TurboModule/TurboModuleRegistry',
   );
   return {
-    getEnforcing: (name) => {
+    getEnforcing: (name: string) => {
       if (name === 'RNGestureHandlerModule') {
         return {
           attachGestureHandler: jest.fn(),
@@ -531,7 +533,7 @@ jest.mock('react-native/Libraries/TurboModule/TurboModuleRegistry', () => {
       }
       return originalModule.getEnforcing(name);
     },
-    get: (name) => {
+    get: (name: string) => {
       if (name === 'RNGestureHandlerModule') {
         return {
           attachGestureHandler: jest.fn(),

@@ -56,7 +56,7 @@ const SMART_CONTRACTS = {
   MULTISIG: 'multisig',
 };
 
-const contractConfiguration = {
+const contractConfiguration: Record<string, any> = {
   [SMART_CONTRACTS.HST]: hstFactory,
   [SMART_CONTRACTS.NFTS]: nftsFactory,
   [SMART_CONTRACTS.ERC1155]: erc1155Factory,

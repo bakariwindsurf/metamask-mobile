@@ -1,8 +1,8 @@
 /* eslint-disable import/no-commonjs, import/no-nodejs-modules */
-const path = require('path');
+import path from 'path';
 
-module.exports = {
-  process(_, filename) {
+export default {
+  process(_: string, filename: string): { code: string } {
     const assetFilename = JSON.stringify(path.basename(filename));
 
     return {
