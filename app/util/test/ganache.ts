@@ -13,7 +13,9 @@ const defaultOptions = {
 };
 
 export default class Ganache {
-  async start(opts) {
+  _server: any;
+
+  async start(opts: any): Promise<void> {
     if (!opts.mnemonic) {
       throw new Error('Missing required mnemonic');
     }
@@ -28,18 +30,18 @@ export default class Ganache {
     }
   }
 
-  getProvider() {
+  getProvider(): any {
     return this._server?.provider;
   }
 
-  async getAccounts() {
+  async getAccounts(): Promise<any> {
     return await this.getProvider().request({
       method: 'eth_accounts',
       params: [],
     });
   }
 
-  async getBalance() {
+  async getBalance(): Promise<number | string> {
     const accounts = await this.getAccounts();
     const balanceHex = await this.getProvider().request({
       method: 'eth_getBalance',
@@ -53,7 +55,7 @@ export default class Ganache {
     return balanceFormatted;
   }
 
-  async quit() {
+  async quit(): Promise<void> {
     if (!this._server) {
       throw new Error('Server not running yet');
     }
