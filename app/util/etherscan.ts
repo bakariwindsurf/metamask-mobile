@@ -23,7 +23,7 @@ import {
  * @param {address} string - ethereum address to be used on the link
  * @returns - string
  */
-export function getEtherscanAddressUrl(networkType, address) {
+export function getEtherscanAddressUrl(networkType: string, address: string): string {
   return `${getEtherscanBaseUrl(networkType)}/address/${address}`;
 }
 
@@ -36,7 +36,7 @@ export function getEtherscanAddressUrl(networkType, address) {
  * @param {tx_hash} string - hash of the transaction to be used on the link
  * @returns - string
  */
-export function getEtherscanTransactionUrl(networkType, tx_hash) {
+export function getEtherscanTransactionUrl(networkType: string, tx_hash: string): string {
   return `${getEtherscanBaseUrl(networkType)}/tx/${tx_hash}`;
 }
 
@@ -48,7 +48,7 @@ export function getEtherscanTransactionUrl(networkType, tx_hash) {
  * @param {networkType} string - name of the network
  * @returns - string
  */
-export function getEtherscanBaseUrl(networkType) {
+export function getEtherscanBaseUrl(networkType: string): string {
   if (networkType === LINEA_GOERLI) return LINEA_GOERLI_BLOCK_EXPLORER;
   if (networkType === LINEA_SEPOLIA) return LINEA_SEPOLIA_BLOCK_EXPLORER;
   if (networkType === LINEA_MAINNET) return LINEA_MAINNET_BLOCK_EXPLORER;
