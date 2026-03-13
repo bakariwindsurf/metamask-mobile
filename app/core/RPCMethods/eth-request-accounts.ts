@@ -3,6 +3,23 @@ import { MESSAGE_TYPE } from '../createTracingMiddleware';
 import { trackDappViewedEvent } from '../../util/metrics';
 import { isSnapId } from '@metamask/snaps-utils';
 
+interface EthRequestAccountsHooks {
+  getAccounts: (opts: { ignoreLock: boolean }) => string[];
+  getUnlockPromise: (shouldShowUnlockRequest: boolean) => Promise<void>;
+  getCaip25PermissionFromLegacyPermissionsForOrigin: () => unknown;
+  requestPermissionsForOrigin: (permission: unknown) => Promise<void>;
+}
+
+interface JsonRpcRequest {
+  origin: string;
+  [key: string]: unknown;
+}
+
+interface JsonRpcResponse {
+  result?: unknown;
+  error?: ReturnType<typeof rpcErrors.resourceUnavailable>;
+}
+
 const requestEthereumAccounts = {
   methodNames: [MESSAGE_TYPE.ETH_REQUEST_ACCOUNTS],
   implementation: requestEthereumAccountsHandler,
@@ -12,42 +29,24 @@ const requestEthereumAccounts = {
     getCaip25PermissionFromLegacyPermissionsForOrigin: true,
     requestPermissionsForOrigin: true,
   },
-};
+} as const;
 export default requestEthereumAccounts;
 
 // Used to rate-limit pending requests to one per origin
-const locks = new Set();
+const locks = new Set<string>();
 
-/**
- * This method attempts to retrieve the Ethereum accounts available to the
- * requester, or initiate a request for account access if none are currently
- * available. It is essentially a wrapper of wallet_requestPermissions that
- * only errors if the user rejects the request. We maintain the method for
- * backwards compatibility reasons.
- *
- * @param req - The JsonRpcEngine request
- * @param res - The JsonRpcEngine result object
- * @param _next - JsonRpcEngine next() callback - unused
- * @param end - JsonRpcEngine end() callback
- * @param options - Method hooks passed to the method implementation
- * @param options.getAccounts - A hook that returns the permitted eth accounts for the origin sorted by lastSelected.
- * @param options.getUnlockPromise - A hook that resolves when the wallet is unlocked.
- * @param options.getCaip25PermissionFromLegacyPermissionsForOrigin - A hook that returns a CAIP-25 permission from a legacy `eth_accounts` and `endowment:permitted-chains` permission.
- * @param options.requestPermissionsForOrigin - A hook that requests CAIP-25 permissions for the origin.
- * @returns A promise that resolves to nothing
- */
 async function requestEthereumAccountsHandler(
-  req,
-  res,
-  _next,
-  end,
+  req: JsonRpcRequest,
+  res: JsonRpcResponse,
+  _next: () => void,
+  end: (error?: unknown) => void,
   {
     getAccounts,
     getUnlockPromise,
     getCaip25PermissionFromLegacyPermissionsForOrigin,
     requestPermissionsForOrigin,
-  },
-) {
+  }: EthRequestAccountsHooks,
+): Promise<void> {
   const { origin } = req;
   if (locks.has(origin)) {
     res.error = rpcErrors.resourceUnavailable(
