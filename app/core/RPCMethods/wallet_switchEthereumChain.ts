@@ -20,20 +20,37 @@ import { isSnapId } from '@metamask/snaps-utils';
  * @param params.hooks - Method hooks passed to the method implementation.
  * @returns {void}.
  */
+interface WalletSwitchEthereumChainParams {
+  req: { params: unknown[] | null; origin: string };
+  res: { result: unknown };
+  requestUserApproval: (args: { type: string; requestData: Record<string, unknown> }) => Promise<void>;
+  analytics: Record<string, unknown>;
+  hooks: {
+    getCurrentChainIdForDomain: (origin: string) => string;
+    getNetworkConfigurationByChainId: (chainId: string) => Record<string, unknown> | undefined;
+    getCaveat: (...args: unknown[]) => unknown;
+    requestPermittedChainsPermissionIncrementalForOrigin: (args: Record<string, unknown>) => Promise<void>;
+    hasApprovalRequestsForOrigin: (...args: unknown[]) => boolean;
+    setTokenNetworkFilter: (...args: unknown[]) => void;
+    rejectApprovalRequestsForOrigin: (...args: unknown[]) => void;
+  };
+}
+
 export const wallet_switchEthereumChain = async ({
   req,
   res,
   requestUserApproval,
   analytics,
   hooks,
-}) => {
+}: WalletSwitchEthereumChainParams): Promise<void> => {
   const {
     CurrencyRateController,
     NetworkController,
     MultichainNetworkController,
     SelectedNetworkController,
   } = Engine.context;
-  const params = req.params?.[0];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const params = (req.params as any)?.[0];
   const { origin } = req;
   if (!params || typeof params !== 'object') {
     throw rpcErrors.invalidParams({
@@ -47,7 +64,7 @@ export const wallet_switchEthereumChain = async ({
     chainId: true,
   };
 
-  const extraKeys = Object.keys(params).filter((key) => !allowedKeys[key]);
+  const extraKeys = Object.keys(params).filter((key) => !allowedKeys[key as keyof typeof allowedKeys]);
   if (extraKeys.length) {
     throw rpcErrors.invalidParams(
       `Received unexpected keys on object parameter. Unsupported keys:\n${extraKeys}`,
@@ -85,11 +102,6 @@ export const wallet_switchEthereumChain = async ({
     await switchToNetwork({
       network: existingNetwork,
       chainId: _chainId,
-      controllers: {
-        CurrencyRateController,
-        MultichainNetworkController,
-        SelectedNetworkController,
-      },
       requestUserApproval,
       analytics,
       origin,
@@ -125,4 +137,4 @@ export const switchEthereumChainHandler = {
     hasApprovalRequestsForOrigin: true,
     rejectApprovalRequestsForOrigin: true,
   },
-};
+} as const;
