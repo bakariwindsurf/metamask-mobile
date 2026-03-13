@@ -47,7 +47,7 @@ jest.mock('@metamask/eth-json-rpc-filters/subscriptionManager', () => () => ({
   },
 }));
 
-function setupBackgroundBridge(url, isMMSDK = false) {
+function setupBackgroundBridge(url: string, isMMSDK = false) {
   // Arrange
   const {
     AccountsController,
@@ -60,10 +60,10 @@ function setupBackgroundBridge(url, isMMSDK = false) {
   const mockAddress = '0x0';
 
   // Setup required mocks for account and permissions
-  AccountsController.getSelectedAccount.mockReturnValue({
+  (AccountsController.getSelectedAccount as jest.Mock).mockReturnValue({
     address: mockAddress,
   });
-  AccountsController.listMultichainAccounts.mockReturnValue([
+  (AccountsController.listMultichainAccounts as jest.Mock).mockReturnValue([
     {
       address: '123',
       metadata: {
@@ -79,38 +79,38 @@ function setupBackgroundBridge(url, isMMSDK = false) {
   ]);
 
   // Setup permission controller mocks
-  PermissionController.getPermissions.mockReturnValue({
+  (PermissionController.getPermissions as jest.Mock).mockReturnValue({
     bind: jest.fn(),
   });
-  PermissionController.hasPermissions.mockReturnValue({
+  (PermissionController.hasPermissions as jest.Mock).mockReturnValue({
     bind: jest.fn(),
   });
-  PermissionController.executeRestrictedMethod.mockReturnValue({
+  (PermissionController.executeRestrictedMethod as jest.Mock).mockReturnValue({
     bind: jest.fn(),
   });
-  PermissionController.updateCaveat.mockReturnValue(jest.fn());
+  (PermissionController.updateCaveat as jest.Mock).mockReturnValue(jest.fn());
 
   // Setup network controller mocks
-  NetworkController.getNetworkConfigurationByChainId.mockReturnValue({
+  (NetworkController.getNetworkConfigurationByChainId as jest.Mock).mockReturnValue({
     bind: jest.fn(),
   });
-  SelectedNetworkController.getProviderAndBlockTracker.mockReturnValue({
+  (SelectedNetworkController.getProviderAndBlockTracker as jest.Mock).mockReturnValue({
     provider: {},
   });
 
   // Setup transaction controller mocks
-  TransactionController.addTransaction.mockResolvedValue({
+  (TransactionController.addTransaction as jest.Mock).mockResolvedValue({
     bind: jest.fn(),
   });
-  TransactionController.addTransactionBatch.mockResolvedValue({
+  (TransactionController.addTransactionBatch as jest.Mock).mockResolvedValue({
     bind: jest.fn(),
   });
-  TransactionController.isAtomicBatchSupported.mockResolvedValue({
+  (TransactionController.isAtomicBatchSupported as jest.Mock).mockResolvedValue({
     bind: jest.fn(),
   });
 
   // Mock getPermittedAccounts to return the address
-  getPermittedAccounts.mockReturnValue([mockAddress]);
+  (getPermittedAccounts as jest.Mock).mockReturnValue([mockAddress]);
 
   const defaultBridgeParams = getDefaultBridgeParams({
     originatorInfo: {
@@ -238,7 +238,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -266,7 +266,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -292,7 +292,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -320,7 +320,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -492,7 +492,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -523,7 +523,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -555,7 +555,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue();
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue(undefined);
 
       bridge.handleSolanaAccountChangedFromSelectedAccountChanges({
         type: SolAccountType.DataAccount,
@@ -572,7 +572,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -601,7 +601,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
@@ -632,7 +632,7 @@ describe('BackgroundBridge', () => {
         bridge,
         'sendNotificationMultichain',
       );
-      PermissionController.getCaveat.mockReturnValue({
+      (PermissionController.getCaveat as jest.Mock).mockReturnValue({
         type: Caip25CaveatType,
         value: {
           requiredScopes: {},
