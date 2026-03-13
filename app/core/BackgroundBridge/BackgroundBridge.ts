@@ -89,9 +89,41 @@ import PPOMUtil from '../../lib/ppom/ppom-util';
 import { isRelaySupported } from '../RPCMethods/transaction-relay';
 import { selectSmartTransactionsEnabled } from '../../selectors/smartTransactionsController';
 
-const legacyNetworkId = () => {
+interface BackgroundBridgeConstructorOptions {
+  webview: any;
+  url: string;
+  getRpcMethodMiddleware: (options: { hostname: string; getProviderState: (origin?: string, networkClientId?: string) => Promise<any> }) => any;
+  isMainFrame: boolean;
+  isRemoteConn: boolean;
+  sendMessage?: (...args: any[]) => void;
+  isWalletConnect: boolean;
+  wcRequestActions?: any;
+  getApprovedHosts?: (...args: any[]) => any;
+  remoteConnHost?: string;
+  isMMSDK: boolean;
+  channelId: string;
+}
+
+interface ProviderNetworkState {
+  chainId: string;
+  networkVersion: string;
+}
+
+interface BridgeState {
+  isInitialized: boolean;
+  isUnlocked: boolean;
+  network: any;
+  selectedAddress: string;
+}
+
+interface NotificationPayload {
+  method: string;
+  params: any;
+}
+
+const legacyNetworkId = (): any => {
   const { networksMetadata, selectedNetworkClientId } =
-    store.getState().engine.backgroundState.NetworkController;
+    (store.getState() as any).engine.backgroundState.NetworkController;
 
   const { networkId } = store.getState().inpageProvider;
 
@@ -102,6 +134,30 @@ const legacyNetworkId = () => {
 };
 
 export class BackgroundBridge extends EventEmitter {
+  url: string;
+  origin: string;
+  remoteConnHost: string | undefined;
+  isMainFrame: boolean;
+  isWalletConnect: boolean;
+  isMMSDK: boolean;
+  isRemoteConn: boolean;
+  _webviewRef: any;
+  disconnected: boolean;
+  getApprovedHosts: ((...args: any[]) => any) | undefined;
+  channelId: string;
+  deprecatedNetworkVersions: Record<string, any>;
+  createMiddleware: (options: { hostname: string; getProviderState: (origin?: string, networkClientId?: string) => Promise<any> }) => any;
+  port: any;
+  engine: any;
+  multichainEngine: any;
+  multichainSubscriptionManager: any;
+  multichainMiddlewareManager: any;
+  lastSelectedSolanaAccountAddress: string | null;
+  lastChainIdSent: string;
+  networkVersionSent: string;
+  addressSent: string;
+  navigation: any;
+
   constructor({
     webview,
     url,
@@ -115,7 +171,7 @@ export class BackgroundBridge extends EventEmitter {
     remoteConnHost,
     isMMSDK,
     channelId,
-  }) {
+  }: BackgroundBridgeConstructorOptions) {
     super();
     this.url = url;
     this.origin = new URL(url).origin;
@@ -133,7 +189,7 @@ export class BackgroundBridge extends EventEmitter {
     this.createMiddleware = getRpcMethodMiddleware;
 
     this.port = isRemoteConn
-      ? new RemotePort(sendMessage)
+      ? new RemotePort(sendMessage as () => void)
       : this.isWalletConnect
       ? new WalletConnectPort(wcRequestActions)
       : new Port(this._webviewRef, isMainFrame);
@@ -296,9 +352,9 @@ export class BackgroundBridge extends EventEmitter {
   }
 
   async getProviderNetworkState(
-    origin = METAMASK_DOMAIN,
-    requestNetworkClientId,
-  ) {
+    origin: string = METAMASK_DOMAIN,
+    requestNetworkClientId?: string,
+  ): Promise<ProviderNetworkState> {
     const networkClientId =
       requestNetworkClientId ??
       Engine.controllerMessenger.call(
@@ -335,7 +391,7 @@ export class BackgroundBridge extends EventEmitter {
     };
   }
 
-  async notifyChainChanged(params) {
+  async notifyChainChanged(params?: ProviderNetworkState): Promise<void> {
     DevLogger.log(`notifyChainChanged: `, params);
     this.sendNotificationEip1193({
       method: NOTIFICATION_NAMES.chainChanged,
@@ -350,14 +406,14 @@ export class BackgroundBridge extends EventEmitter {
    * @param {string} scope - The scope to get supported methods for.
    * @returns {string[]} Array of supported method names.
    */
-  getNonEvmSupportedMethods(scope) {
+  getNonEvmSupportedMethods(scope: string): string[] {
     return Engine.controllerMessenger.call(
       'MultichainRouter:getSupportedMethods',
-      scope,
+      scope as `${string}:${string}`,
     );
   }
 
-  async notifySelectedAddressChanged(selectedAddress) {
+  async notifySelectedAddressChanged(selectedAddress: string): Promise<void> {
     try {
       let approvedAccounts = [];
       DevLogger.log(
@@ -398,7 +454,7 @@ export class BackgroundBridge extends EventEmitter {
     }
   }
 
-  async onStateUpdate(memState) {
+  async onStateUpdate(memState?: BridgeState): Promise<void> {
     if (!memState) {
       memState = this.getState();
     }
@@ -432,7 +488,7 @@ export class BackgroundBridge extends EventEmitter {
     return Engine.context.KeyringController.isUnlocked();
   }
 
-  async getProviderState(origin, networkClientId) {
+  async getProviderState(origin?: string, networkClientId?: string): Promise<any> {
     return {
       isUnlocked: this.isUnlocked(),
       ...(await this.getProviderNetworkState(origin, networkClientId)),
@@ -443,7 +499,7 @@ export class BackgroundBridge extends EventEmitter {
     this.emit('update');
   };
 
-  onMessage = (msg) => {
+  onMessage = (msg: { name: string; data: any }): void => {
     this.port.emit('message', { name: msg.name, data: msg.data });
   };
 
@@ -484,13 +540,13 @@ export class BackgroundBridge extends EventEmitter {
    * A method for serving our ethereum provider over a given stream.
    * @param {*} outStream - The stream to provide over.
    */
-  setupProviderConnectionEip1193(outStream) {
+  setupProviderConnectionEip1193(outStream: any): void {
     this.engine = this.setupProviderEngineEip1193();
 
     // setup connection
     const providerStream = createEngineStream({ engine: this.engine });
 
-    pump(outStream, providerStream, outStream, (err) => {
+    pump(outStream, providerStream, outStream, (err: any) => {
       // handle any middleware cleanup
       this.engine.destroy();
       if (err) Logger.log('Error with provider stream conn', err);
@@ -502,7 +558,7 @@ export class BackgroundBridge extends EventEmitter {
    *
    * @param {*} outStream - The stream to provide over.
    */
-  setupProviderConnectionCaip(outStream) {
+  setupProviderConnectionCaip(outStream: any): void {
     this.multichainEngine = this.setupProviderEngineCaip();
 
     // setup connection
@@ -518,7 +574,7 @@ export class BackgroundBridge extends EventEmitter {
     // have listeners ready for this solana accountChanged event below.
     this.notifySolanaAccountChangedForCurrentAccount();
 
-    pump(outStream, providerStream, outStream, (err) => {
+    pump(outStream, providerStream, outStream, (err: any) => {
       // handle any middleware cleanup
       this.multichainEngine.destroy();
       if (err) Logger.log('Error with provider stream conn', err);
@@ -548,14 +604,14 @@ export class BackgroundBridge extends EventEmitter {
 
     // create subscription polyfill middleware
     const subscriptionManager = createSubscriptionManager(proxyClient);
-    subscriptionManager.events.on('notification', (message) =>
+    subscriptionManager.events.on('notification', (message: any) =>
       engine.emit('notification', message),
     );
 
     // metadata
-    engine.push(createOriginMiddleware({ origin }));
-    engine.push(createSelectedNetworkMiddleware(Engine.controllerMessenger));
-    engine.push(createLoggerMiddleware({ origin }));
+    engine.push(createOriginMiddleware({ origin }) as any);
+    engine.push(createSelectedNetworkMiddleware(Engine.controllerMessenger as any) as any);
+    engine.push(createLoggerMiddleware({ origin }) as any);
     // filter and subscription polyfills
     engine.push(filterMiddleware);
     engine.push(subscriptionManager.middleware);
@@ -596,7 +652,7 @@ export class BackgroundBridge extends EventEmitter {
     ///: END:ONLY_INCLUDE_IF
 
     // Origin throttling middleware for spam filtering
-    engine.push(createOriginThrottlingMiddleware(this.navigation));
+    engine.push((createOriginThrottlingMiddleware as any)(this.navigation) as any);
 
     // user-facing RPC methods
     engine.push(
@@ -628,9 +684,9 @@ export class BackgroundBridge extends EventEmitter {
     const engine = new JsonRpcEngine();
 
     // Append origin to each request
-    engine.push(createOriginMiddleware({ origin }));
+    engine.push(createOriginMiddleware({ origin }) as any);
 
-    engine.push(createLoggerMiddleware({ origin }));
+    engine.push(createLoggerMiddleware({ origin }) as any);
 
     engine.push((req, _res, next, end) => {
       if (
@@ -653,7 +709,7 @@ export class BackgroundBridge extends EventEmitter {
       walletGetSession,
       walletInvokeMethod,
       walletCreateSession,
-    ]);
+    ] as any);
 
     engine.push(
       middlewareMaker({
@@ -662,7 +718,7 @@ export class BackgroundBridge extends EventEmitter {
             NetworkController,
           ),
         listAccounts: AccountsController.listAccounts.bind(AccountsController),
-        requestPermissionsForOrigin: (requestedPermissions, options = {}) =>
+        requestPermissionsForOrigin: (requestedPermissions: any, options: any = {}) =>
           PermissionController.requestPermissions(
             { origin },
             requestedPermissions,
@@ -684,7 +740,7 @@ export class BackgroundBridge extends EventEmitter {
           Engine.controllerMessenger,
           'MultichainRouter:isSupportedScope',
         ),
-        handleNonEvmRequestForOrigin: (params) =>
+        handleNonEvmRequestForOrigin: (params: any) =>
           Engine.controllerMessenger.call('MultichainRouter:handleRequest', {
             ...params,
             origin: this.origin,
@@ -698,13 +754,13 @@ export class BackgroundBridge extends EventEmitter {
     );
 
     engine.push(
-      createUnsupportedMethodMiddleware(
+      (createUnsupportedMethodMiddleware as any)(
         new Set([
           ...UNSUPPORTED_RPC_METHODS,
           'eth_requestAccounts',
           'eth_accounts',
         ]),
-      ),
+      ) as any,
     );
 
     try {
@@ -715,7 +771,7 @@ export class BackgroundBridge extends EventEmitter {
       );
 
       // add new notification subscriptions for changed authorizations
-      const sessionScopes = getSessionScopes(caip25Caveat.value, {
+      const sessionScopes = getSessionScopes(caip25Caveat!.value as any, {
         getNonEvmSupportedMethods: this.getNonEvmSupportedMethods.bind(this),
       });
 
@@ -738,7 +794,7 @@ export class BackgroundBridge extends EventEmitter {
 
     this.multichainSubscriptionManager.on(
       'notification',
-      (targetOrigin, _, message) => {
+      (targetOrigin: any, _: any, message: any) => {
         if (origin === targetOrigin) {
           engine.emit('notification', message);
         }
@@ -761,9 +817,9 @@ export class BackgroundBridge extends EventEmitter {
 
     engine.push(this.createEip5792Middleware());
 
-    engine.push(async (req, res, _next, end) => {
+    engine.push(async (req: any, res: any, _next: any, end: any) => {
       const { provider } = NetworkController.getNetworkClientById(
-        req.networkClientId,
+        (req as any).networkClientId,
       );
       res.result = await provider.request(req);
       return end();
@@ -777,6 +833,7 @@ export class BackgroundBridge extends EventEmitter {
    */
   createEip5792Middleware() {
     return createEip5792Middleware({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       getAccounts: () => {
         const { AccountsController } = Engine.context;
         const addresses = AccountsController.listAccounts().map(
@@ -803,36 +860,36 @@ export class BackgroundBridge extends EventEmitter {
             Engine.context.TransactionController.isAtomicBatchSupported.bind(
               Engine.context.TransactionController,
             ),
-          validateSecurity: (securityAlertId, request, chainId) =>
+          validateSecurity: (securityAlertId: string, request: any, chainId: string) =>
             PPOMUtil.validateRequest(request, {
-              transactionMeta: { chainId },
+              transactionMeta: { chainId } as any,
               securityAlertId,
             }),
         },
-        Engine.controllerMessenger,
-      ),
-      getCallsStatus: getCallsStatus.bind(null, Engine.controllerMessenger),
+        Engine.controllerMessenger as any,
+      ) as any,
+      getCallsStatus: getCallsStatus.bind(null, Engine.controllerMessenger as any) as any,
       getCapabilities: getCapabilities.bind(
         null,
         {
           getDismissSmartAccountSuggestionEnabled: () =>
             Engine.context.PreferencesController.state
               .dismissSmartAccountSuggestionEnabled,
-          getIsSmartTransaction: (chainId) =>
-            selectSmartTransactionsEnabled(store.getState(), chainId),
+          getIsSmartTransaction: (chainId: string) =>
+            selectSmartTransactionsEnabled(store.getState(), chainId as `0x${string}`),
           isAtomicBatchSupported:
             Engine.context.TransactionController.isAtomicBatchSupported.bind(
               Engine.context.TransactionController,
             ),
           isRelaySupported,
-          getSendBundleSupportedChains: async (chainIds) => {
+          getSendBundleSupportedChains: async (chainIds: string[]) => {
             const isAtomicBatchSupportedResult =
               await Engine.context.TransactionController.isAtomicBatchSupported(
                 {
                   address:
                     Engine.context.AccountsController.getSelectedAccount()
-                      .address,
-                  chainIds,
+                      .address as `0x${string}`,
+                  chainIds: chainIds as `0x${string}`[],
                 },
               );
             return isAtomicBatchSupportedResult.reduce(
@@ -844,9 +901,9 @@ export class BackgroundBridge extends EventEmitter {
             );
           },
         },
-        Engine.controllerMessenger,
-      ),
-    });
+        Engine.controllerMessenger as any,
+      ) as any,
+    } as any);
   }
 
   /**
@@ -863,7 +920,7 @@ export class BackgroundBridge extends EventEmitter {
       this.lastSelectedSolanaAccountAddress =
         AccountsController.getSelectedMultichainAccount(
           SolScope.Mainnet,
-        )?.address;
+        )?.address ?? null;
     } catch {
       // noop
     }
@@ -896,7 +953,7 @@ export class BackgroundBridge extends EventEmitter {
    * @param previousValue - The previous CAIP-25 authorization.
    * @returns function that handlers session scope changes.
    */
-  handleCaipSessionScopeChanges = async (currentValue, previousValue) => {
+  handleCaipSessionScopeChanges = async (currentValue: any, previousValue: any) => {
     const origin = this.channelIdOrOrigin;
     const changedAuthorization = getChangedAuthorization(
       currentValue,
@@ -953,8 +1010,8 @@ export class BackgroundBridge extends EventEmitter {
   };
 
   handleSolanaAccountChangedFromScopeChanges = (
-    currentValue,
-    previousValue,
+    currentValue: any,
+    previousValue: any,
   ) => {
     const previousSolanaAccountChangedNotificationsEnabled = Boolean(
       previousValue?.sessionProperties?.[
@@ -1013,10 +1070,10 @@ export class BackgroundBridge extends EventEmitter {
     }
   };
 
-  handleSolanaAccountChangedFromSelectedAccountChanges = (account) => {
+  handleSolanaAccountChangedFromSelectedAccountChanges = (account: any) => {
     if (
       account.type === SolAccountType.DataAccount &&
-      !areAddressesEqual(account.address, this.lastSelectedSolanaAccountAddress)
+      !areAddressesEqual(account.address, this.lastSelectedSolanaAccountAddress ?? '')
     ) {
       this.lastSelectedSolanaAccountAddress = account.address;
 
@@ -1035,14 +1092,14 @@ export class BackgroundBridge extends EventEmitter {
       }
 
       const shouldNotifySolanaAccountChanged =
-        caip25Caveat.value.sessionProperties?.[
+        (caip25Caveat.value as any).sessionProperties?.[
           KnownSessionProperties.SolanaAccountChangedNotifications
         ];
       if (!shouldNotifySolanaAccountChanged) {
         return;
       }
 
-      const solanaAccounts = getPermittedAccountsForScopes(caip25Caveat.value, [
+      const solanaAccounts = getPermittedAccountsForScopes(caip25Caveat.value as any, [
         SolScope.Mainnet,
         SolScope.Devnet,
         SolScope.Testnet,
@@ -1059,12 +1116,12 @@ export class BackgroundBridge extends EventEmitter {
     }
   };
 
-  sendNotificationEip1193(payload) {
+  sendNotificationEip1193(payload: any) {
     DevLogger.log(`BackgroundBridge::sendNotificationEip1193: `, payload);
     this.engine && this.engine.emit('notification', payload);
   }
 
-  sendNotificationMultichain(payload) {
+  sendNotificationMultichain(payload: any) {
     DevLogger.log(`BackgroundBridge::sendNotificationMultichain: `, payload);
     this.multichainEngine &&
       this.multichainEngine.emit('notification', payload);
@@ -1099,7 +1156,7 @@ export class BackgroundBridge extends EventEmitter {
    * @param {string} options.scope - The evm scope to handle eth susbcriptions for.
    * @param {string} options.origin - The origin to handle eth subscriptions for.
    */
-  addMultichainApiEthSubscriptionMiddleware({ scope, origin }) {
+  addMultichainApiEthSubscriptionMiddleware({ scope, origin }: { scope: string; origin: string }) {
     const subscriptionManager = this.multichainSubscriptionManager.subscribe({
       scope,
       origin,
@@ -1120,7 +1177,7 @@ export class BackgroundBridge extends EventEmitter {
    * @param {string} options.scope - The evm scope to handle eth susbcriptions for.
    * @param {string} options.origin - The origin to handle eth subscriptions for.
    */
-  removeMultichainApiEthSubscriptionMiddleware({ scope, origin }) {
+  removeMultichainApiEthSubscriptionMiddleware({ scope, origin }: { scope: string; origin: string }) {
     this.multichainMiddlewareManager.removeMiddlewareByScopeAndOrigin(
       scope,
       origin,
@@ -1135,7 +1192,7 @@ export class BackgroundBridge extends EventEmitter {
    * Causes the Multichain RPC engine to emit a sessionChanged notification event with the given payload.
    * @param {object} newAuthorization - The new CAIP-25 authorization.
    */
-  notifyCaipAuthorizationChange(newAuthorization) {
+  notifyCaipAuthorizationChange(newAuthorization: any) {
     if (this.multichainEngine) {
       this.multichainEngine.emit('notification', {
         method: 'wallet_sessionChanged',
@@ -1176,11 +1233,11 @@ export class BackgroundBridge extends EventEmitter {
       return;
     }
     const solanaAccountsChangedNotifications =
-      caip25Caveat.value.sessionProperties[
+      (caip25Caveat.value as any).sessionProperties[
         KnownSessionProperties.SolanaAccountChangedNotifications
       ];
 
-    const sessionScopes = getSessionScopes(caip25Caveat.value, {
+    const sessionScopes = getSessionScopes(caip25Caveat.value as any, {
       getNonEvmSupportedMethods: this.getNonEvmSupportedMethods.bind(this),
     });
 
@@ -1202,7 +1259,7 @@ export class BackgroundBridge extends EventEmitter {
     }
   }
 
-  _notifySolanaAccountChange(value) {
+  _notifySolanaAccountChange(value: string[]) {
     this.sendNotificationMultichain({
       method: MultichainApiNotifications.walletNotify,
       params: {
