@@ -204,7 +204,7 @@ const actionKeys = {
  * @param {object} transactionMeta - The transaction metadata to check
  * @returns {boolean} true if the transaction is a legacy transaction, false otherwise
  */
-export function isLegacyTransaction(transactionMeta) {
+export function isLegacyTransaction(transactionMeta: Record<string, unknown>) {
   return transactionMeta?.txParams?.type === TransactionEnvelopeType.legacy;
 }
 
@@ -277,7 +277,7 @@ export function generateTransferData(type = undefined, opts = {}) {
  * @param {string | undefined} data The transaction data.
  * @returns {string | undefined} The four-byte signature if data is provided, otherwise undefined.
  */
-export function getFourByteSignature(data) {
+export function getFourByteSignature(data: string) {
   return data?.substring(0, 10)?.toLowerCase();
 }
 
@@ -286,7 +286,7 @@ export function getFourByteSignature(data) {
  * @param {string} data The transaction data.
  * @returns {boolean} True if the transaction is an "approve" or "increase allowance" call, false otherwise.
  */
-export function isApprovalTransaction(data) {
+export function isApprovalTransaction(data: string) {
   const fourByteSignature = getFourByteSignature(data);
   return [
     APPROVE_FUNCTION_SIGNATURE,
@@ -304,7 +304,7 @@ export function isApprovalTransaction(data) {
  * @param {string} [opts.data] - The data of the transaction
  * @returns {String} - String containing the generated data, by default for approve method
  */
-export function generateApprovalData(opts) {
+export function generateApprovalData(opts: Record<string, unknown>) {
   const { spender, value, data } = opts;
 
   if (!spender || !value) {
@@ -327,7 +327,7 @@ export function generateApprovalData(opts) {
   );
 }
 
-export function decodeApproveData(data) {
+export function decodeApproveData(data: string) {
   return {
     spenderAddress: addHexPrefix(data.substr(34, 40)),
     encodedAmount: data.substr(74, 138),
@@ -384,7 +384,7 @@ export function decodeTransferData(type, data) {
  * @param {string} hexString - The hexadecimal string to normalize.
  * @returns {string} - The normalized lowercase hexadecimal string.
  */
-function normalizeHex(hexString) {
+function normalizeHex(hexString: string) {
   return hexString?.toLowerCase() || '';
 }
 
@@ -645,7 +645,7 @@ export async function getTransactionReviewActionKey(transaction, chainId) {
  * @param {string} - Ticker
  * @returns {string} - Corresponding ticker or ETH
  */
-export function getTicker(ticker) {
+export function getTicker(ticker: string | undefined) {
   return ticker || strings('unit.eth');
 }
 
@@ -655,7 +655,7 @@ export function getTicker(ticker) {
  * @param {string} ticker - Ticker
  * @returns {object} - ETH object
  */
-export function getEther(ticker) {
+export function getEther(ticker: string | undefined) {
   return {
     name: 'Ether',
     address: '',
@@ -725,7 +725,7 @@ export function addAccountTimeFlagFilter(
 }
 
 //Leaving here a comment to re-visit this function since it's probably be possible to deprecate
-export function getNormalizedTxState(state) {
+export function getNormalizedTxState(state: Record<string, unknown>) {
   return state.transaction
     ? { ...state.transaction, ...state.transaction.transaction }
     : undefined;
@@ -1740,7 +1740,7 @@ export const getIsNativeTokenTransferred = (txParams) =>
  * @param {string} tokenStandard - The token standard to check.
  * @returns {boolean} - True if the token standard is ERC721 or ERC1155, otherwise false.
  */
-export function isNFTTokenStandard(tokenStandard) {
+export function isNFTTokenStandard(tokenStandard: string) {
   return [ERC721, ERC1155].includes(tokenStandard);
 }
 

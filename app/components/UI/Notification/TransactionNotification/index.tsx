@@ -102,7 +102,14 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-function TransactionNotification(props) {
+interface TransactionNotificationProps {
+  navigation: unknown;
+  isInBrowserView?: boolean;
+  notificationAnimated?: unknown;
+  onClose?: () => void;
+}
+
+function TransactionNotification(props: TransactionNotificationProps) {
   const {
     accounts,
     currentNotification,

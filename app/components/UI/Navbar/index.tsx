@@ -535,7 +535,7 @@ export function getTransactionOptionsTitle(
   };
 }
 
-export function getApproveNavbar(title) {
+export function getApproveNavbar(title: string) {
   return {
     headerTitle: () => <NavbarTitle title={title} disableNetwork />,
     headerLeft: () => <View />,
@@ -648,7 +648,7 @@ export function getSendFlowTitle(
  * @param {string} title - Title in string format
  * @returns {Object} - Corresponding navbar options containing headerTitle
  */
-export function getModalNavbarOptions(title) {
+export function getModalNavbarOptions(title: string) {
   return {
     headerTitle: () => <ModalNavbarTitle title={title} />,
   };
@@ -753,7 +753,7 @@ export function getTransparentOnboardingNavbarOptions(
  * @returns {Object} - Corresponding navbar options containing headerTitle
  * @param {string} currentTabColor - The color of the current tab
  */
-export function getOnboardingCarouselNavbarOptions(currentTabColor) {
+export function getOnboardingCarouselNavbarOptions(currentTabColor: string) {
   const innerStyles = StyleSheet.create({
     headerStyle: {
       backgroundColor: currentTabColor,
@@ -787,7 +787,7 @@ export function getOnboardingCarouselNavbarOptions(currentTabColor) {
  * @returns {Object} - Corresponding navbar options containing headerTitle and a back button
  * @param {Object} themeColors - The theme colors object
  */
-export function getTransparentBackOnboardingNavbarOptions(themeColors) {
+export function getTransparentBackOnboardingNavbarOptions(themeColors: Record<string, Record<string, string>>) {
   const innerStyles = StyleSheet.create({
     headerStyle: {
       backgroundColor: themeColors.background.default,
@@ -1915,7 +1915,7 @@ export function getBridgeNavbar(navigation, bridgeViewMode, themeColors) {
   };
 }
 
-export function getBridgeTransactionDetailsNavbar(navigation) {
+export function getBridgeTransactionDetailsNavbar(navigation: unknown) {
   const leftAction = () => navigation.pop();
 
   return {
@@ -2356,7 +2356,7 @@ export function getStakingNavbar(
  * @param {Object} navigation - Navigation object required to push new views
  * @returns {Object} - Corresponding navbar options
  */
-export function getDeFiProtocolPositionDetailsNavbarOptions(navigation) {
+export function getDeFiProtocolPositionDetailsNavbarOptions(navigation: unknown) {
   return {
     headerTitle: () => null,
     headerLeft: () => (
