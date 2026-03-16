@@ -9,7 +9,7 @@ import { getDecimalChainId } from './networks';
  *
  * @returns Payment request universal link / app link
  */
-export function generateUniversalLinkAddress(address) {
+export function generateUniversalLinkAddress(address: string) {
   return `https://${AppConstants.MM_UNIVERSAL_LINK_HOST}/send/${address}`;
 }
 
@@ -20,7 +20,7 @@ export function generateUniversalLinkAddress(address) {
  *
  * @returns Payment request universal link / app link
  */
-export function generateUniversalLinkRequest(ethereum_link) {
+export function generateUniversalLinkRequest(ethereum_link: string) {
   const universal_link_format = `https://${AppConstants.MM_UNIVERSAL_LINK_HOST}/send/`;
   return ethereum_link.replace('ethereum:', universal_link_format);
 }

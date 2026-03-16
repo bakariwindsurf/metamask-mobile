@@ -324,7 +324,7 @@ export const isTestNetworkWithFaucet = (chainId) =>
  */
 export const isTestNet = (chainId) => TESTNET_CHAIN_IDS.includes(chainId);
 
-export function getNetworkTypeById(id) {
+export function getNetworkTypeById(id: string) {
   if (!id) {
     throw new Error(NetworkSwitchErrorType.missingNetworkId);
   }
@@ -338,7 +338,7 @@ export function getNetworkTypeById(id) {
   throw new Error(`${NetworkSwitchErrorType.unknownNetworkId} ${id}`);
 }
 
-export function getDefaultNetworkByChainId(chainId) {
+export function getDefaultNetworkByChainId(chainId: string) {
   if (!chainId) {
     throw new Error(NetworkSwitchErrorType.missingChainId);
   }
@@ -354,11 +354,11 @@ export function getDefaultNetworkByChainId(chainId) {
   return returnNetwork;
 }
 
-export function hasBlockExplorer(key) {
+export function hasBlockExplorer(key: string) {
   return key.toLowerCase() !== RPC;
 }
 
-export function isPrivateConnection(hostname) {
+export function isPrivateConnection(hostname: string) {
   return hostname === 'localhost' || regex.localNetwork.test(hostname);
 }
 
@@ -368,7 +368,7 @@ export function isPrivateConnection(hostname) {
  * @param {string} providerRpcTarget
  * @param {object} networkConfigurations
  */
-export function findBlockExplorerForRpc(rpcTargetUrl, networkConfigurations) {
+export function findBlockExplorerForRpc(rpcTargetUrl: string, networkConfigurations: Record<string, unknown>) {
   const networkConfiguration = Object.values(networkConfigurations).find(
     ({ rpcEndpoints }) => rpcEndpoints?.some(({ url }) => url === rpcTargetUrl),
   );
@@ -388,7 +388,7 @@ export function findBlockExplorerForRpc(rpcTargetUrl, networkConfigurations) {
  * @param {object} internalAccount - Internal account object
  * @returns {string} - Block explorer url or undefined if not found
  */
-export function findBlockExplorerForNonEvmChainId(chainId) {
+export function findBlockExplorerForNonEvmChainId(chainId: string) {
   const blockExplorerUrls =
     MULTICHAIN_NETWORK_BLOCK_EXPLORER_FORMAT_URLS_MAP[chainId];
   return blockExplorerUrls?.url;
@@ -400,7 +400,7 @@ export function findBlockExplorerForNonEvmChainId(chainId) {
  * @param {object} internalAccount - Internal account object
  * @returns {string} - Block explorer url or undefined if not found
  */
-export function findBlockExplorerForNonEvmAccount(internalAccount) {
+export function findBlockExplorerForNonEvmAccount(internalAccount: Record<string, unknown>) {
   let scope;
 
   const selectedNonEvmNetworkChainId = selectSelectedNonEvmNetworkChainId(
@@ -452,7 +452,7 @@ export function findBlockExplorerForNonEvmAccount(internalAccount) {
  * @param {string} rpcOne
  * @param {string} rpcTwo
  */
-export function compareRpcUrls(rpcOne, rpcTwo) {
+export function compareRpcUrls(rpcOne: string, rpcTwo: string) {
   // First check that both objects are of the type string
   if (typeof rpcOne === 'string' && typeof rpcTwo === 'string') {
     const rpcUrlOne = new URL(rpcOne);

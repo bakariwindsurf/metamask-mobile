@@ -15,7 +15,7 @@ export const WEI = 'WEI';
  * @param {number} estimate - Number corresponding to api gas price estimation
  * @returns {Object} - BN instance containing gas price in wei
  */
-export function apiEstimateModifiedToWEI(estimate) {
+export function apiEstimateModifiedToWEI(estimate: string) {
   return toWei(estimate, 'gwei');
 }
 
@@ -25,7 +25,7 @@ export function apiEstimateModifiedToWEI(estimate) {
  * @param {number} val - Number corresponding to api gas price estimation
  * @returns {string} - The GWEI value as a string
  */
-export function convertApiValueToGWEI(val) {
+export function convertApiValueToGWEI(val: string | number) {
   return parseInt(val, 10).toString();
 }
 
@@ -79,7 +79,7 @@ export function getRenderableFiatGasFee(
  * @param {number} min - Minutes
  * @returns {string} - Readable wait time
  */
-export function parseWaitTime(min) {
+export function parseWaitTime(min: number) {
   let tempMin = min,
     parsed = '',
     val;

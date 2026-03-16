@@ -90,7 +90,7 @@ export function getWeiHexFromDecimalValue({
   });
 }
 
-export function addHexWEIsToDec(aHexWEI, bHexWEI) {
+export function addHexWEIsToDec(aHexWEI: string, bHexWEI: string) {
   return addCurrencies(aHexWEI, bHexWEI, {
     aBase: 16,
     bBase: 16,
@@ -99,7 +99,7 @@ export function addHexWEIsToDec(aHexWEI, bHexWEI) {
   });
 }
 
-export function subtractHexWEIsToDec(aHexWEI, bHexWEI) {
+export function subtractHexWEIsToDec(aHexWEI: string, bHexWEI: string) {
   return subtractCurrencies(aHexWEI, bHexWEI, {
     aBase: 16,
     bBase: 16,
@@ -168,7 +168,7 @@ export function hexWEIToDecETH(hexWEI) {
   });
 }
 
-export function addHexes(aHexWEI, bHexWEI) {
+export function addHexes(aHexWEI: string, bHexWEI: string) {
   return addCurrencies(aHexWEI, bHexWEI, {
     aBase: 16,
     bBase: 16,
@@ -228,7 +228,7 @@ export function sumHexWEIsToRenderableEth(hexWEIs) {
   );
 }
 
-export function multiplyHexes(hex1, hex2) {
+export function multiplyHexes(hex1: string, hex2: string) {
   return hexToBN(hex1).mul(hexToBN(hex2)).toString(16);
 }
 

@@ -10,7 +10,7 @@ import { getEtherscanBaseUrl } from '../../../../util/etherscan';
 import { useSelector } from 'react-redux';
 import { selectProviderConfig } from '../../../../selectors/networkController';
 
-function useBlockExplorer(networkConfigurations, providerConfigTokenExplorer) {
+function useBlockExplorer(networkConfigurations: Record<string, unknown>, providerConfigTokenExplorer?: string) {
   const [explorer, setExplorer] = useState({
     name: '',
     value: null,
