@@ -60,13 +60,21 @@ export function TransactionDetailsSummary() {
   );
 }
 
+interface SummaryLineProps {
+  isLast: boolean;
+  transaction?: unknown;
+  }: {?: unknown;
+  isLast: boolean;: boolean;
+  transaction: TransactionMeta;?: unknown;
+}
+
 function SummaryLine({
   isLast,
   transaction,
 }: {
   isLast: boolean;
   transaction: TransactionMeta;
-}) {
+}: SummaryLineProps) {
   const { styles } = useStyles(styleSheet, { isLast });
   const bridgeHistory = useBridgeTxHistoryData({ evmTxMeta: transaction });
   const navigation = useNavigation();

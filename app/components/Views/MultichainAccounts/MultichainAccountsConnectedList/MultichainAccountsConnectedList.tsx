@@ -21,6 +21,16 @@ import Avatar, {
 } from '../../../../component-library/components/Avatars/Avatar';
 import { IconName } from '../../../../component-library/components/Icons/Icon';
 
+interface MultichainAccountsConnectedListProps {
+  privacyMode?: unknown;
+  selectedAccountGroups?: unknown;
+  handleEditAccountsButtonPress: (...args: unknown[]) => void;
+  }: {?: unknown;
+  privacyMode: boolean;?: unknown;
+  selectedAccountGroups: AccountGroupObject[];?: unknown;
+  handleEditAccountsButtonPress: ()?: (...args: unknown[]) => void;
+}
+
 const MultichainAccountsConnectedList = ({
   privacyMode,
   selectedAccountGroups,
@@ -29,7 +39,7 @@ const MultichainAccountsConnectedList = ({
   privacyMode: boolean;
   selectedAccountGroups: AccountGroupObject[];
   handleEditAccountsButtonPress: () => void;
-}) => {
+}: MultichainAccountsConnectedListProps) => {
   const { styles } = useStyles(styleSheet, {
     itemHeight: 64,
     numOfAccounts: selectedAccountGroups.length,

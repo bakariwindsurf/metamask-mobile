@@ -18,11 +18,17 @@ import { useRecipientSelectionMetrics } from '../../hooks/send/metrics/useRecipi
 import { useSendActions } from '../../hooks/send/useSendActions';
 import { useSendContext } from '../../context/send-context/send-context';
 
+interface RecipientInputProps {
+  isRecipientSelectedFromList: boolean;
+  }: {?: unknown;
+  isRecipientSelectedFromList: boolean;: boolean;
+}
+
 export const RecipientInput = ({
   isRecipientSelectedFromList,
 }: {
   isRecipientSelectedFromList: boolean;
-}) => {
+}: RecipientInputProps) => {
   const { to, updateTo } = useSendContext();
   const inputRef = useRef<TextInput>(null);
   const { validateToAddress } = useToAddressValidation();

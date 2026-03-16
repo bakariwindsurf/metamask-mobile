@@ -24,13 +24,21 @@ function buildAuthenticationUrl(url: string, redirectUrl: string) {
   return urlObject.toString();
 }
 
+interface ApplePayButtonProps {
+  quote?: unknown;
+  label: string;
+  }: {?: unknown;
+  quote: QuoteResponse;?: unknown;
+  label: string;?: unknown;
+}
+
 const ApplePayButton = ({
   quote,
   label,
 }: {
   quote: QuoteResponse;
   label: string;
-}) => {
+}: ApplePayButtonProps) => {
   const { selectedAddress, callbackBaseUrl } = useRampSDK();
   const dispatch = useDispatch();
   const [pay] = useApplePay(quote);

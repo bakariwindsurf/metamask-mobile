@@ -13,6 +13,20 @@ const styles = StyleSheet.create({
   },
 });
 
+interface DataTreeProps {
+  data?: unknown;
+  chainId: string;
+  depth?: unknown;
+  primaryType?: unknown;
+  tokenDecimals?: unknown;
+  }: {?: unknown;
+  data: DataTreeInput;?: unknown;
+  chainId: string;?: unknown;
+  depth?: number;?: unknown;
+  primaryType?: PrimaryType;?: unknown;
+  tokenDecimals?: number;?: unknown;
+}
+
 const DataTree = ({
   data,
   chainId,
@@ -25,7 +39,7 @@ const DataTree = ({
   depth?: number;
   primaryType?: PrimaryType;
   tokenDecimals?: number;
-}) => (
+}: DataTreeProps) => (
   <View style={styles.container}>
     {Object.keys(data).map((dataKey: string, index: number) => {
       const datum = data[dataKey];

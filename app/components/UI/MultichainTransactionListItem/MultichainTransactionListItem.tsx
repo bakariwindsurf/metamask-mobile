@@ -19,6 +19,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../reducers';
 import { SupportedCaipChainId } from '@metamask/multichain-network-controller';
 
+interface MultichainTransactionListItemProps {
+  transaction?: unknown;
+  chainId: string;
+  navigation?: unknown;
+  index: number;
+  }: {?: unknown;
+  transaction: Transaction;?: unknown;
+  chainId: SupportedCaipChainId;?: unknown;
+  navigation: NavigationProp<ParamListBase>;?: unknown;
+  index?: number;?: unknown;
+}
+
 const MultichainTransactionListItem = ({
   transaction,
   chainId,
@@ -29,7 +41,7 @@ const MultichainTransactionListItem = ({
   chainId: SupportedCaipChainId;
   navigation: NavigationProp<ParamListBase>;
   index?: number;
-}) => {
+}: MultichainTransactionListItemProps) => {
   const { colors, typography } = useTheme();
   const osColorScheme = useColorScheme();
   const appTheme = useSelector((state: RootState) => state.user.appTheme);

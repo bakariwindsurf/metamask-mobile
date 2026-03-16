@@ -5,6 +5,20 @@ import { ApproveMethod } from '../../types/approve';
 import { validateSpendingCap } from '../../utils/validations/approve';
 import { TextFieldWithLabel } from '../UI/text-field-with-label';
 
+interface SpendingCapInputProps {
+  approveMethod?: unknown;
+  initialValue?: unknown;
+  decimals: number;
+  onChange: (...args: unknown[]) => void;
+  onErrorChange: (...args: unknown[]) => void;
+  }: {?: unknown;
+  approveMethod: ApproveMethod;?: unknown;
+  initialValue: string;?: unknown;
+  decimals: number;?: unknown;
+  onChange: (value: string)?: (...args: unknown[]) => void;
+  onErrorChange: (error: string | boolean)?: (...args: unknown[]) => void;
+}
+
 export const SpendingCapInput = ({
   approveMethod,
   initialValue,
@@ -17,7 +31,7 @@ export const SpendingCapInput = ({
   decimals: number;
   onChange: (value: string) => void;
   onErrorChange: (error: string | boolean) => void;
-}) => {
+}: SpendingCapInputProps) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState<string | boolean>(false);
 

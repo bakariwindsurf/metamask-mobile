@@ -15,11 +15,17 @@ import { useSelector } from 'react-redux';
  * @param props.children - React nodes to be rendered within the provider
  * @returns The children wrapped with AssetPollingProvider if transaction metadata exists, otherwise returns children directly without polling
  */
+interface ConfirmationAssetPollingProviderProps {
+  children: React.ReactNode;
+  }: {?: unknown;
+  children: React.ReactNode;?: unknown;
+}
+
 export const ConfirmationAssetPollingProvider = ({
   children,
 }: {
   children: React.ReactNode;
-}) => {
+}: ConfirmationAssetPollingProviderProps) => {
   const transactionMeta = useTransactionMetadataRequest();
   const bridgeChains = useSelector(selectEnabledSourceChains);
 

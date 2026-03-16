@@ -27,6 +27,18 @@ import { INTERNAL_ORIGINS } from '../../../../../../constants/transaction';
 import { getNetworkImageSource } from '../../../../../../util/networks';
 import { selectNetworkConfigurationByChainId } from '../../../../../../selectors/networkController';
 
+interface ApproveTransactionHeaderProps {
+  chainId: string;
+  from?: unknown;
+  origin: string;
+  url: string;
+  sdkDappMetadata?: unknown;
+  currentEnsName?: unknown;
+  asset?: unknown;
+  dontWatchAsset?: unknown;
+  networkClientId?: unknown;
+}
+
 const ApproveTransactionHeader = ({
   chainId,
   from,

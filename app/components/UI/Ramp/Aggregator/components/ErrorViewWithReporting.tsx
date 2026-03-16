@@ -9,6 +9,16 @@ import { ScreenLocation } from '../types';
  * @param {string} description The error description (Required)
  *
  */
+interface ErrorViewWithReportingProps {
+  error: string;
+  location?: unknown;
+  asScreen?: unknown;
+  }: {?: unknown;
+  error: Error;?: unknown;
+  location: ScreenLocation;?: unknown;
+  asScreen?: boolean;?: unknown;
+}
+
 function ErrorViewWithReporting({
   error,
   location,
@@ -17,7 +27,7 @@ function ErrorViewWithReporting({
   error: Error;
   location: ScreenLocation;
   asScreen?: boolean;
-}) {
+}: ErrorViewWithReportingProps) {
   const navigation = useNavigation();
 
   return (

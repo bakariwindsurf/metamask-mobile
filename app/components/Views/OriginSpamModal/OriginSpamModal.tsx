@@ -57,6 +57,18 @@ const createStyles = () =>
     },
   });
 
+interface MultipleRequestContentProps {
+  onCloseModal: (...args: unknown[]) => void;
+  onResetOriginSpamState: (...args: unknown[]) => void;
+  origin: string;
+  setBlockOrigin: (...args: unknown[]) => void;
+  }: {?: unknown;
+  onCloseModal: ()?: (...args: unknown[]) => void;
+  onResetOriginSpamState: ()?: (...args: unknown[]) => void;
+  origin: string;?: unknown;
+  setBlockOrigin: (value: boolean)?: (...args: unknown[]) => void;
+}
+
 const MultipleRequestContent = ({
   onCloseModal,
   onResetOriginSpamState,
@@ -67,7 +79,7 @@ const MultipleRequestContent = ({
   onResetOriginSpamState: () => void;
   origin: string;
   setBlockOrigin: (value: boolean) => void;
-}) => {
+}: MultipleRequestContentProps) => {
   const styles = createStyles();
 
   const favicon: ImageSourcePropType = useMemo(() => {
@@ -160,11 +172,17 @@ const SiteBlockedContent = ({ onCloseModal }: { onCloseModal: () => void }) => {
   );
 };
 
+interface OriginSpamModalProps {
+  route: string;
+  }: {?: unknown;
+  route: { params: { origin: string } };?: unknown;
+}
+
 const OriginSpamModal = ({
   route,
 }: {
   route: { params: { origin: string } };
-}) => {
+}: OriginSpamModalProps) => {
   const dispatch = useDispatch();
   const { origin } = route.params;
   const styles = createStyles();

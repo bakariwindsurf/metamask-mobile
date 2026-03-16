@@ -116,6 +116,20 @@ const createStyles = (colors: any) =>
     },
   });
 
+interface QRSigningDetailsProps {
+  QRState?: unknown;
+  successCallback?: unknown;
+  failureCallback?: unknown;
+  cancelCallback: boolean;
+  confirmButtonMode?: unknown;
+  showCancelButton?: boolean;
+  tighten?: unknown;
+  showHint?: boolean;
+  shouldStartAnimated?: boolean;
+  bypassAndroidCameraAccessCheck?: unknown;
+  fromAddress?: unknown;
+}
+
 const QRSigningDetails = ({
   QRState,
   successCallback,

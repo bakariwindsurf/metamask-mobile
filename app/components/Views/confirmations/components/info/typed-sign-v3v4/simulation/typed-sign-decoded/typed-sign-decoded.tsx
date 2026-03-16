@@ -100,6 +100,18 @@ const getStateChangeLabelMap = (
     ),
   }[changeType]);
 
+interface StateChangeRowProps {
+  stateChangeList?: unknown;
+  stateChange?: unknown;
+  chainId: string;
+  shouldDisplayLabel: boolean;
+  }: {?: unknown;
+  stateChangeList: DecodingDataStateChanges | null;?: unknown;
+  stateChange: DecodingDataStateChange;?: unknown;
+  chainId: Hex;?: unknown;
+  shouldDisplayLabel: boolean;: boolean;
+}
+
 const StateChangeRow = ({
   stateChangeList,
   stateChange,
@@ -110,7 +122,7 @@ const StateChangeRow = ({
   stateChange: DecodingDataStateChange;
   chainId: Hex;
   shouldDisplayLabel: boolean;
-}) => {
+}: StateChangeRowProps) => {
   const { assetType, changeType, amount, contractAddress, tokenID } =
     stateChange;
   const nftTransactionType = getStateChangeType(stateChangeList, stateChange);

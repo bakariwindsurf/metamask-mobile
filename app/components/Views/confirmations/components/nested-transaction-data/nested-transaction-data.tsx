@@ -12,6 +12,16 @@ import CurrencyDisplay from '../UI/info-row/info-value/currency-display';
 import InfoRow from '../UI/info-row';
 import { useTransactionMetadataRequest } from '../../hooks/transactions/useTransactionMetadataRequest';
 
+interface TransactionInfoProps {
+  chainId: string;
+  index: number;
+  transaction?: unknown;
+  }: {?: unknown;
+  chainId: Hex;?: unknown;
+  index: number;?: unknown;
+  transaction: NestedTransactionMetadata;?: unknown;
+}
+
 const TransactionInfo = ({
   chainId,
   index,
@@ -20,7 +30,7 @@ const TransactionInfo = ({
   chainId: Hex;
   index: number;
   transaction: NestedTransactionMetadata;
-}) => {
+}: TransactionInfoProps) => {
   const { to, data, value } = transaction;
   return (
     <InfoSectionAccordion

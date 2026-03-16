@@ -19,13 +19,21 @@ import useNetworkInfo from '../../hooks/useNetworkInfo';
 import { Hero } from '../UI/hero';
 import styleSheet from './hero-nft.styles';
 
+interface NftImageAndNetworkBadgeProps {
+  chainId: string;
+  nft?: unknown;
+  }: {?: unknown;
+  chainId: string;?: unknown;
+  nft?: Nft;?: unknown;
+}
+
 const NftImageAndNetworkBadge = ({
   chainId,
   nft,
 }: {
   chainId: string;
   nft?: Nft;
-}) => {
+}: NftImageAndNetworkBadgeProps) => {
   const navigation = useNavigation();
   const { styles } = useStyles(styleSheet, {});
   const { networkName, networkImage } = useNetworkInfo(chainId);

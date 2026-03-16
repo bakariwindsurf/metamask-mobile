@@ -19,13 +19,21 @@ import { useTransactionMetadataRequest } from '../../../hooks/transactions/useTr
 import BottomModal from '../../UI/bottom-modal';
 import styleSheet from './advanced-gas-price-modal.styles';
 
+interface AdvancedGasPriceModalProps {
+  setActiveModal: (...args: unknown[]) => void;
+  handleCloseModals: (...args: unknown[]) => void;
+  }: {?: unknown;
+  setActiveModal: (modal: GasModalType)?: (...args: unknown[]) => void;
+  handleCloseModals: ()?: (...args: unknown[]) => void;
+}
+
 export const AdvancedGasPriceModal = ({
   setActiveModal,
   handleCloseModals,
 }: {
   setActiveModal: (modal: GasModalType) => void;
   handleCloseModals: () => void;
-}) => {
+}: AdvancedGasPriceModalProps) => {
   const { styles } = useStyles(styleSheet, {});
   const transactionMeta = useTransactionMetadataRequest() as TransactionMeta;
 

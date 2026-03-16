@@ -47,6 +47,14 @@ const ApplePay = ({ disabled }: { disabled?: boolean }) => {
   );
 };
 
+interface ApplePayButtonProps {
+  label: string;
+  onPress: (...args: unknown[]) => void;
+  }: {?: unknown;
+  onPress: ()?: (...args: unknown[]) => void;
+  label: string;?: unknown;
+}
+
 const ApplePayButton = ({
   label,
   onPress,
@@ -55,7 +63,7 @@ const ApplePayButton = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onPress: () => any;
   label: string;
-}) => {
+}: ApplePayButtonProps) => {
   const appleButtonColors = useAssetFromTheme(
     applePayButtonStylesLight,
     applePayButtonStylesDark,

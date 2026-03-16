@@ -23,13 +23,21 @@ import { MaxBaseFeeInput } from '../../../components/gas/max-base-fee-input';
 import { PriorityFeeInput } from '../../../components/gas/priority-fee-input';
 import styleSheet from './advanced-eip1559-modal.styles';
 
+interface AdvancedEIP1559ModalProps {
+  setActiveModal: (...args: unknown[]) => void;
+  handleCloseModals: (...args: unknown[]) => void;
+  }: {?: unknown;
+  setActiveModal: (modal: GasModalType)?: (...args: unknown[]) => void;
+  handleCloseModals: ()?: (...args: unknown[]) => void;
+}
+
 export const AdvancedEIP1559Modal = ({
   setActiveModal,
   handleCloseModals,
 }: {
   setActiveModal: (modal: GasModalType) => void;
   handleCloseModals: () => void;
-}) => {
+}: AdvancedEIP1559ModalProps) => {
   const { styles } = useStyles(styleSheet, {});
   const transactionMeta = useTransactionMetadataRequest() as TransactionMeta;
 

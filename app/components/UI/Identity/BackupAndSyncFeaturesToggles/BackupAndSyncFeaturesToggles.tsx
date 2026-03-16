@@ -41,6 +41,16 @@ export const backupAndSyncFeaturesTogglesSections = [
   },
 ];
 
+interface FeatureToggleProps {
+  section?: unknown;
+  isBackupAndSyncUpdateLoading: boolean;
+  isBackupAndSyncEnabled: boolean;
+  }: {?: unknown;
+  section: (typeof backupAndSyncFeaturesTogglesSections)[number];?: unknown;
+  isBackupAndSyncUpdateLoading: boolean;: boolean;
+  isBackupAndSyncEnabled: boolean;: boolean;
+}
+
 const FeatureToggle = ({
   section,
   isBackupAndSyncUpdateLoading,
@@ -49,7 +59,7 @@ const FeatureToggle = ({
   section: (typeof backupAndSyncFeaturesTogglesSections)[number];
   isBackupAndSyncUpdateLoading: boolean;
   isBackupAndSyncEnabled: boolean;
-}) => {
+}: FeatureToggleProps) => {
   const theme = useTheme();
   const { trackEvent, createEventBuilder } = useMetrics();
   const { setIsBackupAndSyncFeatureEnabled } = useBackupAndSync();

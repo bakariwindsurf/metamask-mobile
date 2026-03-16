@@ -14,11 +14,17 @@ import { strings } from '../../../../../../locales/i18n';
 import { ButtonVariants } from '../../../../../component-library/components/Buttons/Button';
 import Routes from '../../../../../constants/navigation/Routes';
 
+interface IpfsBannerProps {
+  setIpfsBannerVisible: (...args: unknown[]) => void;
+  }: {?: unknown;
+  setIpfsBannerVisible: (isVisible: boolean)?: (...args: unknown[]) => void;
+}
+
 const IpfsBanner = ({
   setIpfsBannerVisible,
 }: {
   setIpfsBannerVisible: (isVisible: boolean) => void;
-}) => {
+}: IpfsBannerProps) => {
   const { styles } = useStyles(styleSheet, {});
   const navigation = useNavigation();
   return (

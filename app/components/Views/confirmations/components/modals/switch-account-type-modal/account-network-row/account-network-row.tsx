@@ -36,13 +36,21 @@ import { Box } from '../../../../../../UI/Box/Box';
 import { useTheme } from '../../../../../../../util/theme';
 import { selectMultichainAccountsState1Enabled } from '../../../../../../../selectors/featureFlagController/multichainAccounts';
 
+interface AccountNetworkRowProps {
+  address: string;
+  network: string;
+  }: {?: unknown;
+  address: Hex;?: unknown;
+  network: EIP7702NetworkConfiguration;?: unknown;
+}
+
 const AccountNetworkRow = ({
   address,
   network,
 }: {
   address: Hex;
   network: EIP7702NetworkConfiguration;
-}) => {
+}: AccountNetworkRowProps) => {
   const useMultichainAccountsDesign = useSelector(
     selectMultichainAccountsState1Enabled,
   );

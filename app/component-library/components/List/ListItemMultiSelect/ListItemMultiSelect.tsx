@@ -21,6 +21,14 @@ import { ListItemMultiSelectProps } from './ListItemMultiSelect.types';
 import { DEFAULT_LISTITEMMULTISELECT_GAP } from './ListItemMultiSelect.constants';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
+interface TouchableOpacityProps {
+  onPress: (...args: unknown[]) => void;
+  disabled: boolean;
+  children: React.ReactNode;
+  }: TouchableOpacityProps & {?: unknown;
+  children?: React.ReactNode;?: unknown;
+}
+
 const TouchableOpacity = ({
   onPress,
   disabled,
@@ -28,7 +36,7 @@ const TouchableOpacity = ({
   ...props
 }: TouchableOpacityProps & {
   children?: React.ReactNode;
-}) => {
+}: TouchableOpacityProps) => {
   const isDisabled = disabled || (props as { isDisabled?: boolean }).isDisabled;
 
   // Simple pass-through to main component coordination

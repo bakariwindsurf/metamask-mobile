@@ -21,6 +21,18 @@ import { RootState } from '../../../reducers';
 import { getSwapBridgeTxActivityTitle } from '../Bridge/utils/transaction-history';
 import { ethers } from 'ethers';
 
+interface MultichainBridgeTransactionListItemProps {
+  transaction?: unknown;
+  bridgeHistoryItem?: unknown;
+  navigation?: unknown;
+  index: number;
+  }: {?: unknown;
+  transaction: Transaction;?: unknown;
+  bridgeHistoryItem: BridgeHistoryItem;?: unknown;
+  navigation: NavigationProp<ParamListBase>;?: unknown;
+  index?: number;?: unknown;
+}
+
 const MultichainBridgeTransactionListItem = ({
   transaction,
   bridgeHistoryItem,
@@ -31,7 +43,7 @@ const MultichainBridgeTransactionListItem = ({
   bridgeHistoryItem: BridgeHistoryItem;
   navigation: NavigationProp<ParamListBase>;
   index?: number;
-}) => {
+}: MultichainBridgeTransactionListItemProps) => {
   const { colors, typography } = useTheme();
   const osColorScheme = useColorScheme();
   const appTheme = useSelector((state: RootState) => state.user.appTheme);

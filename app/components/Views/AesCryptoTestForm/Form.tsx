@@ -10,6 +10,31 @@ import Button, {
 } from '../../../component-library/components/Buttons/Button';
 import ClipboardText from './Clipboard';
 
+interface TestFormProps {
+  title: string;
+  textFields?: unknown;
+  buttonLabel?: unknown;
+  callback?: unknown;
+  callbackTestId?: unknown;
+  responseTestId?: unknown;
+  responseTextTestId?: unknown;
+  styles?: unknown;
+  }: {?: unknown;
+  title: string;?: unknown;
+  textFields: {?: unknown;
+  placeholder: string;?: unknown;
+  testId: string;?: unknown;
+  }[];?: unknown;
+  buttonLabel: string;?: unknown;
+  callback: // TODO: Replace "any" with type?: unknown;
+  | ((...args: any[])?: unknown;
+  | ((...args: any[])?: unknown;
+  callbackTestId: string;?: unknown;
+  responseTestId: string;?: unknown;
+  responseTextTestId?: string;?: unknown;
+  styles: any;?: unknown;
+}
+
 const TestForm = ({
   title,
   textFields,
@@ -38,7 +63,7 @@ const TestForm = ({
   // TODO: Replace "any" with type
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styles: any;
-}) => {
+}: TestFormProps) => {
   const [result, setResult] = useState('');
   const [args, setArgs] = useState<string[]>([]);
 

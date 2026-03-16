@@ -5,13 +5,21 @@ import Text, {
 } from '../../../../component-library/components/Texts/Text';
 import { View } from 'react-native';
 
+interface PercentageChangeProps {
+  value: string;
+  variant?: string;
+  }: {?: unknown;
+  value: number | null | undefined;?: unknown;
+  variant?: TextVariant;?: unknown;
+}
+
 const PercentageChange = ({
   value,
   variant = TextVariant.BodySMMedium,
 }: {
   value: number | null | undefined;
   variant?: TextVariant;
-}) => {
+}: PercentageChangeProps) => {
   const percentageColorText =
     value && value >= 0 ? TextColor.Success : TextColor.Error;
 

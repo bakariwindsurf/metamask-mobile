@@ -10,13 +10,21 @@ import { validateGas } from '../../../utils/validations/gas';
 import { TextFieldWithLabel } from '../../UI/text-field-with-label';
 import styleSheet from './gas-input.styles';
 
+interface GasInputProps {
+  onChange: (...args: unknown[]) => void;
+  onErrorChange: (...args: unknown[]) => void;
+  }: {?: unknown;
+  onChange: (value: Hex)?: (...args: unknown[]) => void;
+  onErrorChange: (error: string | boolean)?: (...args: unknown[]) => void;
+}
+
 export const GasInput = ({
   onChange,
   onErrorChange,
 }: {
   onChange: (value: Hex) => void;
   onErrorChange: (error: string | boolean) => void;
-}) => {
+}: GasInputProps) => {
   const transactionMeta = useTransactionMetadataRequest();
   const { styles } = useStyles(styleSheet, {});
   const initialGasLimit = hexToDecimal(

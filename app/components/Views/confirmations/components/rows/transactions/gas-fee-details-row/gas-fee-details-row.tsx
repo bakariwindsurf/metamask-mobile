@@ -26,6 +26,18 @@ import { RowAlertKey } from '../../../UI/info-row/alert-row/constants';
 import InfoSection from '../../../UI/info-row/info-section';
 import styleSheet from './gas-fee-details-row.styles';
 
+interface EstimationInfoProps {
+  hideFiatForTestnet?: unknown;
+  feeCalculations?: unknown;
+  fiatOnly?: unknown;
+  }: {?: unknown;
+  hideFiatForTestnet: boolean;?: unknown;
+  feeCalculations:?: unknown;
+  | ReturnType<typeof useFeeCalculations>?: unknown;
+  | ReturnType<typeof useFeeCalculationsTransactionBatch>;?: unknown;
+  fiatOnly: boolean;?: unknown;
+}
+
 const EstimationInfo = ({
   hideFiatForTestnet,
   feeCalculations,
@@ -36,7 +48,7 @@ const EstimationInfo = ({
     | ReturnType<typeof useFeeCalculations>
     | ReturnType<typeof useFeeCalculationsTransactionBatch>;
   fiatOnly: boolean;
-}) => {
+}: EstimationInfoProps) => {
   const { styles } = useStyles(styleSheet, {});
   return (
     <View style={styles.estimationContainer}>
@@ -54,13 +66,21 @@ const EstimationInfo = ({
   );
 };
 
+interface SingleEstimateInfoProps {
+  hideFiatForTestnet?: unknown;
+  fiatOnly?: unknown;
+  }: {?: unknown;
+  hideFiatForTestnet: boolean;?: unknown;
+  fiatOnly: boolean;?: unknown;
+}
+
 const SingleEstimateInfo = ({
   hideFiatForTestnet,
   fiatOnly,
 }: {
   hideFiatForTestnet: boolean;
   fiatOnly: boolean;
-}) => {
+}: SingleEstimateInfoProps) => {
   const transactionMetadata = useTransactionMetadataRequest();
   const feeCalculations = useFeeCalculations(
     transactionMetadata as TransactionMeta,
@@ -75,13 +95,21 @@ const SingleEstimateInfo = ({
   );
 };
 
+interface BatchEstimateInfoProps {
+  hideFiatForTestnet?: unknown;
+  fiatOnly?: unknown;
+  }: {?: unknown;
+  hideFiatForTestnet: boolean;?: unknown;
+  fiatOnly: boolean;?: unknown;
+}
+
 const BatchEstimateInfo = ({
   hideFiatForTestnet,
   fiatOnly,
 }: {
   hideFiatForTestnet: boolean;
   fiatOnly: boolean;
-}) => {
+}: BatchEstimateInfoProps) => {
   const transactionBatchesMetadata = useTransactionBatchesMetadata();
   const feeCalculations = useFeeCalculationsTransactionBatch(
     transactionBatchesMetadata as TransactionBatchMeta,
@@ -96,6 +124,16 @@ const BatchEstimateInfo = ({
   );
 };
 
+interface ClickableEstimationInfoProps {
+  hideFiatForTestnet?: unknown;
+  onPress: (...args: unknown[]) => void;
+  fiatOnly?: unknown;
+  }: {?: unknown;
+  hideFiatForTestnet: boolean;?: unknown;
+  onPress: ()?: (...args: unknown[]) => void;
+  fiatOnly: boolean;?: unknown;
+}
+
 const ClickableEstimationInfo = ({
   hideFiatForTestnet,
   onPress,
@@ -104,7 +142,7 @@ const ClickableEstimationInfo = ({
   hideFiatForTestnet: boolean;
   onPress: () => void;
   fiatOnly: boolean;
-}) => {
+}: ClickableEstimationInfoProps) => {
   const { styles, theme } = useStyles(styleSheet, {});
 
   const transactionMetadata = useTransactionMetadataRequest();
@@ -129,6 +167,16 @@ const ClickableEstimationInfo = ({
   );
 };
 
+interface RenderEstimationInfoProps {
+  transactionBatchesMetadata?: unknown;
+  hideFiatForTestnet?: unknown;
+  fiatOnly?: unknown;
+  }: {?: unknown;
+  transactionBatchesMetadata: TransactionBatchMeta | undefined;?: unknown;
+  hideFiatForTestnet: boolean;?: unknown;
+  fiatOnly: boolean;?: unknown;
+}
+
 const RenderEstimationInfo = ({
   transactionBatchesMetadata,
   hideFiatForTestnet,
@@ -137,7 +185,7 @@ const RenderEstimationInfo = ({
   transactionBatchesMetadata: TransactionBatchMeta | undefined;
   hideFiatForTestnet: boolean;
   fiatOnly: boolean;
-}) => {
+}: RenderEstimationInfoProps) => {
   if (transactionBatchesMetadata) {
     return (
       <BatchEstimateInfo
@@ -154,12 +202,19 @@ const RenderEstimationInfo = ({
   );
 };
 
+interface GasFeesDetailsRowProps {
+  disableUpdate?: unknown;
+  fiatOnly?: unknown;
+  hideSpeed?: unknown;
+  noSection?: unknown;
+}
+
 const GasFeesDetailsRow = ({
   disableUpdate = false,
   fiatOnly = false,
   hideSpeed = false,
   noSection = false,
-}) => {
+}: GasFeesDetailsRowProps) => {
   const [gasModalVisible, setGasModalVisible] = useState(false);
   const { styles } = useStyles(styleSheet, {});
 

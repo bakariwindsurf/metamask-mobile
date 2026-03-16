@@ -14,13 +14,21 @@ import { validateGasPrice } from '../../../utils/validations/gas';
 import { TextFieldWithLabel } from '../../UI/text-field-with-label';
 import styleSheet from './gas-price-input.styles';
 
+interface GasPriceInputProps {
+  onChange: (...args: unknown[]) => void;
+  onErrorChange: (...args: unknown[]) => void;
+  }: {?: unknown;
+  onChange: (value: Hex)?: (...args: unknown[]) => void;
+  onErrorChange: (error: string | boolean)?: (...args: unknown[]) => void;
+}
+
 export const GasPriceInput = ({
   onChange,
   onErrorChange,
 }: {
   onChange: (value: Hex) => void;
   onErrorChange: (error: string | boolean) => void;
-}) => {
+}: GasPriceInputProps) => {
   const transactionMeta = useTransactionMetadataRequest();
   const { styles } = useStyles(styleSheet, {});
   const initialGasPrice = hexWEIToDecGWEI(

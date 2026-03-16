@@ -108,11 +108,17 @@ export function useNotificationFilters(props: {
   };
 }
 
+interface NotificationsViewProps {
+  navigation?: unknown;
+  }: {?: unknown;
+  navigation: NavigationProp<ParamListBase>;?: unknown;
+}
+
 const NotificationsView = ({
   navigation,
 }: {
   navigation: NavigationProp<ParamListBase>;
-}) => {
+}: NotificationsViewProps) => {
   const { isLoading } = useListNotifications();
   const isNotificationEnabled = useSelector(
     selectIsMetamaskNotificationsEnabled,

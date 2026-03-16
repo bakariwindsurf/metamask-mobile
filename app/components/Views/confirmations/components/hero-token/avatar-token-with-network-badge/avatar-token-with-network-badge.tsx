@@ -21,6 +21,16 @@ import { useTransactionMetadataRequest } from '../../../hooks/transactions/useTr
 import { styleSheet } from './avatar-token-with-network-badge.styles';
 import { View } from 'react-native';
 
+interface AvatarTokenOrNetworkAssetLogoProps {
+  asset?: unknown;
+  chainId: string;
+  displayName?: unknown;
+  }: {?: unknown;
+  asset: TokenI;?: unknown;
+  chainId: Hex;?: unknown;
+  displayName: string;?: unknown;
+}
+
 const AvatarTokenOrNetworkAssetLogo = ({
   asset,
   chainId,
@@ -29,7 +39,7 @@ const AvatarTokenOrNetworkAssetLogo = ({
   asset: TokenI;
   chainId: Hex;
   displayName: string;
-}) => {
+}: AvatarTokenOrNetworkAssetLogoProps) => {
   const { styles } = useStyles(styleSheet, {});
   const { image, isNative } = asset;
   const isUnknownToken = displayName === strings('token.unknown');

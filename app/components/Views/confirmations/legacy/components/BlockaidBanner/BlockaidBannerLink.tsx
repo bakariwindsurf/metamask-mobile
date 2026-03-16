@@ -11,6 +11,16 @@ const createStyles = (colors: any) =>
     attributionLink: { color: colors.primary.default },
   });
 
+interface BlockaidBannerLinkProps {
+  text: string;
+  link?: unknown;
+  onContactUsClicked: (...args: unknown[]) => void;
+  }: {?: unknown;
+  text: string;?: unknown;
+  link: string;?: unknown;
+  onContactUsClicked?: ()?: (...args: unknown[]) => void;
+}
+
 const BlockaidBannerLink = ({
   text,
   link,
@@ -19,7 +29,7 @@ const BlockaidBannerLink = ({
   text: string;
   link: string;
   onContactUsClicked?: () => void | undefined;
-}) => {
+}: BlockaidBannerLinkProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

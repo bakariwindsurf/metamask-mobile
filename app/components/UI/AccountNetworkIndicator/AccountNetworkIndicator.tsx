@@ -10,11 +10,17 @@ import { getActiveNetworksByScopes } from '../../../selectors/multichainNetworkC
 import styleSheet from './AccountNetworkIndicator.styles';
 import { getNetworkImageSource } from '../../../util/networks';
 
+interface AccountNetworkIndicatorProps {
+  partialAccount?: unknown;
+  }: {?: unknown;
+  partialAccount: { address: string; scopes: CaipChainId[] };?: unknown;
+}
+
 const AccountNetworkIndicator = ({
   partialAccount,
 }: {
   partialAccount: { address: string; scopes: CaipChainId[] };
-}) => {
+}: AccountNetworkIndicatorProps) => {
   const { styles } = useStyles(styleSheet, {});
   const networksWithTransactionActivity = useSelector((state: RootState) =>
     getActiveNetworksByScopes(state, partialAccount),

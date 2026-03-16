@@ -5,11 +5,17 @@ import { AdvancedEIP1559Modal } from '../advanced-eip1559-modal';
 import { AdvancedGasPriceModal } from '../advanced-gas-price-modal';
 import { GasModalType } from '../../../constants/gas';
 
+interface GasFeeModalProps {
+  setGasModalVisible: (...args: unknown[]) => void;
+  }: {?: unknown;
+  setGasModalVisible: (visible: boolean)?: (...args: unknown[]) => void;
+}
+
 export const GasFeeModal = ({
   setGasModalVisible,
 }: {
   setGasModalVisible: (visible: boolean) => void;
-}) => {
+}: GasFeeModalProps) => {
   const [activeModal, setActiveModal] = useState(GasModalType.ESTIMATES);
 
   const handleCloseModals = useCallback(() => {

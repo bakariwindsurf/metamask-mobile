@@ -12,13 +12,21 @@ import {
 } from '../modals/edit-spending-cap-modal';
 import styleSheet from './edit-spending-cap.styles';
 
+interface EditSpendingCapButtonProps {
+  spendingCapProps?: unknown;
+  children: React.ReactNode;
+  }: {?: unknown;
+  spendingCapProps: EditSpendingCapProps;?: unknown;
+  children?: React.ReactNode;?: unknown;
+}
+
 export const EditSpendingCapButton = ({
   spendingCapProps,
   children,
 }: {
   spendingCapProps: EditSpendingCapProps;
   children?: React.ReactNode;
-}) => {
+}: EditSpendingCapButtonProps) => {
   const [isModalVisible, setModalVisibility] = useState(false);
   const { styles, theme } = useStyles(styleSheet, {});
 

@@ -210,11 +210,17 @@ const MultiSelectWithIconsScrollableDemo = () => {
 };
 
 // 9. Button Size Variations
+interface ButtonSizesDemoProps {
+  styles?: unknown;
+  }: {?: unknown;
+  styles: ReturnType<typeof createStyles>;?: unknown;
+}
+
 const ButtonSizesDemo = ({
   styles,
 }: {
   styles: ReturnType<typeof createStyles>;
-}) => {
+}: ButtonSizesDemoProps) => {
   const [selectedSmall, setSelectedSmall] = useState<string>(
     SIZE_OPTIONS[0].value,
   );
@@ -267,11 +273,17 @@ const ButtonSizesDemo = ({
 };
 
 // 10. Disabled State
+interface DisabledStateDemoProps {
+  styles?: unknown;
+  }: {?: unknown;
+  styles: ReturnType<typeof createStyles>;?: unknown;
+}
+
 const DisabledStateDemo = ({
   styles,
 }: {
   styles: ReturnType<typeof createStyles>;
-}) => (
+}: DisabledStateDemoProps) => (
   <View style={styles.demoWrapper}>
     <SegmentedControlComponent
       options={SAMPLE_SEGMENTEDCONTROL_OPTIONS}
