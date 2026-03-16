@@ -566,6 +566,6 @@ export default {
     return instance?.showSimpleNotification(data);
   },
   onMessageReceived(data: Record<string, unknown>) {
-    return instance?.onMessageReceived(data: Record<string, unknown>);
+    return instance?.onMessageReceived(data);
   },
 };

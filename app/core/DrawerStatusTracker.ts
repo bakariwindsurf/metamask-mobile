@@ -17,14 +17,14 @@ class DrawerStatusTracker {
   }
 }
 
-let instance = null;
+let instance: DrawerStatusTracker | null = null;
 
 const SharedDrawerStatusTracker = {
   init: () => {
     instance = new DrawerStatusTracker();
   },
-  setStatus: (status) => {
-    instance.setStatus(status: string);
+  setStatus: (status: string) => {
+    instance.setStatus(status);
   },
   getStatus: () => (instance.open ? 'open' : 'closed'),
   hub,
