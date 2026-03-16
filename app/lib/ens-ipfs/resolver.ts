@@ -12,6 +12,10 @@ export default async function resolveEnsToIpfsContentId({
   provider,
   name,
   chainId,
+}: {
+  provider: unknown;
+  name: string;
+  chainId: string;
 }) {
   const eth = new Eth(provider);
   const hash = namehash.hash(name);
@@ -70,7 +74,7 @@ export default async function resolveEnsToIpfsContentId({
   );
 }
 
-function hexValueIsEmpty(value) {
+function hexValueIsEmpty(value: string | undefined | null) {
   return [
     undefined,
     null,
@@ -80,7 +84,7 @@ function hexValueIsEmpty(value) {
   ].includes(value);
 }
 
-function getRegistryForChainId(chainId) {
+function getRegistryForChainId(chainId: string) {
   switch (chainId) {
     // mainnet
     case '0x1':
@@ -93,7 +97,7 @@ function getRegistryForChainId(chainId) {
   }
 }
 
-export function isGatewayUrl(urlObj) {
+export function isGatewayUrl(urlObj: { pathname: string }) {
   // All IPFS gateway urls start with the path /ipfs/
   if (urlObj.pathname.substr(0, 6) === '/ipfs/') return true;
   // All Swarm gateway urls start with the path /bzz:/
