@@ -132,7 +132,7 @@ export const removeSignatureErrorListener = (metamaskId, onSignatureError) => {
   );
 };
 
-export const shouldTruncateMessage = (e) => {
+export const shouldTruncateMessage = (e: unknown) => {
   if (
     (Device.isIos() && e.nativeEvent.layout.height > 70) ||
     (Device.isAndroid() && e.nativeEvent.layout.height > 100)

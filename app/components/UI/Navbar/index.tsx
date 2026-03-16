@@ -418,7 +418,7 @@ export function getPaymentRequestOptionsTitle(
  *
  * @returns {Object} - Corresponding navbar options containing title, and headerRight
  */
-export function getPaymentRequestSuccessOptionsTitle(navigation, themeColors) {
+export function getPaymentRequestSuccessOptionsTitle(navigation: unknown, themeColors: unknown) {
   const innerStyles = StyleSheet.create({
     headerStyle: {
       backgroundColor: themeColors.background.default,
@@ -1935,7 +1935,7 @@ export function getBridgeTransactionDetailsNavbar(navigation: unknown) {
   };
 }
 
-export function getPerpsTransactionsDetailsNavbar(navigation, title) {
+export function getPerpsTransactionsDetailsNavbar(navigation: unknown, title: unknown) {
   const innerStyles = StyleSheet.create({
     perpsTransactionsTitle: {
       fontWeight: '700',
@@ -1972,7 +1972,7 @@ export function getPerpsTransactionsDetailsNavbar(navigation, title) {
   };
 }
 
-export function getPerpsMarketDetailsNavbar(navigation, title) {
+export function getPerpsMarketDetailsNavbar(navigation: unknown, title: unknown) {
   const innerStyles = StyleSheet.create({
     perpsMarketDetailsTitle: {
       fontWeight: '700',
