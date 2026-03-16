@@ -1,0 +1,31 @@
+import {
+  ADD_FAVORITE_COLLECTIBLE,
+  REMOVE_FAVORITE_COLLECTIBLE,
+} from '../../reducers/collectibles';
+
+interface Collectible {
+  tokenId: string;
+  address: string;
+}
+
+export const addFavoriteCollectible = (
+  selectedAddress: string,
+  chainId: string,
+  collectible: Collectible,
+) => ({
+  type: ADD_FAVORITE_COLLECTIBLE as const,
+  selectedAddress,
+  chainId,
+  collectible,
+});
+
+export const removeFavoriteCollectible = (
+  selectedAddress: string,
+  chainId: string,
+  collectible: Collectible,
+) => ({
+  type: REMOVE_FAVORITE_COLLECTIBLE as const,
+  selectedAddress,
+  chainId,
+  collectible,
+});
