@@ -42,13 +42,21 @@ const createStyles = (colors: Colors) =>
     },
   });
 
+interface AccountProps {
+  address: string;
+  transparent?: unknown;
+  }: {?: unknown;
+  address?: string;?: unknown;
+  transparent?: boolean;?: unknown;
+}
+
 const Account = ({
   address,
   transparent = false,
 }: {
   address?: string;
   transparent?: boolean;
-}) => {
+}: AccountProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const selectedAddress = useSelector(

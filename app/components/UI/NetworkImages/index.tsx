@@ -19,6 +19,18 @@ import { selectNetworkImageSource } from '../../../selectors/networkInfos';
 
 const BUTTON_TEST_ID = 'button-icon-test-id';
 
+interface NetworkImageComponentProps {
+  isAllNetworksEnabled: boolean;
+  allNetworksEnabled?: unknown;
+  selectorButtonDisplayed?: unknown;
+  onPress: (...args: unknown[]) => void;
+  }: {?: unknown;
+  isAllNetworksEnabled: boolean;: boolean;
+  allNetworksEnabled: { [key: string]: boolean };?: unknown;
+  selectorButtonDisplayed?: boolean;?: unknown;
+  onPress?: ()?: (...args: unknown[]) => void;
+}
+
 const NetworkImageComponent = ({
   isAllNetworksEnabled,
   allNetworksEnabled,
@@ -29,7 +41,7 @@ const NetworkImageComponent = ({
   allNetworksEnabled: { [key: string]: boolean };
   selectorButtonDisplayed?: boolean;
   onPress?: () => void;
-}) => {
+}: NetworkImageComponentProps) => {
   const { styles } = useStyles(stylesheet, {});
   const networkImageSource = useSelector(selectNetworkImageSource);
 

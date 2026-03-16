@@ -27,6 +27,16 @@ const InfoLabel = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+interface PriorityFeeInputProps {
+  maxFeePerGas?: unknown;
+  onChange: (...args: unknown[]) => void;
+  onErrorChange: (...args: unknown[]) => void;
+  }: {?: unknown;
+  maxFeePerGas: Hex;?: unknown;
+  onChange: (value: Hex)?: (...args: unknown[]) => void;
+  onErrorChange: (error: string | boolean)?: (...args: unknown[]) => void;
+}
+
 export const PriorityFeeInput = ({
   maxFeePerGas,
   onChange,
@@ -35,7 +45,7 @@ export const PriorityFeeInput = ({
   maxFeePerGas: Hex;
   onChange: (value: Hex) => void;
   onErrorChange: (error: string | boolean) => void;
-}) => {
+}: PriorityFeeInputProps) => {
   const transactionMeta = useTransactionMetadataRequest();
   const { styles } = useStyles(styleSheet, {});
   const initialPriorityFee = hexWEIToDecGWEI(

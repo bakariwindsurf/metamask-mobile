@@ -146,6 +146,19 @@ const FieldType = {
 /**
  * View that displays the information of a specific ERC-721 Token
  */
+interface CollectibleOverviewProps {
+  chainId: string;
+  collectible?: unknown;
+  selectedAddress: string;
+  tradable?: unknown;
+  onSend: (...args: unknown[]) => void;
+  addFavoriteCollectible?: unknown;
+  removeFavoriteCollectible?: unknown;
+  isInFavorites: boolean;
+  openLink?: unknown;
+  onTranslation: (...args: unknown[]) => void;
+}
+
 const CollectibleOverview = ({
   chainId,
   collectible,
@@ -157,7 +170,7 @@ const CollectibleOverview = ({
   isInFavorites,
   openLink,
   onTranslation,
-}) => {
+}: CollectibleOverviewProps) => {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [prevWrapperHeight, setPrevWrapperHeight] = useState(0);
   const [wrapperHeight, setWrapperHeight] = useState(0);
@@ -503,7 +516,7 @@ const mapStateToProps = (state, props) => ({
   isInFavorites: isCollectibleInFavoritesSelector(state, props.collectible),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   addFavoriteCollectible: (selectedAddress, chainId, collectible) =>
     dispatch(addFavoriteCollectible(selectedAddress, chainId, collectible)),
   removeFavoriteCollectible: (selectedAddress, chainId, collectible) =>

@@ -79,12 +79,19 @@ const defaultProps = {
   isHighlighted: false,
 };
 
+interface SettingsNotificationProps {
+  style?: unknown;
+  isWarning: boolean;
+  isNotification: boolean;
+  children: React.ReactNode;
+}
+
 const SettingsNotification = ({
   style,
   isWarning,
   isNotification,
   children,
-}) => {
+}: SettingsNotificationProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

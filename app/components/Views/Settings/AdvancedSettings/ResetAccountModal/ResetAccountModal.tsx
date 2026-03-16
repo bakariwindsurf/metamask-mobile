@@ -14,6 +14,16 @@ import { selectSelectedInternalAccountFormattedAddress } from '../../../../../se
 import { selectChainId } from '../../../../../selectors/networkController';
 import { usePerpsFirstTimeUser } from '../../../../UI/Perps/hooks/usePerpsFirstTimeUser';
 
+interface ResetAccountModalProps {
+  resetModalVisible?: unknown;
+  cancelResetAccount: boolean;
+  styles?: unknown;
+  }: {?: unknown;
+  resetModalVisible: boolean;?: unknown;
+  cancelResetAccount: ()?: boolean;
+  styles: any;?: unknown;
+}
+
 export const ResetAccountModal = ({
   resetModalVisible,
   cancelResetAccount,
@@ -23,7 +33,7 @@ export const ResetAccountModal = ({
   cancelResetAccount: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   styles: any;
-}) => {
+}: ResetAccountModalProps) => {
   const navigation = useNavigation();
   const selectedAddress = useSelector(
     selectSelectedInternalAccountFormattedAddress,

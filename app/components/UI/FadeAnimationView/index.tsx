@@ -3,6 +3,16 @@ import { Animated } from 'react-native';
 
 const TIME = 3900; // 3900/6 = 650 for each
 
+interface FadeAnimationViewProps {
+  children: React.ReactNode;
+  style?: unknown;
+  animationTime?: unknown;
+  valueToWatch?: unknown;
+  onAnimationStart: (...args: unknown[]) => void;
+  onAnimationEnd: (...args: unknown[]) => void;
+  animateOnChange: boolean;
+}
+
 const FadeAnimationView = ({
   children,
   style,
@@ -11,7 +21,7 @@ const FadeAnimationView = ({
   onAnimationStart,
   onAnimationEnd,
   animateOnChange,
-}) => {
+}: FadeAnimationViewProps) => {
   const fadeAnim = useRef(new Animated.Value(1)).current; // Initial value for opacity: 1
   const [value, setValue] = useState(valueToWatch);
   const [lastChildren, setLastChildren] = useState(children);

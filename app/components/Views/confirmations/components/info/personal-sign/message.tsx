@@ -36,13 +36,21 @@ const styleSheet = (params: { theme: Theme }) => {
   });
 };
 
+interface DetailedSIWEMessageProps {
+  parsedMessage?: unknown;
+  styles?: unknown;
+  }: {?: unknown;
+  parsedMessage: SIWEMessage;?: unknown;
+  styles: { siweTos: StyleProp<TextStyle> };?: unknown;
+}
+
 const DetailedSIWEMessage = ({
   parsedMessage,
   styles,
 }: {
   parsedMessage: SIWEMessage;
   styles: { siweTos: StyleProp<TextStyle> };
-}) => {
+}: DetailedSIWEMessageProps) => {
   const {
     uri,
     chainId,

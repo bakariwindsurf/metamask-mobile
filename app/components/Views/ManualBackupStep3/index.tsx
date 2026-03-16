@@ -210,7 +210,7 @@ class ManualBackupStep3 extends PureComponent<ManualBackupStep3Props> {
 
 ManualBackupStep3.contextType = ThemeContext;
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   showAlert: (config) => dispatch(showAlert(config)),
   saveOnboardingEvent: (...eventArgs) => dispatch(saveEvent(eventArgs)),
 });

@@ -380,6 +380,37 @@ async function addTokenToAssetsController(newToken, chainId, networkClientId) {
   }
 }
 
+interface SwapsQuotesViewProps {
+  swapsTokens?: unknown;
+  accounts: Record<string, unknown>;
+  balances: Record<string, unknown>;
+  selectedAddress: string;
+  currentCurrency: string;
+  conversionRate: number;
+  chainId: string;
+  networkClientId?: unknown;
+  ticker: string;
+  primaryCurrency: string;
+  isInPolling: boolean;
+  quotesLastFetched?: unknown;
+  pollingCyclesLeft?: unknown;
+  approvalTransaction: originalApprovalTransaction?: unknown;
+  topAggId?: unknown;
+  aggregatorMetadata?: unknown;
+  quotes: unknown[];
+  quoteValues: Record<string, unknown>;
+  error: string;
+  quoteRefreshSeconds?: unknown;
+  gasEstimateType: string;
+  gasFeeEstimates: Record<string, unknown>;
+  usedGasEstimate?: unknown;
+  usedCustomGas?: unknown;
+  setRecipient: (...args: unknown[]) => void;
+  resetTransaction?: unknown;
+  shouldUseSmartTransaction: boolean;
+  isEIP1559Network: boolean;
+}
+
 function SwapsQuotesView({
   swapsTokens,
   accounts,
@@ -409,7 +440,7 @@ function SwapsQuotesView({
   resetTransaction,
   shouldUseSmartTransaction,
   isEIP1559Network,
-}) {
+}: SwapsQuotesViewProps) {
   const navigation = useNavigation();
   /* Get params from navigation */
   const route = useRoute();
@@ -2590,7 +2621,7 @@ function SwapsQuotesView({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   accounts: selectAccounts(state),
   chainId: selectEvmChainId(state),
   networkClientId: selectSelectedNetworkClientId(state),
@@ -2622,7 +2653,7 @@ const mapStateToProps = (state) => ({
   isEIP1559Network: selectIsEIP1559Network(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setRecipient: (from) => dispatch(setRecipient(from, '', '', '', '')),
   resetTransaction: () => dispatch(resetTransaction()),
 });

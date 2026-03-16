@@ -554,7 +554,7 @@ const RootRPCMethodsUI = (props) => {
 };
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   selectedAddress: selectSelectedInternalAccountFormattedAddress(state),
   chainId: selectEvmChainId(state),
   tokens: selectTokens(state),
@@ -565,7 +565,7 @@ const mapStateToProps = (state) => ({
   ),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setEtherTransaction: (transaction) =>
     dispatch(setEtherTransaction(transaction)),
   setTransactionObject: (transaction) =>

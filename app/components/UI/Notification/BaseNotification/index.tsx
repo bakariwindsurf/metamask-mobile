@@ -160,6 +160,16 @@ export const getDescription = (status, { amount = null, type = null }) => {
 /**
  * BaseNotification component used to render in-app notifications
  */
+interface BaseNotificationProps {
+  status: string;
+  data?: unknown;
+  data: { description?: unknown;
+  title?: string;
+  onPress: (...args: unknown[]) => void;
+  onHide: (...args: unknown[]) => void;
+  autoDismiss?: unknown;
+}
+
 const BaseNotification = ({
   status,
   data = null,
@@ -167,7 +177,7 @@ const BaseNotification = ({
   onPress,
   onHide,
   autoDismiss,
-}) => {
+}: BaseNotificationProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

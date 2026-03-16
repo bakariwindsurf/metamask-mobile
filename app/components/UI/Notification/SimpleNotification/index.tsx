@@ -23,12 +23,19 @@ const styles = StyleSheet.create({
   },
 });
 
+interface SimpleNotificationProps {
+  isInBrowserView: boolean;
+  notificationAnimated?: unknown;
+  hideCurrentNotification?: unknown;
+  currentNotification?: unknown;
+}
+
 function SimpleNotification({
   isInBrowserView,
   notificationAnimated,
   hideCurrentNotification,
   currentNotification,
-}) {
+}: SimpleNotificationProps) {
   return (
     <Animated.View
       style={[

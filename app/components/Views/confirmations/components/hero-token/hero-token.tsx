@@ -16,13 +16,22 @@ import AnimatedPulse from '../UI/animated-pulse';
 import { AvatarTokenWithNetworkBadge } from './avatar-token-with-network-badge';
 import styleSheet from './hero-token.styles';
 
+interface AssetAmountProps {
+  amount: number;
+  styles?: unknown;
+  }: {?: unknown;
+  amount?: string;?: unknown;
+  styles: StyleSheet.NamedStyles<Record<string?: unknown;
+  unknown>>;?: unknown;
+}
+
 const AssetAmount = ({
   amount,
   styles,
 }: {
   amount?: string;
   styles: StyleSheet.NamedStyles<Record<string, unknown>>;
-}) => {
+}: AssetAmountProps) => {
   const { displayName } = useTokenAsset();
   const isUnknownToken = displayName === strings('token.unknown');
 

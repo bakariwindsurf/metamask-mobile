@@ -224,7 +224,7 @@ class LockScreen extends PureComponent<LockScreenProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   appTheme: state.user.appTheme,
 });
 

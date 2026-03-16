@@ -4,13 +4,21 @@ import { useNavigation } from '@react-navigation/native';
 import Routes from '../../../constants/navigation/Routes';
 import { StyleProp, ViewStyle } from 'react-native';
 
+interface SelectSRPProps {
+  containerStyle?: unknown;
+  showArrowName: boolean;
+  }: {?: unknown;
+  containerStyle?: StyleProp<ViewStyle>;?: unknown;
+  showArrowName?: string;: boolean;
+}
+
 const SelectSRP = ({
   containerStyle,
   showArrowName,
 }: {
   containerStyle?: StyleProp<ViewStyle>;
   showArrowName?: string;
-}) => {
+}: SelectSRPProps) => {
   const navigation = useNavigation();
 
   const onKeyringSelect = (keyringId: string) => {

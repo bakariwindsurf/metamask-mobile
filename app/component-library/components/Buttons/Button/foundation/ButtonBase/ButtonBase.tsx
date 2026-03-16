@@ -26,6 +26,14 @@ import {
 } from './ButtonBase.constants';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
+interface TouchableOpacityProps {
+  onPress: (...args: unknown[]) => void;
+  disabled: boolean;
+  children: React.ReactNode;
+  }: TouchableOpacityProps & {?: unknown;
+  children?: React.ReactNode;?: unknown;
+}
+
 const TouchableOpacity = ({
   onPress,
   disabled,
@@ -33,7 +41,7 @@ const TouchableOpacity = ({
   ...props
 }: TouchableOpacityProps & {
   children?: React.ReactNode;
-}) => {
+}: TouchableOpacityProps) => {
   // Handle both 'disabled' and 'isDisabled' props for compatibility
   const isDisabled = disabled || (props as { isDisabled?: boolean }).isDisabled;
 

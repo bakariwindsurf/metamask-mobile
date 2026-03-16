@@ -660,7 +660,7 @@ class SendFlow extends PureComponent<SendFlowProps> {
 
 SendFlow.contextType = ThemeContext;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const globalChainId = selectEvmChainId(state);
 
   return {
@@ -683,7 +683,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setRecipient: (
     from,
     to,

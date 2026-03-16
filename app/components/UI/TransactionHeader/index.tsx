@@ -225,7 +225,7 @@ const TransactionHeader = (props) => {
 };
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   networkType: selectProviderType(state),
   nickname: selectNickname(state),
 });

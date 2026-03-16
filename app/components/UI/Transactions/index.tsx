@@ -820,7 +820,7 @@ class Transactions extends PureComponent<TransactionsProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   accounts: selectAccounts(state),
   chainId: selectChainId(state),
   networkClientId: selectNetworkClientId(state),
@@ -837,7 +837,7 @@ const mapStateToProps = (state) => ({
 
 Transactions.contextType = ThemeContext;
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   showAlert: (config) => dispatch(showAlert(config)),
 });
 

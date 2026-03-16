@@ -212,7 +212,7 @@ class CollectibleContractInformation extends PureComponent<CollectibleContractIn
   };
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   chainId: selectChainId(state),
 });
 

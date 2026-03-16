@@ -99,6 +99,16 @@ const createStyles = (colors: Record<string, Record<string, string>>, shadows: u
 const setAnimatedValue = (animatedValue, value) =>
   animatedValue.setValue(value);
 
+interface SlippageSliderProps {
+  range?: unknown;
+  increment?: unknown;
+  onChange: (...args: unknown[]) => void;
+  value: string;
+  formatTooltipText?: unknown;
+  disabled: boolean;
+  changeOnRelease?: unknown;
+}
+
 const SlippageSlider = ({
   range,
   increment,
@@ -107,7 +117,7 @@ const SlippageSlider = ({
   formatTooltipText,
   disabled,
   changeOnRelease,
-}) => {
+}: SlippageSliderProps) => {
   const { colors, shadows } = useTheme();
   const styles = createStyles(colors, shadows);
   /* Reusable/truncated references to the range prop values */

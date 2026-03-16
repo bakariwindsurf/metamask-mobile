@@ -147,6 +147,43 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
  * The EditGasFee1559 component will be deprecated in favor of EditGasFee1559Update as part of the gas polling refactor code that moves gas fee modifications to `app/core/GasPolling`. When the refactoring is completed, the EditGasFee1559Update will be renamed EditGasFee1559 and this component will be removed. The EditGasFee1559Update is currently being used in the Update Transaction(Speed Up/Cancel) flow.
  */
 
+interface EditGasFee1559Props {
+  selected: boolean;
+  gasFee?: unknown;
+  gasOptions?: unknown;
+  onChange: (...args: unknown[]) => void;
+  onCancel: (...args: unknown[]) => void;
+  onSave: (...args: unknown[]) => void;
+  gasFeeNative?: unknown;
+  gasFeeConversion?: unknown;
+  gasFeeMaxNative?: unknown;
+  gasFeeMaxConversion?: unknown;
+  maxPriorityFeeNative?: unknown;
+  maxPriorityFeeConversion?: unknown;
+  maxFeePerGasNative?: unknown;
+  maxFeePerGasConversion?: unknown;
+  primaryCurrency: string;
+  chainId: string;
+  timeEstimate?: unknown;
+  timeEstimateColor?: unknown;
+  timeEstimateId?: unknown;
+  error: string;
+  warning?: unknown;
+  dappSuggestedGas?: unknown;
+  ignoreOptions?: unknown;
+  updateOption?: unknown;
+  extendOptions?: unknown;
+  recommended?: unknown;
+  warningMinimumEstimateOption?: unknown;
+  suggestedEstimateOption?: unknown;
+  animateOnChange: boolean;
+  isAnimating: boolean;
+  onUpdatingValuesStart: (...args: unknown[]) => void;
+  onUpdatingValuesEnd: (...args: unknown[]) => void;
+  analyticsParams?: unknown;
+  view?: unknown;
+}
+
 const EditGasFee1559 = ({
   selected,
   gasFee,
@@ -182,7 +219,7 @@ const EditGasFee1559 = ({
   onUpdatingValuesEnd,
   analyticsParams,
   view,
-}) => {
+}: EditGasFee1559Props) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(!selected);
   const [maxPriorityFeeError, setMaxPriorityFeeError] = useState(null);

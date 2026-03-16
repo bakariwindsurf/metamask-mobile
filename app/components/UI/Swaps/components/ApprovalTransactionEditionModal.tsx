@@ -26,6 +26,17 @@ const styles = StyleSheet.create({
   },
 });
 
+interface ApprovalTransactionEditionModalProps {
+  originalApprovalTransaction?: unknown;
+  approvalTransaction?: unknown;
+  editQuoteTransactionsVisible?: unknown;
+  onCancelEditQuoteTransactions: (...args: unknown[]) => void;
+  setApprovalTransaction: (...args: unknown[]) => void;
+  sourceToken: Record<string, unknown>;
+  minimumSpendLimit?: unknown;
+  chainId: string;
+}
+
 function ApprovalTransactionEditionModal({
   originalApprovalTransaction,
   approvalTransaction,
@@ -35,7 +46,7 @@ function ApprovalTransactionEditionModal({
   sourceToken,
   minimumSpendLimit,
   chainId,
-}) {
+}: ApprovalTransactionEditionModalProps) {
   /* Approval transaction if any */
   const [customApprovalTransaction, setCustomApprovalTransaction] =
     useState(approvalTransaction);
@@ -153,7 +164,7 @@ function ApprovalTransactionEditionModal({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   originalApprovalTransaction: selectSwapsApprovalTransaction(state),
 });
 

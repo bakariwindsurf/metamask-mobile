@@ -192,6 +192,26 @@ const SWAPS_NATIVE_ADDRESS = swapsUtils.NATIVE_SWAPS_TOKEN_ADDRESS;
 const TOKEN_MINIMUM_SOURCES = 1;
 const MAX_TOP_ASSETS = 20;
 
+interface SwapsAmountViewProps {
+  swapsTokens?: unknown;
+  swapsControllerTokens?: unknown;
+  accountsByChainId?: unknown;
+  selectedAddress: string;
+  chainId: string;
+  selectedNetworkClientId?: unknown;
+  networkConfigurations: Record<string, unknown>;
+  balances: Record<string, unknown>;
+  tokensWithBalance?: unknown;
+  tokensTopAssets?: unknown;
+  conversionRate: number;
+  tokenExchangeRates: Record<string, unknown>;
+  currentCurrency: string;
+  setLiveness: (...args: unknown[]) => void;
+  shouldUseSmartTransaction: boolean;
+  networkName?: unknown;
+  networkImageSource?: unknown;
+}
+
 function SwapsAmountView({
   swapsTokens,
   swapsControllerTokens,
@@ -210,7 +230,7 @@ function SwapsAmountView({
   shouldUseSmartTransaction,
   networkName,
   networkImageSource,
-}) {
+}: SwapsAmountViewProps) {
   const accounts = accountsByChainId[chainId];
   const navigation = useNavigation();
   const route = useRoute();
@@ -1019,7 +1039,7 @@ function SwapsAmountView({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   swapsTokens: swapsTokensSelector(state),
   swapsControllerTokens: swapsControllerTokens(state),
   accountsByChainId: selectAccountsByChainId(state),
@@ -1046,7 +1066,7 @@ const mapStateToProps = (state) => ({
   ),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setLiveness: (chainId, featureFlags) =>
     dispatch(setSwapsLiveness(chainId, featureFlags)),
 });

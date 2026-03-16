@@ -20,6 +20,27 @@ import TimeEstimateInfoModal from '../../../../../../UI/TimeEstimateInfoModal';
 import SkeletonComponent from './skeletonComponent';
 import createStyles from './styles';
 
+interface TransactionReviewEIP1559UpdateProps {
+  primaryCurrency: string;
+  chainId: string;
+  onEdit: (...args: unknown[]) => void;
+  hideTotal?: unknown;
+  noMargin?: unknown;
+  originWarning?: unknown;
+  onUpdatingValuesStart: (...args: unknown[]) => void;
+  onUpdatingValuesEnd: (...args: unknown[]) => void;
+  animateOnChange: boolean;
+  isAnimating: boolean;
+  gasEstimationReady?: unknown;
+  legacy?: unknown;
+  gasSelected: string;
+  gasObject?: unknown;
+  gasObjectLegacy?: unknown;
+  onlyGas?: unknown;
+  updateTransactionState?: unknown;
+  multiLayerL1FeeTotal?: unknown;
+}
+
 const TransactionReviewEIP1559Update = ({
   primaryCurrency,
   chainId,
@@ -39,7 +60,7 @@ const TransactionReviewEIP1559Update = ({
   onlyGas,
   updateTransactionState,
   multiLayerL1FeeTotal,
-}) => {
+}: TransactionReviewEIP1559UpdateProps) => {
   const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
   const [
     isVisibleTimeEstimateInfoModal,

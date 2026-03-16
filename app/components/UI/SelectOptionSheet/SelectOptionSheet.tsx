@@ -9,6 +9,14 @@ import { createOptionsSheetNavDetails } from './OptionsSheet';
 import { useNavigation } from '@react-navigation/native';
 import { SELECT_DROP_DOWN } from './constants';
 
+interface SelectOptionSheetProps {
+  defaultValue?: unknown;
+  label: string;
+  selectedValue?: unknown;
+  options?: unknown;
+  onValueChange: (...args: unknown[]) => void;
+}
+
 const SelectOptionSheet = ({
   defaultValue,
   label,

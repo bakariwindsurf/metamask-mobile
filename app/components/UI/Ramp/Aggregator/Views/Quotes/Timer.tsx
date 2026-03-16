@@ -8,6 +8,16 @@ import styleSheet from './Quotes.styles';
 
 import { strings } from '../../../../../../../locales/i18n';
 
+interface TimerProps {
+  isFetchingQuotes: boolean;
+  pollingCyclesLeft?: unknown;
+  remainingTime?: unknown;
+  }: {?: unknown;
+  isFetchingQuotes: boolean;: boolean;
+  pollingCyclesLeft: number;?: unknown;
+  remainingTime: number;?: unknown;
+}
+
 const Timer = ({
   isFetchingQuotes,
   pollingCyclesLeft,
@@ -16,7 +26,7 @@ const Timer = ({
   isFetchingQuotes: boolean;
   pollingCyclesLeft: number;
   remainingTime: number;
-}) => {
+}: TimerProps) => {
   const { appConfig } = useRampSDK();
   const { styles } = useStyles(styleSheet, {});
 

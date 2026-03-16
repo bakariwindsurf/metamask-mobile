@@ -36,12 +36,19 @@ import { CommonActions } from '@react-navigation/native';
 import { ONBOARDING_SUCCESS_FLOW } from '../../../constants/onboarding';
 import { TraceName, endTrace } from '../../../util/trace';
 
+interface ManualBackupStep2Props {
+  navigation?: unknown;
+  seedphraseBackedUp?: unknown;
+  route: string;
+  saveOnboardingEvent?: unknown;
+}
+
 const ManualBackupStep2 = ({
   navigation,
   seedphraseBackedUp,
   route,
   saveOnboardingEvent,
-}) => {
+}: ManualBackupStep2Props) => {
   const words = route?.params?.words;
   const backupFlow = route?.params?.backupFlow;
   const settingsBackup = route?.params?.settingsBackup;
@@ -511,7 +518,7 @@ const ManualBackupStep2 = ({
 };
 
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   seedphraseBackedUp: () => dispatch(seedphraseBackedUp()),
   saveOnboardingEvent: (...eventArgs) => dispatch(saveEvent(eventArgs)),
 });

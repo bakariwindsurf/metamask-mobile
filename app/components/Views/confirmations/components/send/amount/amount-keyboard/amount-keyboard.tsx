@@ -29,6 +29,16 @@ const ADDITIONAL_KAYBOARD_BUTTONS_INCLUDING_MAX = [
   { value: 100, label: 'Max' },
 ];
 
+interface AmountKeyboardProps {
+  amount: number;
+  fiatMode?: unknown;
+  updateAmount?: unknown;
+  }: {?: unknown;
+  amount: string;?: unknown;
+  fiatMode: boolean;?: unknown;
+  updateAmount: (value: string)?: unknown;
+}
+
 export const AmountKeyboard = ({
   amount,
   fiatMode,
@@ -37,7 +47,7 @@ export const AmountKeyboard = ({
   amount: string;
   fiatMode: boolean;
   updateAmount: (value: string) => void;
-}) => {
+}: AmountKeyboardProps) => {
   const { getFiatValue, getNativeValue } = useCurrencyConversions();
   const { gotToSendScreen } = useSendScreenNavigation();
   const { isMaxAmountSupported, getPercentageAmount } = usePercentageAmount();

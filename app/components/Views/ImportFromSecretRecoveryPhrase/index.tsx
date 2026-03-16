@@ -114,6 +114,15 @@ const maskText = (text) => {
  * using a secret recovery phrase (SRP)
  * The SRP was formally called the seed phrase
  */
+interface ImportFromSecretRecoveryPhraseProps {
+  navigation?: unknown;
+  passwordSet?: unknown;
+  setLockTime: (...args: unknown[]) => void;
+  seedphraseBackedUp?: unknown;
+  saveOnboardingEvent?: unknown;
+  route: string;
+}
+
 const ImportFromSecretRecoveryPhrase = ({
   navigation,
   passwordSet,
@@ -121,7 +130,7 @@ const ImportFromSecretRecoveryPhrase = ({
   seedphraseBackedUp,
   saveOnboardingEvent,
   route,
-}) => {
+}: ImportFromSecretRecoveryPhraseProps) => {
   const { colors, themeAppearance } = useTheme();
   const styles = createStyles(colors);
 
@@ -1165,7 +1174,7 @@ const ImportFromSecretRecoveryPhrase = ({
 };
 
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setLockTime: (time) => dispatch(setLockTime(time)),
   passwordSet: () => dispatch(passwordSet()),
   seedphraseBackedUp: () => dispatch(seedphraseBackedUp()),

@@ -14,12 +14,19 @@ const styles = StyleSheet.create({
   },
 });
 
+interface AssetSwapButtonProps {
+  isFeatureLive: boolean;
+  isNetworkAllowed: boolean;
+  isAssetAllowed: boolean;
+  onPress: (...args: unknown[]) => void;
+}
+
 function AssetSwapButton({
   isFeatureLive,
   isNetworkAllowed,
   isAssetAllowed,
   onPress,
-}) {
+}: AssetSwapButtonProps) {
   const [isModalOpen, , showModal, hideModal] = useModalHandler(false);
   const isDisabled = !isFeatureLive || !isNetworkAllowed || !isAssetAllowed;
 

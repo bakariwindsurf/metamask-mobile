@@ -9,11 +9,17 @@ import Routes from '../../../constants/navigation/Routes';
 import { strings } from '../../../../locales/i18n';
 import { useMetrics } from '../../../components/hooks/useMetrics';
 
+interface ScreenshotDeterrentWithoutNavigationProps {
+  enabled?: unknown;
+  }: {?: unknown;
+  enabled: boolean;?: unknown;
+}
+
 const ScreenshotDeterrentWithoutNavigation = ({
   enabled,
 }: {
   enabled: boolean;
-}) => {
+}: ScreenshotDeterrentWithoutNavigationProps) => {
   useEffect(() => {
     InteractionManager.runAfterInteractions(() => {
       PreventScreenshot.forbid();
@@ -29,13 +35,21 @@ const ScreenshotDeterrentWithoutNavigation = ({
   return <View />;
 };
 
+interface ScreenshotDeterrentWithNavigationProps {
+  enabled?: unknown;
+  isSRP: boolean;
+  }: {?: unknown;
+  enabled: boolean;?: unknown;
+  isSRP: boolean;: boolean;
+}
+
 const ScreenshotDeterrentWithNavigation = ({
   enabled,
   isSRP,
 }: {
   enabled: boolean;
   isSRP: boolean;
-}) => {
+}: ScreenshotDeterrentWithNavigationProps) => {
   const { trackEvent, createEventBuilder } = useMetrics();
   const [alertPresent, setAlertPresent] = useState<boolean>(false);
   const navigation = useNavigation();
@@ -99,6 +113,16 @@ const ScreenshotDeterrentWithNavigation = ({
   return <View />;
 };
 
+interface ScreenshotDeterrentProps {
+  enabled?: unknown;
+  isSRP: boolean;
+  hasNavigation?: boolean;
+  }: {?: unknown;
+  enabled: boolean;?: unknown;
+  isSRP: boolean;: boolean;
+  hasNavigation?: boolean;: boolean;
+}
+
 const ScreenshotDeterrent = ({
   enabled,
   isSRP,
@@ -107,7 +131,7 @@ const ScreenshotDeterrent = ({
   enabled: boolean;
   isSRP: boolean;
   hasNavigation?: boolean;
-}) =>
+}: ScreenshotDeterrentProps) =>
   hasNavigation ? (
     <ScreenshotDeterrentWithNavigation enabled={enabled} isSRP={isSRP} />
   ) : (

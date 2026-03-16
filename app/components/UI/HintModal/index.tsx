@@ -54,6 +54,15 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
+interface HintModalProps {
+  onCancel: (...args: unknown[]) => void;
+  onConfirm: (...args: unknown[]) => void;
+  modalVisible?: unknown;
+  onRequestClose: (...args: unknown[]) => void;
+  value: string;
+  onChangeText: (...args: unknown[]) => void;
+}
+
 const HintModal = ({
   onCancel,
   onConfirm,
@@ -61,7 +70,7 @@ const HintModal = ({
   onRequestClose,
   value,
   onChangeText,
-}) => {
+}: HintModalProps) => {
   const { colors, themeAppearance } = useTheme();
   const styles = createStyles(colors);
 

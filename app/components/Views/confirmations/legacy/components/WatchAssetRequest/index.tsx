@@ -95,12 +95,19 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
+interface WatchAssetRequestProps {
+  suggestedAssetMeta?: unknown;
+  currentPageInformation?: unknown;
+  onCancel: (...args: unknown[]) => void;
+  onConfirm: (...args: unknown[]) => void;
+}
+
 const WatchAssetRequest = ({
   suggestedAssetMeta,
   currentPageInformation,
   onCancel,
   onConfirm,
-}) => {
+}: WatchAssetRequestProps) => {
   const { asset, interactingAddress } = suggestedAssetMeta;
   // TODO - Once TokensController is updated, interactingAddress should always be defined
   const { colors } = useTheme();

@@ -127,6 +127,21 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
+interface QuotesModalProps {
+  isVisible: boolean;
+  toggleModal: (...args: unknown[]) => void;
+  quotes: unknown[];
+  selectedQuote: string;
+  sourceToken: Record<string, unknown>;
+  destinationToken: Record<string, unknown>;
+  conversionRate: number;
+  currentCurrency: string;
+  quoteValues: Record<string, unknown>;
+  showOverallValue: boolean;
+  ticker: string;
+  multiLayerL1ApprovalFeeTotal: number;
+}
+
 function QuotesModal({
   isVisible,
   toggleModal,
@@ -140,7 +155,7 @@ function QuotesModal({
   showOverallValue,
   ticker,
   multiLayerL1ApprovalFeeTotal,
-}) {
+}: QuotesModalProps) {
   const bestOverallValue =
     quoteValues?.[quotes[0].aggregator]?.overallValueOfQuote ?? 0;
   const [displayDetails, setDisplayDetails] = useState(false);
@@ -469,7 +484,7 @@ function QuotesModal({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   conversionRate: selectConversionRate(state),
   currentCurrency: selectCurrentCurrency(state),
   quoteValues: selectSwapsQuoteValues(state),

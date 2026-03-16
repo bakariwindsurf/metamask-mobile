@@ -44,6 +44,22 @@ import {
 import { NetworkAvatarProps } from '../AccountConnect.types';
 import styleSheet from './AccountsConnectedList.styles';
 
+interface AccountsConnectedListProps {
+  selectedAddresses?: unknown;
+  ensByAccountAddress?: unknown;
+  accounts: Record<string, unknown>;
+  privacyMode?: unknown;
+  networkAvatars?: unknown;
+  handleEditAccountsButtonPress: (...args: unknown[]) => void;
+  }: {?: unknown;
+  selectedAddresses: CaipAccountId[];?: unknown;
+  ensByAccountAddress: EnsByAccountAddress;?: unknown;
+  accounts: Account[];?: unknown;
+  privacyMode: boolean;?: unknown;
+  networkAvatars: NetworkAvatarProps[];?: unknown;
+  handleEditAccountsButtonPress: ()?: (...args: unknown[]) => void;
+}
+
 const AccountsConnectedList = ({
   selectedAddresses,
   ensByAccountAddress,
@@ -58,7 +74,7 @@ const AccountsConnectedList = ({
   privacyMode: boolean;
   networkAvatars: NetworkAvatarProps[];
   handleEditAccountsButtonPress: () => void;
-}) => {
+}: AccountsConnectedListProps) => {
   const HEIGHT_BY_ACCOUNTS_LENGTH =
     selectedAddresses.length * ACCOUNTS_CONNECTED_LIST_ITEM_HEIGHT;
   const MAX_HEIGHT =

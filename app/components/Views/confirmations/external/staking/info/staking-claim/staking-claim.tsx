@@ -20,11 +20,18 @@ import useEndTraceOnMount from '../../../../../../hooks/useEndTraceOnMount';
 import { TraceName } from '../../../../../../../util/trace';
 import { useStakingTransactionTracing } from '../../../../../../UI/Stake/hooks/useStakingTransactionTracing';
 
+interface StakingClaimProps {
+  route: string;
+  }: {?: unknown;
+  route: RouteProp<{ params: { amountWei: string } }?: unknown;
+  'params'>;?: unknown;
+}
+
 const StakingClaim = ({
   route,
 }: {
   route: RouteProp<{ params: { amountWei: string } }, 'params'>;
-}) => {
+}: StakingClaimProps) => {
   useNavbar(strings('stake.claim'), false);
   useClearConfirmationOnBackSwipe();
   const transactionMetadata = useTransactionMetadataRequest();

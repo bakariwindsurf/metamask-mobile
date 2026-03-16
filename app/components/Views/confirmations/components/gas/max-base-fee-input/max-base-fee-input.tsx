@@ -27,6 +27,16 @@ const InfoLabel = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+interface MaxBaseFeeInputProps {
+  maxPriorityFeePerGas?: unknown;
+  onChange: (...args: unknown[]) => void;
+  onErrorChange: (...args: unknown[]) => void;
+  }: {?: unknown;
+  maxPriorityFeePerGas: Hex;?: unknown;
+  onChange: (value: Hex)?: (...args: unknown[]) => void;
+  onErrorChange: (error: string | boolean)?: (...args: unknown[]) => void;
+}
+
 export const MaxBaseFeeInput = ({
   maxPriorityFeePerGas,
   onChange,
@@ -35,7 +45,7 @@ export const MaxBaseFeeInput = ({
   maxPriorityFeePerGas: Hex;
   onChange: (value: Hex) => void;
   onErrorChange: (error: string | boolean) => void;
-}) => {
+}: MaxBaseFeeInputProps) => {
   const transactionMeta = useTransactionMetadataRequest();
   const { styles } = useStyles(styleSheet, {});
   const initialMaxBaseFee = hexWEIToDecGWEI(

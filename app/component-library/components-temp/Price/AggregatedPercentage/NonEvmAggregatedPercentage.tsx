@@ -29,11 +29,17 @@ import i18n from '../../../../../locales/i18n';
 const isValidAmount = (amount: number | null | undefined): boolean =>
   amount !== null && amount !== undefined && !Number.isNaN(amount);
 
+interface NonEvmAggregatedPercentageProps {
+  privacyMode?: unknown;
+  }: {?: unknown;
+  privacyMode?: boolean;?: unknown;
+}
+
 const NonEvmAggregatedPercentage = ({
   privacyMode = false,
 }: {
   privacyMode?: boolean;
-}) => {
+}: NonEvmAggregatedPercentageProps) => {
   const { styles } = useStyles(styleSheet, {});
 
   const currentCurrency = useSelector(selectCurrentCurrency);

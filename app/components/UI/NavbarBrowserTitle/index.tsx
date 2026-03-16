@@ -141,7 +141,7 @@ class NavbarBrowserTitle extends PureComponent<NavbarBrowserTitleProps> {
   };
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   providerConfig: selectProviderConfig(state),
 });
 

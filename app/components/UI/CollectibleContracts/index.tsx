@@ -183,6 +183,21 @@ const debouncedNavigation = debounce((navigation, collectible) => {
  * View that renders a list of CollectibleContract
  * ERC-721 and ERC-1155
  */
+interface CollectibleContractsProps {
+  selectedAddress: string;
+  chainId: string;
+  networkType?: unknown;
+  navigation?: unknown;
+  collectibleContracts?: unknown;
+  collectibles: allCollectibles?: unknown;
+  isNftFetchingProgress: boolean;
+  favoriteCollectibles?: unknown;
+  removeFavoriteCollectible?: unknown;
+  useNftDetection?: unknown;
+  isIpfsGatewayEnabled: boolean;
+  displayNftMedia?: unknown;
+}
+
 const CollectibleContracts = ({
   selectedAddress,
   chainId,
@@ -196,7 +211,7 @@ const CollectibleContracts = ({
   useNftDetection,
   isIpfsGatewayEnabled,
   displayNftMedia,
-}) => {
+}: CollectibleContractsProps) => {
   // Start tracing component loading
   const isFirstRender = useRef(true);
 
@@ -676,7 +691,7 @@ const CollectibleContracts = ({
 };
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   networkType: selectProviderType(state),
   chainId: selectChainId(state),
   selectedAddress: selectSelectedInternalAccountFormattedAddress(state),
@@ -689,7 +704,7 @@ const mapStateToProps = (state) => ({
   displayNftMedia: selectDisplayNftMedia(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   removeFavoriteCollectible: (selectedAddress, chainId, collectible) =>
     dispatch(removeFavoriteCollectible(selectedAddress, chainId, collectible)),
 });

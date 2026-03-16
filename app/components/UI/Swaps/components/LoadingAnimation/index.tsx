@@ -111,12 +111,19 @@ function round(value, decimals) {
   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }
 
+interface LoadingAnimationProps {
+  finish?: unknown;
+  onAnimationEnd: (...args: unknown[]) => void;
+  aggregatorMetadata?: unknown;
+  headPan?: unknown;
+}
+
 function LoadingAnimation({
   finish,
   onAnimationEnd,
   aggregatorMetadata,
   headPan = true,
-}) {
+}: LoadingAnimationProps) {
   const [metadata, setMetadata] = useState([]);
   const [shouldStart, setShouldStart] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);

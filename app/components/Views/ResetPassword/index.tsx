@@ -1047,13 +1047,13 @@ class ResetPassword extends PureComponent<ResetPasswordProps> {
 
 ResetPassword.contextType = ThemeContext;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   selectedAddress: selectSelectedInternalAccountFormattedAddress(state),
   isSeedlessOnboardingLoginFlow: selectSeedlessOnboardingLoginFlow(state),
   authConnection: selectSeedlessOnboardingAuthConnection(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   passwordSet: () => dispatch(passwordSet()),
   setLockTime: (time) => dispatch(setLockTime(time)),
   seedphraseNotBackedUp: () => dispatch(seedphraseNotBackedUp()),

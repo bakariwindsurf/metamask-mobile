@@ -45,6 +45,29 @@ const styles = StyleSheet.create({
 
 const RECOMMENDED = GAS_OPTIONS.HIGH;
 
+interface GasEditModalProps {
+  dismiss: (...args: unknown[]) => void;
+  gasEstimateType: string;
+  gasFeeEstimates: Record<string, unknown>;
+  defaultGasFeeOptionLegacy?: string;
+  defaultGasFeeOptionFeeMarket?: string;
+  isVisible: boolean;
+  onGasUpdate: (...args: unknown[]) => void;
+  customGasFee: Record<string, unknown> | null;
+  initialGasLimit: string;
+  tradeGasLimit: string;
+  isNativeAsset: boolean;
+  tradeValue: string;
+  sourceAmount: string;
+  checkEnoughEthBalance: (...args: unknown[]) => unknown;
+  currentCurrency: string;
+  conversionRate: number;
+  primaryCurrency: string;
+  chainId: string;
+  ticker: string;
+  animateOnChange: boolean;
+}
+
 function GasEditModal({
   dismiss,
   gasEstimateType,
@@ -66,7 +89,7 @@ function GasEditModal({
   chainId,
   ticker,
   animateOnChange,
-}) {
+}: GasEditModalProps) {
   const [gasSelected, setGasSelected] = useState(
     customGasFee
       ? customGasFee.selected ?? null
@@ -456,7 +479,7 @@ function GasEditModal({
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   conversionRate: selectConversionRate(state),
   currentCurrency: selectCurrentCurrency(state),
   ticker: selectEvmTicker(state),

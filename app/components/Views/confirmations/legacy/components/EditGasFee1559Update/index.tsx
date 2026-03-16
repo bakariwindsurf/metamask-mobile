@@ -37,6 +37,30 @@ import InfoModal from '../../../../../UI/Swaps/components/InfoModal';
 import TimeEstimateInfoModal from '../../../../../UI/TimeEstimateInfoModal';
 import createStyles from './styles';
 
+interface EditGasFee1559UpdateProps {
+  selectedGasValue?: unknown;
+  gasOptions?: unknown;
+  primaryCurrency: string;
+  chainId: string;
+  onCancel: (...args: unknown[]) => void;
+  onChange: (...args: unknown[]) => void;
+  onSave: (...args: unknown[]) => void;
+  error: string;
+  dappSuggestedGas?: unknown;
+  ignoreOptions?: unknown;
+  updateOption?: unknown;
+  extendOptions?: unknown;
+  recommended?: unknown;
+  warningMinimumEstimateOption?: unknown;
+  suggestedEstimateOption?: unknown;
+  animateOnChange: boolean;
+  isAnimating: boolean;
+  analyticsParams?: unknown;
+  warning?: unknown;
+  selectedGasObject?: unknown;
+  onlyGas?: unknown;
+}
+
 const EditGasFee1559Update = ({
   selectedGasValue,
   gasOptions,
@@ -59,7 +83,7 @@ const EditGasFee1559Update = ({
   warning,
   selectedGasObject,
   onlyGas,
-}) => {
+}: EditGasFee1559UpdateProps) => {
   const [modalInfo, updateModalInfo] = useState({
     isVisible: false,
     value: '',
@@ -353,10 +377,15 @@ const EditGasFee1559Update = ({
 
   const valueToWatch = `${renderableGasFeeMinNative}${renderableGasFeeMaxNative}`;
 
+interface LeftLabelComponentProps {
+  value: string;
+  infoValue?: unknown;
+}
+
   const LeftLabelComponent = ({
     value,
     infoValue,
-  }) => (
+  }: LeftLabelComponentProps) => (
     <View style={styles.labelTextContainer}>
       <Text black bold noMargin>
         {strings(value)}
@@ -383,10 +412,15 @@ const EditGasFee1559Update = ({
     </Text>
   );
 
+interface TextComponentProps {
+  title: string;
+  value: string;
+}
+
   const TextComponent = ({
     title,
     value,
-  }) => (
+  }: TextComponentProps) => (
     <>
       <Text noMargin primary infoModal bold style={styles.learnMoreLabels}>
         {strings(title)}

@@ -129,6 +129,24 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
 
 const MAX_TOKENS_RESULTS = 20;
 
+interface TokenSelectModalProps {
+  isVisible: boolean;
+  dismiss: (...args: unknown[]) => void;
+  title: string;
+  tokens: unknown[];
+  initialTokens: unknown[];
+  onItemPress: (...args: unknown[]) => void;
+  excludeAddresses?: string[];
+  accounts: Record<string, unknown>;
+  selectedAddress: string;
+  currentCurrency: string;
+  conversionRate: number;
+  tokenExchangeRates: Record<string, unknown>;
+  chainId: string;
+  networkConfigurations: Record<string, unknown>;
+  balances: Record<string, unknown>;
+}
+
 function TokenSelectModal({
   isVisible,
   dismiss,
@@ -145,7 +163,7 @@ function TokenSelectModal({
   chainId,
   networkConfigurations,
   balances,
-}) {
+}: TokenSelectModalProps) {
   const navigation = useNavigation();
   const { trackEvent, createEventBuilder } = useMetrics();
 
@@ -509,7 +527,7 @@ function TokenSelectModal({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   accounts: selectAccounts(state),
   conversionRate: selectConversionRate(state),
   currentCurrency: selectCurrentCurrency(state),

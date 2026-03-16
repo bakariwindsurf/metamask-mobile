@@ -7,6 +7,15 @@ import {
   selectEvmTicker,
 } from '../../../selectors/networkController';
 
+interface NetworkMainAssetLogoProps {
+  chainId: string;
+  ticker: string;
+  style?: unknown;
+  big: boolean;
+  biggest: boolean;
+  testID: string;
+}
+
 function NetworkMainAssetLogo({
   chainId,
   ticker,
@@ -14,7 +23,7 @@ function NetworkMainAssetLogo({
   big,
   biggest,
   testID,
-}) {
+}: NetworkMainAssetLogoProps) {
   if (chainId === ChainId.mainnet) {
     return (
       <TokenIcon
@@ -37,7 +46,7 @@ function NetworkMainAssetLogo({
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   chainId: selectChainId(state),
   ticker: selectEvmTicker(state),
 });

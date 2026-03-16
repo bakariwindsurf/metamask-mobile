@@ -44,6 +44,19 @@ const frameImage = require('../../../images/frame.png'); // eslint-disable-line 
 /**
  * View that wraps the QR code scanner screen
  */
+interface QRScannerProps {
+  onScanSuccess: (...args: unknown[]) => void;
+  onScanError: (...args: unknown[]) => void;
+  onStartScan: (...args: unknown[]) => void;
+  origin: string;
+  }: {?: unknown;
+  onScanSuccess: (data: ScanSuccess: (...args: unknown[]) => void;
+  content?: string)?: unknown;
+  onStartScan?: (data: StartScan)?: (...args: unknown[]) => void;
+  onScanError?: (error: string)?: (...args: unknown[]) => void;
+  origin?: string;?: unknown;
+}
+
 const QRScanner = ({
   onScanSuccess,
   onScanError,
@@ -54,7 +67,7 @@ const QRScanner = ({
   onStartScan?: (data: StartScan) => Promise<void>;
   onScanError?: (error: string) => void;
   origin?: string;
-}) => {
+}: QRScannerProps) => {
   const navigation = useNavigation();
 
   const mountedRef = useRef<boolean>(true);

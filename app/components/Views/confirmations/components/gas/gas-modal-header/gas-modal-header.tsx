@@ -11,13 +11,21 @@ import Text, {
   TextVariant,
 } from '../../../../../../component-library/components/Texts/Text';
 
+interface GasModalHeaderProps {
+  onBackButtonClick: (...args: unknown[]) => void;
+  title: string;
+  }: {?: unknown;
+  onBackButtonClick: ()?: (...args: unknown[]) => void;
+  title: string;?: unknown;
+}
+
 export const GasModalHeader = ({
   onBackButtonClick,
   title,
 }: {
   onBackButtonClick: () => void;
   title: string;
-}) => {
+}: GasModalHeaderProps) => {
   const { styles } = useStyles(styleSheet, {});
 
   return (

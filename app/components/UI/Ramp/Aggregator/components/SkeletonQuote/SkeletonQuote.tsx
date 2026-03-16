@@ -8,13 +8,21 @@ import ListItemColumn, {
 } from '../../../../../../component-library/components/List/ListItemColumn';
 import ListItemColumnEnd from '../ListItemColumnEnd';
 
+interface SkeletonQuoteProps {
+  collapsed?: unknown;
+  style?: unknown;
+  }: {?: unknown;
+  collapsed?: boolean;?: unknown;
+  style?: StyleProp<ViewStyle>;?: unknown;
+}
+
 const SkeletonQuote = ({
   collapsed,
   style,
 }: {
   collapsed?: boolean;
   style?: StyleProp<ViewStyle>;
-}) => (
+}: SkeletonQuoteProps) => (
   <Box style={style} compact>
     <ListItem>
       <ListItemColumn>

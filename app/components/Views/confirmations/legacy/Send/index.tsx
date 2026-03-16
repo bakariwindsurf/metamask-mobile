@@ -732,7 +732,7 @@ class Send extends PureComponent<SendProps> {
   };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const globalChainId = selectEvmChainId(state);
 
   return {
@@ -755,7 +755,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   resetTransaction: () => dispatch(resetTransaction()),
   setTransactionObject: (transaction) =>
     dispatch(setTransactionObject(transaction)),

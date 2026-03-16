@@ -1189,7 +1189,7 @@ class ApproveTransactionReview extends PureComponent<ApproveTransactionReviewPro
   };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const transaction = getNormalizedTxState(state);
   const chainId = transaction?.chainId;
 
@@ -1214,7 +1214,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setTransactionObject: (transaction) =>
     dispatch(setTransactionObject(transaction)),
   showAlert: (config) => dispatch(showAlert(config)),

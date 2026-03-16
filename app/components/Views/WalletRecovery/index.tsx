@@ -64,13 +64,21 @@ const SocialNotLinked = () => {
   );
 };
 
+interface SocialLinkedProps {
+  email?: unknown;
+  authConnection?: unknown;
+  }: {?: unknown;
+  email: string;?: unknown;
+  authConnection: string;?: unknown;
+}
+
 const SocialLinked = ({
   email,
   authConnection,
 }: {
   email: string;
   authConnection: string;
-}) => {
+}: SocialLinkedProps) => {
   const { colors, themeAppearance } = useTheme();
   const styles = StyleSheet.create({
     socialDetailsBoxRoot: {

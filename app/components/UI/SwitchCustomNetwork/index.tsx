@@ -8,12 +8,19 @@ import { useMetrics } from '../../../components/hooks/useMetrics';
 /**
  * Account access approval component
  */
+interface SwitchCustomNetworkProps {
+  customNetworkInformation?: unknown;
+  currentPageInformation?: unknown;
+  onCancel: (...args: unknown[]) => void;
+  onConfirm: (...args: unknown[]) => void;
+}
+
 const SwitchCustomNetwork = ({
   customNetworkInformation,
   currentPageInformation,
   onCancel,
   onConfirm,
-}) => {
+}: SwitchCustomNetworkProps) => {
   const { networkName } = useNetworkInfo(
     new URL(currentPageInformation.url).origin,
   );

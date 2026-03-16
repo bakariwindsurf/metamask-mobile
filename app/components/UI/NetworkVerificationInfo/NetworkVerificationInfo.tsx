@@ -53,6 +53,20 @@ interface Alert {
 /**
  * NetworkVerificationInfo component
  */
+interface NetworkVerificationInfoProps {
+  customNetworkInformation?: unknown;
+  onReject: (...args: unknown[]) => void;
+  onConfirm: (...args: unknown[]) => void;
+  isCustomNetwork?: boolean;
+  isNetworkRpcUpdate?: boolean;
+  }: {?: unknown;
+  customNetworkInformation: CustomNetworkInformation;?: unknown;
+  onReject: ()?: (...args: unknown[]) => void;
+  onConfirm: ()?: (...args: unknown[]) => void;
+  isCustomNetwork?: boolean;: boolean;
+  isNetworkRpcUpdate?: boolean;: boolean;
+}
+
 const NetworkVerificationInfo = ({
   customNetworkInformation,
   onReject,
@@ -65,7 +79,7 @@ const NetworkVerificationInfo = ({
   onConfirm: () => void;
   isCustomNetwork?: boolean;
   isNetworkRpcUpdate?: boolean;
-}) => {
+}: NetworkVerificationInfoProps) => {
   const [networkInfoMaxHeight, setNetworkInfoMaxHeight] = useState<
     number | null
   >(null);

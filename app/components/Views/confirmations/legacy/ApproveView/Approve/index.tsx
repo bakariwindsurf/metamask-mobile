@@ -889,7 +889,7 @@ class Approve extends PureComponent<ApproveProps> {
   };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const transaction = getNormalizedTxState(state);
   const chainId = transaction?.chainId;
   const networkClientId = transaction?.networkClientId;
@@ -918,7 +918,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setTransactionObject: (transaction) =>
     dispatch(setTransactionObject(transaction)),
   setNonce: (nonce) => dispatch(setNonce(nonce)),

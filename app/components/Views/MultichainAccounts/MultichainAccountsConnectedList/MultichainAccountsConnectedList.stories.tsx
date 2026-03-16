@@ -62,13 +62,21 @@ const defaultProps = {
   },
 };
 
+interface InteractiveStoryContainerProps {
+  privacyMode?: unknown;
+  accountCount?: unknown;
+  }: {?: unknown;
+  privacyMode: boolean;?: unknown;
+  accountCount: number;?: unknown;
+}
+
 const InteractiveStoryContainer = ({
   privacyMode,
   accountCount,
 }: {
   privacyMode: boolean;
   accountCount: number;
-}) => {
+}: InteractiveStoryContainerProps) => {
   const tw = useTailwind();
   const accountGroups = createMockAccountGroups(accountCount);
 

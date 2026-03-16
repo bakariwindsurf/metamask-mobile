@@ -997,7 +997,7 @@ class ChoosePassword extends PureComponent<ChoosePasswordProps> {
 
 ChoosePassword.contextType = ThemeContext;
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   passwordSet: () => dispatch(passwordSet()),
   passwordUnset: () => dispatch(passwordUnset()),
   setLockTime: (time) => dispatch(setLockTime(time)),
@@ -1006,7 +1006,7 @@ const mapDispatchToProps = (dispatch) => ({
   setExistingUser: (value) => dispatch(setExistingUser(value)),
 });
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state: Record<string, unknown>) => ({});
 
 export default connect(
   mapStateToProps,

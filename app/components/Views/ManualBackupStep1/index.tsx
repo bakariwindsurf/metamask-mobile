@@ -56,12 +56,19 @@ import { AppThemeKey } from '../../../util/theme/models';
  * View that's shown during the second step of
  * the backup seed phrase flow
  */
+interface ManualBackupStep1Props {
+  route: string;
+  navigation?: unknown;
+  appTheme?: unknown;
+  saveOnboardingEvent?: unknown;
+}
+
 const ManualBackupStep1 = ({
   route,
   navigation,
   appTheme,
   saveOnboardingEvent,
-}) => {
+}: ManualBackupStep1Props) => {
   const [seedPhraseHidden, setSeedPhraseHidden] = useState(true);
   const [password, setPassword] = useState(undefined);
   const [warningIncorrectPassword, setWarningIncorrectPassword] =
@@ -389,11 +396,11 @@ const ManualBackupStep1 = ({
 };
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   appTheme: state.user.appTheme,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   saveOnboardingEvent: (...eventArgs) => dispatch(saveEvent(eventArgs)),
 });
 

@@ -25,6 +25,21 @@ import {
 import { getTicker } from '../../../../../../util/transactions';
 import EditGasFee1559Update from '../EditGasFee1559Update';
 
+interface UpdateEIP1559TxProps {
+  gas?: unknown;
+  accounts: Record<string, unknown>;
+  selectedAddress: string;
+  ticker: string;
+  existingGas?: unknown;
+  gasFeeEstimates: Record<string, unknown>;
+  gasEstimateType: string;
+  primaryCurrency: string;
+  isCancel: boolean;
+  chainId: string;
+  onCancel: (...args: unknown[]) => void;
+  onSave: (...args: unknown[]) => void;
+}
+
 const UpdateEIP1559Tx = ({
   gas,
   accounts,
@@ -38,7 +53,7 @@ const UpdateEIP1559Tx = ({
   chainId,
   onCancel,
   onSave,
-}) => {
+}: UpdateEIP1559TxProps) => {
   const [animateOnGasChange, setAnimateOnGasChange] = useState(false);
   const [gasSelected, setGasSelected] = useState(
     AppConstants.GAS_OPTIONS.MEDIUM,

@@ -147,12 +147,12 @@ class CollectibleContractOverview extends PureComponent<CollectibleContractOverv
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   collectibles: collectiblesSelector(state),
   isSendRedesignEnabled: selectSendRedesignFlags(state).enabled,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   toggleCollectibleContractModal: () =>
     dispatch(toggleCollectibleContractModal()),
   newAssetTransaction: (selectedAsset) =>

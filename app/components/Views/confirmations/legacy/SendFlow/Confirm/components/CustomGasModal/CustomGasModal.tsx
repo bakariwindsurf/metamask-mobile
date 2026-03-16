@@ -10,6 +10,21 @@ import EditGasFee1559 from '../../../../components/EditGasFee1559Update';
 import EditGasFeeLegacy from '../../../../components/EditGasFeeLegacyUpdate';
 import createStyles from './CustomGasModal.styles';
 
+interface CustomGasModalProps {
+  gasSelected: string;
+  animateOnChange: boolean;
+  isAnimating: boolean;
+  onlyGas?: unknown;
+  validateAmount?: unknown;
+  legacy?: unknown;
+  legacyGasData?: unknown;
+  EIP1559GasData?: unknown;
+  EIP1559GasTxn?: unknown;
+  onGasChanged: (...args: unknown[]) => void;
+  onGasCanceled: (...args: unknown[]) => void;
+  updateGasState?: unknown;
+}
+
 const CustomGasModal = ({
   gasSelected,
   animateOnChange,
@@ -23,7 +38,7 @@ const CustomGasModal = ({
   onGasChanged,
   onGasCanceled,
   updateGasState,
-}) => {
+}: CustomGasModalProps) => {
   const { colors } = useAppThemeFromContext();
   const styles = createStyles();
 

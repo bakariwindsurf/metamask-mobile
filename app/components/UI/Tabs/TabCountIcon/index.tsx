@@ -53,7 +53,7 @@ class TabCountIcon extends PureComponent<TabCountIconProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   tabCount: state.browser.tabs.length,
 });
 

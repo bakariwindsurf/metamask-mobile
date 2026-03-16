@@ -54,6 +54,18 @@ const styles = StyleSheet.create({
   },
 });
 
+interface TransactionsViewProps {
+  navigation?: unknown;
+  conversionRate: number;
+  selectedInternalAccount?: unknown;
+  networkType?: unknown;
+  currentCurrency: string;
+  transactions?: unknown;
+  chainId: string;
+  tokens: unknown[];
+  tokenNetworkFilter?: unknown;
+}
+
 const TransactionsView = ({
   navigation,
   conversionRate,
@@ -64,7 +76,7 @@ const TransactionsView = ({
   chainId,
   tokens,
   tokenNetworkFilter,
-}) => {
+}: TransactionsViewProps) => {
   const [allTransactions, setAllTransactions] = useState([]);
   const [submittedTxs, setSubmittedTxs] = useState([]);
   const [confirmedTxs, setConfirmedTxs] = useState([]);
@@ -250,7 +262,7 @@ const TransactionsView = ({
 };
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const chainId = selectChainId(state);
   const selectedInternalAccount = selectSelectedInternalAccount(state);
   const evmTransactions = selectSortedTransactions(state);
@@ -287,7 +299,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   showAlert: (config) => dispatch(showAlert(config)),
 });
 

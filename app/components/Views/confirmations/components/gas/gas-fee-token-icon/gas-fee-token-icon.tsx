@@ -24,13 +24,21 @@ export enum GasFeeTokenIconSize {
   Md = 'md',
 }
 
+interface GasFeeTokenIconProps {
+  size?: number;
+  tokenAddress?: unknown;
+  }: {?: unknown;
+  size?: GasFeeTokenIconSize;?: unknown;
+  tokenAddress: Hex;?: unknown;
+}
+
 export function GasFeeTokenIcon({
   size = GasFeeTokenIconSize.Md,
   tokenAddress,
 }: {
   size?: GasFeeTokenIconSize;
   tokenAddress: Hex;
-}) {
+}: GasFeeTokenIconProps) {
   const transactionMeta = useTransactionMetadataRequest();
   const { chainId } = transactionMeta || {};
   const {
@@ -70,6 +78,20 @@ export function GasFeeTokenIcon({
   );
 }
 
+interface TokenIconWithNetworkBadgeProps {
+  size: number;
+  token?: unknown;
+  networkName?: unknown;
+  networkImage?: unknown;
+  nativeCurrency?: unknown;
+  }: {?: unknown;
+  size: GasFeeTokenIconSize;?: unknown;
+  token?: TokenI;?: unknown;
+  networkName?: string;?: unknown;
+  networkImage?: object;?: unknown;
+  nativeCurrency?: string;?: unknown;
+}
+
 function TokenIconWithNetworkBadge({
   size,
   token,
@@ -82,7 +104,7 @@ function TokenIconWithNetworkBadge({
   networkName?: string;
   networkImage?: object;
   nativeCurrency?: string;
-}) {
+}: TokenIconWithNetworkBadgeProps) {
   const { styles } = useStyles(styleSheet, {});
   return (
     <View>

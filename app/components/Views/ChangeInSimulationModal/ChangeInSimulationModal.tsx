@@ -38,11 +38,17 @@ const createStyles = () =>
     },
   });
 
+interface ChangeInSimulationModalProps {
+  route: string;
+  }: {?: unknown;
+  route: { params: { onProceed: ()?: unknown;
+}
+
 const ChangeInSimulationModal = ({
   route,
 }: {
   route: { params: { onProceed: () => void; onReject: () => void } };
-}) => {
+}: ChangeInSimulationModalProps) => {
   const styles = createStyles();
   const sheetRef = useRef<BottomSheetRef>(null);
   const { onProceed, onReject } = route.params;

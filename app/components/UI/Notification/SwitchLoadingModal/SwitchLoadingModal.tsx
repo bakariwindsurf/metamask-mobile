@@ -2,6 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import LoaderModal from './LoaderModal';
 import Loader from './Loader';
 
+interface SwitchLoadingModalProps {
+  loading: boolean;
+  loadingText?: unknown;
+  error: string;
+  }: {?: unknown;
+  loading: boolean;?: unknown;
+  loadingText: string;?: unknown;
+  error?: string;?: unknown;
+}
+
 const SwitchLoadingModal = ({
   loading,
   loadingText,
@@ -10,7 +20,7 @@ const SwitchLoadingModal = ({
   loading: boolean;
   loadingText: string;
   error?: string;
-}) => {
+}: SwitchLoadingModalProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

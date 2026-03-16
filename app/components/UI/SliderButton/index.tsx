@@ -96,13 +96,21 @@ const createStyles = (colors: Record<string, Record<string, string>>, shadows: u
     },
   });
 
+interface SliderButtonProps {
+  incompleteText?: unknown;
+  completeText?: unknown;
+  onComplete: (...args: unknown[]) => void;
+  disabled: boolean;
+  onSwipeChange: (...args: unknown[]) => void;
+}
+
 function SliderButton({
   incompleteText,
   completeText,
   onComplete,
   disabled,
   onSwipeChange,
-}) {
+}: SliderButtonProps) {
   const [componentWidth, setComponentWidth] = useState(0);
   const [hasCompletedCalled, setHasCompletedCalled] = useState(false);
   const [hasStartedCompleteAnimation, setHasStartedCompleteAnimation] =

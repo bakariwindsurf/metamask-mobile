@@ -167,7 +167,7 @@ class Contacts extends PureComponent<ContactsProps> {
 
 Contacts.contextType = ThemeContext;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   addressBook: selectAddressBook(state),
   chainId: selectChainId(state),
 });

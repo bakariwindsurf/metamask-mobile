@@ -132,7 +132,7 @@ class NavbarTitle extends PureComponent<NavbarTitleProps> {
 
 NavbarTitle.contextType = ThemeContext;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   providerConfig: selectProviderConfig(state),
   chainId: selectChainId(state),
   selectedNetworkName: selectNetworkName(state),

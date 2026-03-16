@@ -691,7 +691,7 @@ class Approval extends PureComponent<ApprovalProps> {
   };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const transaction = getNormalizedTxState(state);
   const chainId = transaction?.chainId;
 
@@ -710,7 +710,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   resetTransaction: () => dispatch(resetTransaction()),
 });
 

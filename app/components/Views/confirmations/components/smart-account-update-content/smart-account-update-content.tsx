@@ -16,6 +16,18 @@ import styleSheet from './smart-account-update-content.styles';
 // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, import/no-commonjs
 const smartAccountUpdateImage = require('../../../../../images/smart-account-update.png');
 
+interface ListItemProps {
+  iconName?: unknown;
+  title: string;
+  description: string;
+  styles?: unknown;
+  }: {?: unknown;
+  iconName: IconName;?: unknown;
+  title: string;?: unknown;
+  description: ReactElement;?: unknown;
+  styles: ReturnType<typeof styleSheet>;?: unknown;
+}
+
 const ListItem = ({
   iconName,
   title,
@@ -26,7 +38,7 @@ const ListItem = ({
   title: string;
   description: ReactElement;
   styles: ReturnType<typeof styleSheet>;
-}) => {
+}: ListItemProps) => {
   const { colors } = useTheme();
   return (
     <View style={styles.listWrapper}>

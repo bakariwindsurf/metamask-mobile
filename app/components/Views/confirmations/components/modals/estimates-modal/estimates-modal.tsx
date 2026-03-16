@@ -10,13 +10,21 @@ import { GasModalHeader } from '../../../components/gas/gas-modal-header';
 import { GasModalType } from '../../../constants/gas';
 import styleSheet from './estimates-modal.styles';
 
+interface EstimatesModalProps {
+  setActiveModal: (...args: unknown[]) => void;
+  handleCloseModals: (...args: unknown[]) => void;
+  }: {?: unknown;
+  setActiveModal: (modal: GasModalType)?: (...args: unknown[]) => void;
+  handleCloseModals: ()?: (...args: unknown[]) => void;
+}
+
 export const EstimatesModal = ({
   setActiveModal,
   handleCloseModals,
 }: {
   setActiveModal: (modal: GasModalType) => void;
   handleCloseModals: () => void;
-}) => {
+}: EstimatesModalProps) => {
   const { styles } = useStyles(styleSheet, {});
   const { options } = useGasOptions({ setActiveModal, handleCloseModals });
 

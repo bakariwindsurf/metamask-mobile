@@ -114,6 +114,32 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
  * The EditGasFeeLegacy component will be deprecated in favor of EditGasFeeLegacyUpdate as part of the gas polling refactor code that moves gas fee modifications to `app/core/GasPolling`. When the refactoring is completed, the EditGasFeeLegacyUpdate will be renamed EditGasFeeLegacy and this component will be removed. The EditGasFeeLegacyUpdate is currently being used in the Update Transaction(Speed Up/Cancel) flow.
  */
 
+interface EditGasFeeLegacyProps {
+  selected: boolean;
+  gasFee?: unknown;
+  gasOptions?: unknown;
+  onChange: (...args: unknown[]) => void;
+  onCancel: (...args: unknown[]) => void;
+  onSave: (...args: unknown[]) => void;
+  gasFeeNative?: unknown;
+  gasFeeConversion?: unknown;
+  primaryCurrency: string;
+  chainId: string;
+  gasEstimateType: string;
+  error: string;
+  warning?: unknown;
+  ignoreOptions?: unknown;
+  extendOptions?: unknown;
+  recommended?: unknown;
+  warningMinimumEstimateOption?: unknown;
+  onUpdatingValuesStart: (...args: unknown[]) => void;
+  onUpdatingValuesEnd: (...args: unknown[]) => void;
+  animateOnChange: boolean;
+  isAnimating: boolean;
+  analyticsParams?: unknown;
+  view?: unknown;
+}
+
 const EditGasFeeLegacy = ({
   selected,
   gasFee,
@@ -138,7 +164,7 @@ const EditGasFeeLegacy = ({
   isAnimating,
   analyticsParams,
   view,
-}) => {
+}: EditGasFeeLegacyProps) => {
   const onlyAdvanced = gasEstimateType !== GAS_ESTIMATE_TYPES.LEGACY;
   const [showRangeInfoModal, setShowRangeInfoModal] = useState(false);
   const [showAdvancedOptions, setShowAdvancedOptions] = useState(

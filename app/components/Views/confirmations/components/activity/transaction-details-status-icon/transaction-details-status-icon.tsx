@@ -16,11 +16,17 @@ import { useBridgeTxHistoryData } from '../../../../../../util/bridge/hooks/useB
 import { BridgeHistoryItem } from '@metamask/bridge-status-controller';
 import { StatusTypes } from '@metamask/bridge-controller';
 
+interface TransactionDetailsStatusIconProps {
+  transactionMeta?: unknown;
+  }: {?: unknown;
+  transactionMeta: TransactionMeta;?: unknown;
+}
+
 export function TransactionDetailsStatusIcon({
   transactionMeta,
 }: {
   transactionMeta: TransactionMeta;
-}) {
+}: TransactionDetailsStatusIconProps) {
   const { status: statusRaw } = transactionMeta;
 
   const { bridgeTxHistoryItem } = useBridgeTxHistoryData({

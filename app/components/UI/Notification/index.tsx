@@ -23,12 +23,19 @@ const { TRANSACTION, SIMPLE } = NotificationTypes;
 
 const BROWSER_ROUTE = 'BrowserView';
 
+interface NotificationProps {
+  currentNotification?: unknown;
+  currentNotificationIsVisible?: unknown;
+  hideCurrentNotification?: unknown;
+  removeCurrentNotification?: unknown;
+}
+
 function Notification({
   currentNotification,
   currentNotificationIsVisible,
   hideCurrentNotification,
   removeCurrentNotification,
-}) {
+}: NotificationProps) {
   const notificationAnimated = useSharedValue(200);
   const routes = useNavigationState((state) => state.routes);
 
@@ -105,7 +112,7 @@ function Notification({
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const currentNotification = currentNotificationSelector(state.notification);
   return {
     currentNotification,
@@ -113,7 +120,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   removeCurrentNotification: () => dispatch(removeCurrentNotification()),
   hideCurrentNotification: () => dispatch(hideCurrentNotification()),
 });

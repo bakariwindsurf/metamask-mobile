@@ -88,6 +88,16 @@ const splitIntoSubArrays = (array, count) => {
 /**
  * Customizable view to render assets in lists
  */
+interface CollectibleContractElementProps {
+  asset?: unknown;
+  contractCollectibles?: unknown;
+  collectiblesVisible: propsCollectiblesVisible?: unknown;
+  onPress: (...args: unknown[]) => void;
+  chainId: string;
+  selectedAddress: string;
+  removeFavoriteCollectible?: unknown;
+}
+
 function CollectibleContractElement({
   asset,
   contractCollectibles,
@@ -96,7 +106,7 @@ function CollectibleContractElement({
   chainId,
   selectedAddress,
   removeFavoriteCollectible,
-}) {
+}: CollectibleContractElementProps) {
   const [collectiblesGrid, setCollectiblesGrid] = useState([]);
   const [collectiblesVisible, setCollectiblesVisible] = useState(
     propsCollectiblesVisible,
@@ -277,12 +287,12 @@ function CollectibleContractElement({
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   chainId: selectChainId(state),
   selectedAddress: selectSelectedInternalAccountFormattedAddress(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   removeFavoriteCollectible: (selectedAddress, chainId, collectible) =>
     dispatch(removeFavoriteCollectible(selectedAddress, chainId, collectible)),
 });

@@ -640,7 +640,7 @@ class TransactionReviewInformation extends PureComponent<TransactionReviewInform
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: Record<string, unknown>) => {
   const transaction = getNormalizedTxState(state);
   const chainId = transaction?.chainId;
   const networkClientId = transaction?.networkClientId;
@@ -663,7 +663,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setNonce: (nonce) => dispatch(setNonce(nonce)),
   setProposedNonce: (nonce) => dispatch(setProposedNonce(nonce)),
 });

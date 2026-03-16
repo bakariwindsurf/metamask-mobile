@@ -111,7 +111,7 @@ OfflineMode.navigationOptions = ({ navigation }) =>
   getOfflineModalNavbar(navigation);
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   infuraBlocked: getInfuraBlockedSelector(state),
 });
 

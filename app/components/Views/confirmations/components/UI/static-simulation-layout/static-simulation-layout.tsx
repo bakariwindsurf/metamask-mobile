@@ -7,6 +7,16 @@ import AnimatedSpinner, {
 import InfoSection from '../info-row/info-section';
 import InfoRow from '../info-row/info-row';
 
+interface StaticSimulationLayoutProps {
+  children: React.ReactNode;
+  isLoading?: boolean;
+  testID: string;
+  }: {?: unknown;
+  children: React.ReactNode;?: unknown;
+  isLoading?: boolean;: boolean;
+  testID?: string;?: unknown;
+}
+
 export const StaticSimulationLayout = ({
   children,
   isLoading = false,
@@ -15,7 +25,7 @@ export const StaticSimulationLayout = ({
   children: React.ReactNode;
   isLoading?: boolean;
   testID?: string;
-}) => (
+}: StaticSimulationLayoutProps) => (
   <InfoSection testID={testID}>
     <InfoRow
       label={strings('confirm.simulation.title')}

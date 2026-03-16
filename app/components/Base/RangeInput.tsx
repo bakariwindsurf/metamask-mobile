@@ -87,6 +87,20 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
+interface RangeInputProps {
+  leftLabelComponent?: unknown;
+  rightLabelComponent?: unknown;
+  value: string;
+  unit?: unknown;
+  increment?: unknown;
+  onChangeValue: (...args: unknown[]) => void;
+  inputInsideLabel?: unknown;
+  error: string;
+  min?: unknown;
+  max?: unknown;
+  name: string;
+}
+
 const RangeInput = ({
   leftLabelComponent,
   rightLabelComponent,
@@ -99,7 +113,7 @@ const RangeInput = ({
   min,
   max,
   name,
-}) => {
+}: RangeInputProps) => {
   const textInput = useRef(null);
   const [errorState, setErrorState] = useState();
   const { colors, themeAppearance } = useTheme();

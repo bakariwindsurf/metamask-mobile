@@ -187,13 +187,13 @@ class ProtectYourWalletModal extends PureComponent<ProtectYourWalletModalProps> 
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   protectWalletModalVisible: state.user.protectWalletModalVisible,
   passwordSet: state.user.passwordSet,
   isSeedlessOnboardingLoginFlow: selectSeedlessOnboardingLoginFlow(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   protectWalletModalNotVisible: (enable) =>
     dispatch(protectWalletModalNotVisible()),
 });

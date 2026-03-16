@@ -82,6 +82,16 @@ const defaultProps = {
   onPress: undefined,
 };
 
+interface SettingsDrawerProps {
+  title: string;
+  description: string;
+  onPress: (...args: unknown[]) => void;
+  warning?: unknown;
+  renderArrowRight?: unknown;
+  testID: string;
+  titleColor?: unknown;
+}
+
 const SettingsDrawer = ({
   title,
   description,
@@ -90,7 +100,7 @@ const SettingsDrawer = ({
   renderArrowRight = true,
   testID,
   titleColor = TextColor.Default,
-}) => {
+}: SettingsDrawerProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors, titleColor);
   return (

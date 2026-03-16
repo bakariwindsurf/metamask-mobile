@@ -837,7 +837,7 @@ class Onboarding extends PureComponent<OnboardingProps> {
 
 Onboarding.contextType = ThemeContext;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   accounts: selectAccounts(state),
   passwordSet: state.user.passwordSet,
   existingUser: selectExistingUser(state),
@@ -845,7 +845,7 @@ const mapStateToProps = (state) => ({
   loadingMsg: state.user.loadingMsg,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   setLoading: (msg) => dispatch(loadingSet(msg)),
   unsetLoading: () => dispatch(loadingUnset()),
   disableNewPrivacyPolicyToast: () =>

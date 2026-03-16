@@ -532,7 +532,7 @@ const Main = (props) => {
 Main.router = MainNavigator.router;
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   providerType: selectProviderType(state),
   chainId: selectChainId(state),
   networkClientId: selectNetworkClientId(state),
@@ -540,7 +540,7 @@ const mapStateToProps = (state) => ({
   networkConfigurations: selectNetworkConfigurations(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   showTransactionNotification: (args) =>
     dispatch(showTransactionNotification(args)),
   showSimpleNotification: (args) => dispatch(showSimpleNotification(args)),

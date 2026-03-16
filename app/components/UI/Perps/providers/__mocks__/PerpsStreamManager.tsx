@@ -18,11 +18,17 @@ const mockStreamManager = {
 };
 
 // Mock provider component
+interface PerpsStreamProviderProps {
+  children: React.ReactNode;
+  }: {?: unknown;
+  children: React.ReactNode;?: unknown;
+}
+
 export const PerpsStreamProvider = ({
   children,
 }: {
   children: React.ReactNode;
-}) => <>{children}</>;
+}: PerpsStreamProviderProps) => <>{children}</>;
 
 // Mock hook
 export const usePerpsStream = jest.fn(() => mockStreamManager);

@@ -164,7 +164,7 @@ class TransactionReviewData extends PureComponent<TransactionReviewDataProps> {
   };
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   conversionRate: selectConversionRateByChainId(
     state,
     state.transaction.chainId,
@@ -173,7 +173,7 @@ const mapStateToProps = (state) => ({
   transaction: state.transaction,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   showAlert: (config) => dispatch(showAlert(config)),
 });
 

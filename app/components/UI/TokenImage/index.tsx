@@ -55,7 +55,7 @@ const TokenImage = ({  asset, containerStyle, iconStyle, tokenList  }: TokenImag
 };
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   tokenList: selectTokenList(state),
 });
 

@@ -131,11 +131,11 @@ class CollectibleView extends PureComponent<CollectibleViewProps> {
 
 CollectibleView.contextType = ThemeContext;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Record<string, unknown>) => ({
   isSendRedesignEnabled: selectSendRedesignFlags(state).enabled,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: (...args: unknown[]) => unknown) => ({
   newAssetTransaction: (selectedAsset) =>
     dispatch(newAssetTransaction(selectedAsset)),
 });
