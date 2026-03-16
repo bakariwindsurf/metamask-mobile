@@ -56,45 +56,12 @@ const createStyles = (colors) =>
  * Browser bottom bar that contains icons for navigation
  * tab management, url change and other options
  */
-class BrowserBottomBar extends PureComponent {
-  static propTypes = {
-    /**
-     * Boolean that determines if you can navigate back
-     */
-    canGoBack: PropTypes.bool,
-    /**
-     * Boolean that determines if you can navigate forward
-     */
-    canGoForward: PropTypes.bool,
-    /**
-     * Function that allows you to navigate back
-     */
-    goBack: PropTypes.func,
-    /**
-     * Function that allows you to navigate forward
-     */
-    goForward: PropTypes.func,
-    /**
-     * Function that triggers the tabs view
-     */
-    showTabs: PropTypes.func,
-    /**
-     * Function that triggers the change url modal view
-     */
-    showUrlModal: PropTypes.func,
-    /**
-     * Function that redirects to the home screen
-     */
-    goHome: PropTypes.func,
-    /**
-     * Function that toggles the options menu
-     */
-    toggleOptions: PropTypes.func,
-    /**
-     * Metrics injected by withMetricsAwareness HOC
-     */
-    metrics: PropTypes.object,
-  };
+// TODO: Replace with proper prop types
+interface BrowserBottomBarProps {
+  [key: string]: unknown;
+}
+
+class BrowserBottomBar extends PureComponent<BrowserBottomBarProps> {
 
   trackSearchEvent = () => {
     this.props.metrics.trackEvent(

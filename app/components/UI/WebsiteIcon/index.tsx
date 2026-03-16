@@ -35,44 +35,12 @@ const createStyles = (colors) =>
  * @deprecated This `<WebsiteIcon>` component has been deprecated, any new usage of it should use Avatar with the favicon variant instead:
  * https://github.com/MetaMask/metamask-mobile/blob/34f9da127435053a32e5f4e9c69ce8aa1e37c394/app/component-library/components/Avatars/Avatar/README.md#L1
  */
-class WebsiteIcon extends PureComponent {
-  static propTypes = {
-    /**
-     * Style object for image
-     */
-    style: PropTypes.object,
-    /**
-     * Style object for main view
-     */
-    viewStyle: PropTypes.object,
-    /**
-     * Style object for text in case url not found
-     */
-    textStyle: PropTypes.object,
-    /**
-     * String corresponding to website title
-     */
-    title: PropTypes.string,
-    /**
-     * String corresponding to website url
-     */
-    url: PropTypes.string,
-    /**
-     * Flag that determines if the background
-     * should be transaparent or not
-     */
-    transparent: PropTypes.bool,
-    /**
-     * Icon image to use, this substitutes getting the icon from the url
-     */
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+// TODO: Replace with proper prop types
+interface WebsiteIconProps {
+  [key: string]: unknown;
+}
 
-    /**
-     * Favicon source to use, this substitutes getting the icon from the url
-     * This is populated by the withFaviconAwareness HOC
-     */
-    faviconSource: PropTypes.string,
-  };
+class WebsiteIcon extends PureComponent<WebsiteIconProps> {
 
   state = {
     renderIconUrlError: false,

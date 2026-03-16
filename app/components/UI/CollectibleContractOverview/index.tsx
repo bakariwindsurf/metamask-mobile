@@ -58,38 +58,12 @@ const createStyles = (colors) =>
  * View that displays a specific collectible contract
  * including the overview (name, address, symbol, logo, description, total supply)
  */
-class CollectibleContractOverview extends PureComponent {
-  static propTypes = {
-    /**
-     * Object that represents the asset to be displayed
-     */
-    collectibleContract: PropTypes.object,
-    /**
-     * Array of ERC721 assets
-     */
-    collectibles: PropTypes.array,
-    /**
-     * Navigation object required to push
-     * the Asset detail view
-     */
-    navigation: PropTypes.object,
-    /**
-     * How many collectibles are owned by the user
-     */
-    ownerOf: PropTypes.number,
-    /**
-     * Action that sets a collectible contract type transaction
-     */
-    toggleCollectibleContractModal: PropTypes.func.isRequired,
-    /**
-     * Start transaction with asset
-     */
-    newAssetTransaction: PropTypes.func,
-    /**
-     * Whether the send redesign is enabled
-     */
-    isSendRedesignEnabled: PropTypes.bool,
-  };
+// TODO: Replace with proper prop types
+interface CollectibleContractOverviewProps {
+  [key: string]: unknown;
+}
+
+class CollectibleContractOverview extends PureComponent<CollectibleContractOverviewProps> {
 
   onAdd = () => {
     const { navigation, collectibleContract } = this.props;

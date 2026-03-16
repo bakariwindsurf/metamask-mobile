@@ -74,13 +74,12 @@ const createStyles = (colors) =>
 /**
  * View that's displayed the first time imports account
  */
-class ImportPrivateKeySuccess extends PureComponent {
-  static propTypes = {
-    /**
-    /* navigation object required to push and pop other views
-    */
-    navigation: PropTypes.object,
-  };
+// TODO: Replace with proper prop types
+interface ImportPrivateKeySuccessProps {
+  [key: string]: unknown;
+}
+
+class ImportPrivateKeySuccess extends PureComponent<ImportPrivateKeySuccessProps> {
 
   componentDidMount = () => {
     InteractionManager.runAfterInteractions(() => {

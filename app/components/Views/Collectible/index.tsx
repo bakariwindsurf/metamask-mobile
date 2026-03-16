@@ -28,34 +28,12 @@ const createStyles = (colors) =>
  * including the overview (name, address, symbol, logo, description, total supply)
  * and also individual collectibles list
  */
-class Collectible extends PureComponent {
-  static propTypes = {
-    /**
-     * Array of assets (in this case Collectibles)
-     */
-    collectibles: PropTypes.array,
-    /**
-    /* navigation object required to access the props
-    /* passed by the parent component
-    */
-    navigation: PropTypes.object,
-    /**
-     * Called to toggle collectible contract information modal
-     */
-    toggleCollectibleContractModal: PropTypes.func,
-    /**
-     * Whether collectible contract information is visible
-     */
-    collectibleContractModalVisible: PropTypes.bool,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-    /**
-     * Selected network client ID
-     */
-    selectedNetworkClientId: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface CollectibleProps {
+  [key: string]: unknown;
+}
+
+class Collectible extends PureComponent<CollectibleProps> {
 
   state = {
     refreshing: false,

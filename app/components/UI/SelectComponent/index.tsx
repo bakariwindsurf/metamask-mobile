@@ -90,30 +90,12 @@ const createStyles = (colors) =>
     },
   });
 
-export default class SelectComponent extends PureComponent {
-  static propTypes = {
-    /**
-     * Default value to show
-     */
-    defaultValue: PropTypes.string,
-    /**
-     * Label for the field
-     */
-    label: PropTypes.string,
-    /**
-     * Selected value
-     */
-    selectedValue: PropTypes.string,
-    /**
-     *  Available options
-     */
-    options: PropTypes.array,
-    /**
-     * Callback for value change
-     */
-    onValueChange: PropTypes.func,
-    testID: PropTypes.string,
-  };
+export default // TODO: Replace with proper prop types
+interface SelectComponentProps {
+  [key: string]: unknown;
+}
+
+class SelectComponent extends PureComponent<SelectComponentProps> {
 
   state = {
     pickerVisible: false,

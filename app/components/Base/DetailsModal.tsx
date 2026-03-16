@@ -153,13 +153,4 @@ DetailsModal.Column = DetailsModalColumn;
 const stylePropType = PropTypes.oneOfType([PropTypes.object, PropTypes.array]);
 
 
-DetailsModalTitle.propTypes = {
-  style: stylePropType,
-};
-DetailsModalBody.propTypes = {
-  style: stylePropType,
-};
-DetailsModalSectionTitle.propTypes = {
-  style: stylePropType,
-};
 export default DetailsModal;

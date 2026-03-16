@@ -5,13 +5,12 @@ import { baseStyles } from '../../../styles/common';
 /**
  * Base view component providing consistent styling meant to wrap other views
  */
-export default class Screen extends PureComponent {
-  static propTypes = {
-    /**
-     * Content to wrap inside this view
-     */
-    children: PropTypes.node,
-  };
+export default // TODO: Replace with proper prop types
+interface ScreenProps {
+  [key: string]: unknown;
+}
+
+class Screen extends PureComponent<ScreenProps> {
 
   render() {
     return (

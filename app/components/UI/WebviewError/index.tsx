@@ -64,17 +64,12 @@ const createStyles = (colors) =>
 /**
  * View that renders custom error page for the browser
  */
-export default class WebviewError extends PureComponent {
-  static propTypes = {
-    /**
-     * error info
-     */
-    error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-    /**
-     * Function that reloads the page
-     */
-    returnHome: PropTypes.func,
-  };
+export default // TODO: Replace with proper prop types
+interface WebviewErrorProps {
+  [key: string]: unknown;
+}
+
+class WebviewError extends PureComponent<WebviewErrorProps> {
 
   static defaultProps = {
     error: false,

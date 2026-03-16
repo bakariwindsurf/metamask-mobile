@@ -39,29 +39,12 @@ const createStyles = (colors) =>
  * Wrapper component for a global alert
  * connected to redux
  */
-class GlobalAlert extends PureComponent {
-  static propTypes = {
-    /**
-     * Boolean that determines if the modal should be shown
-     */
-    isVisible: PropTypes.bool.isRequired,
-    /**
-     * Number that determines when it should be autodismissed (in miliseconds)
-     */
-    autodismiss: PropTypes.number,
-    /**
-     * Children component(s)
-     */
-    content: PropTypes.any,
-    /**
-     * Object with data required to render the content
-     */
-    data: PropTypes.object,
-    /**
-     * function that dismisses de modal
-     */
-    dismissAlert: PropTypes.func,
-  };
+// TODO: Replace with proper prop types
+interface GlobalAlertProps {
+  [key: string]: unknown;
+}
+
+class GlobalAlert extends PureComponent<GlobalAlertProps> {
 
   onClose = () => {
     this.props.dismissAlert();

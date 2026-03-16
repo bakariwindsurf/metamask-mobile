@@ -147,7 +147,12 @@ const createStyles = (colors) =>
 /**
  * Copmonent that provides ability to add custom tokens.
  */
-class AddCustomToken extends PureComponent {
+// TODO: Replace with proper prop types
+interface AddCustomTokenProps {
+  [key: string]: unknown;
+}
+
+class AddCustomToken extends PureComponent<AddCustomTokenProps> {
   state = {
     address: '',
     symbol: '',
@@ -159,52 +164,6 @@ class AddCustomToken extends PureComponent {
     isSymbolEditable: true,
     isDecimalEditable: true,
     onFocusAddress: false,
-  };
-
-  static propTypes = {
-    /**
-     * The chain ID for the current selected network
-     */
-    chainId: PropTypes.string,
-    /**
-     * The network name
-     */
-    networkName: PropTypes.string,
-    /**
-     * The network ticker
-     */
-    ticker: PropTypes.string,
-    /**
-     * The network type
-     */
-    type: PropTypes.string,
-    /**
-    /* navigation object required to push new views
-    */
-    navigation: PropTypes.object,
-    /**
-     * Checks if token detection is supported
-     */
-    isTokenDetectionSupported: PropTypes.bool,
-    /**
-     * Metrics injected by withMetricsAwareness HOC
-     */
-    metrics: PropTypes.object,
-
-    /**
-     * Function to set the open network selector
-     */
-    setOpenNetworkSelector: PropTypes.func,
-
-    /**
-     * The selected network
-     */
-    selectedNetwork: PropTypes.string,
-
-    /**
-     * The network client ID
-     */
-    networkClientId: PropTypes.string,
   };
 
   getTokenAddedAnalyticsParams = () => {

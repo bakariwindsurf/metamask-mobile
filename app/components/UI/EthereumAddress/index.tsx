@@ -8,22 +8,12 @@ import { WALLET_ACCOUNT_ADDRESS_LABEL } from '../../../../wdio/screen-objects/te
  * View that renders an ethereum address
  * or its ENS name when supports reverse lookup
  */
-class EthereumAddress extends PureComponent {
-  static propTypes = {
-    /**
-     * Styles to be applied to the text component
-     */
-    style: PropTypes.any,
-    /**
-     * Address to be rendered and resolved
-     */
-    address: PropTypes.string,
-    /**
-     * Type of formatting for the address
-     * can be "short", "mid" or "full"
-     */
-    type: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface EthereumAddressProps {
+  [key: string]: unknown;
+}
+
+class EthereumAddress extends PureComponent<EthereumAddressProps> {
 
   ens = null;
   constructor(props) {

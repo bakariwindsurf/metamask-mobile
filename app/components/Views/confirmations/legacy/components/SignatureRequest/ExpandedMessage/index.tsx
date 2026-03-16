@@ -71,21 +71,12 @@ const createStyles = (colors) =>
 /**
  * Component that supports eth_signTypedData and eth_signTypedData_v3
  */
-export default class ExpandedMessage extends PureComponent {
-  static propTypes = {
-    /**
-     * Object containing current page title and url
-     */
-    currentPageInformation: PropTypes.object,
-    /**
-     * Renders the message based on its type (parent)
-     */
-    renderMessage: PropTypes.func,
-    /**
-     * Expands the message box on press.
-     */
-    toggleExpandedMessage: PropTypes.func,
-  };
+export default // TODO: Replace with proper prop types
+interface ExpandedMessageProps {
+  [key: string]: unknown;
+}
+
+class ExpandedMessage extends PureComponent<ExpandedMessageProps> {
 
   render() {
     const { currentPageInformation, renderMessage, toggleExpandedMessage } =

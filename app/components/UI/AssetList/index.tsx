@@ -30,25 +30,12 @@ const styles = StyleSheet.create({
 /**
  * PureComponent that provides ability to search assets.
  */
-export default class AssetList extends PureComponent {
-  static propTypes = {
-    /**
-     * Array of assets objects returned from the search
-     */
-    searchResults: PropTypes.array,
-    /**
-     * Callback triggered when a token is selected
-     */
-    handleSelectAsset: PropTypes.func,
-    /**
-     * Object of the currently-selected token
-     */
-    selectedAsset: PropTypes.object,
-    /**
-     * Search query that generated "searchResults"
-     */
-    searchQuery: PropTypes.string,
-  };
+export default // TODO: Replace with proper prop types
+interface AssetListProps {
+  [key: string]: unknown;
+}
+
+class AssetList extends PureComponent<AssetListProps> {
 
   onToggleAsset = (key) => {
     const { searchResults, handleSelectAsset } = this.props;

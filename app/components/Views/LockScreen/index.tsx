@@ -68,19 +68,12 @@ const wordmarkDark = require('../../../animations/wordmark-dark.json');
 /**
  * Main view component for the Lock screen
  */
-class LockScreen extends PureComponent {
-  static propTypes = {
-    /**
-     * The navigator object
-     */
-    navigation: PropTypes.object,
-    appTheme: PropTypes.string,
-    /**
-     * ID associated with each biometric session.
-     * This is used by the biometric sagas to handle actions with the matching ID.
-     */
-    bioStateMachineId: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface LockScreenProps {
+  [key: string]: unknown;
+}
+
+class LockScreen extends PureComponent<LockScreenProps> {
 
   state = {
     ready: false,

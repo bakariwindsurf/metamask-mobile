@@ -33,21 +33,12 @@ const ADD = 'add';
 /**
  * View that contains app information
  */
-class Contacts extends PureComponent {
-  static propTypes = {
-    /**
-     * Map representing the address book
-     */
-    addressBook: PropTypes.object,
-    /**
-     /* navigation object required to push new views
-     */
-    navigation: PropTypes.object,
-    /**
-     * The chain ID for the current selected network
-     */
-    chainId: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface ContactsProps {
+  [key: string]: unknown;
+}
+
+class Contacts extends PureComponent<ContactsProps> {
 
   state = {
     reloadAddressList: false,

@@ -316,39 +316,12 @@ const createStyles = (colors) =>
 /**
  * View where users can set their password for the first time
  */
-class ResetPassword extends PureComponent {
-  static propTypes = {
-    /**
-     * The navigator object
-     */
-    navigation: PropTypes.object,
-    /**
-     * The action to update the password set flag
-     * in the redux store
-     */
-    passwordSet: PropTypes.func,
-    /**
-     * The action to update the lock time
-     * in the redux store
-     */
-    setLockTime: PropTypes.func,
-    /**
-     * A string representing the selected address => account
-     */
-    selectedAddress: PropTypes.string,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-    /**
-     * A boolean representing if the user is in the seedless onboarding login flow
-     */
-    isSeedlessOnboardingLoginFlow: PropTypes.bool,
-    /**
-     * A string representing the auth connection type i.e. Apple or Google
-     */
-    authConnection: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface ResetPasswordProps {
+  [key: string]: unknown;
+}
+
+class ResetPassword extends PureComponent<ResetPasswordProps> {
 
   state = {
     isSelected: false,

@@ -72,7 +72,12 @@ const HARDWARE_BACK_PRESS = 'hardwareBackPress';
  * View that's shown during the last step of
  * the backup seed phrase flow
  */
-class ManualBackupStep3 extends PureComponent {
+// TODO: Replace with proper prop types
+interface ManualBackupStep3Props {
+  [key: string]: unknown;
+}
+
+class ManualBackupStep3 extends PureComponent<ManualBackupStep3Props> {
   constructor(props) {
     super(props);
     this.steps = props.route.params?.steps;
@@ -82,21 +87,6 @@ class ManualBackupStep3 extends PureComponent {
     currentStep: 4,
     showHint: false,
     hintText: '',
-  };
-
-  static propTypes = {
-    /**
-    /* navigation object required to push and pop other views
-    */
-    navigation: PropTypes.object,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-    /**
-     * Action to save onboarding event
-     */
-    saveOnboardingEvent: PropTypes.func,
   };
 
   updateNavBar = () => {

@@ -382,19 +382,13 @@ export const Fallback = (props) => {
 };
 
 
-class ErrorBoundary extends Component {
-  state = { error: null };
+// TODO: Replace with proper prop types
+interface ErrorBoundaryProps {
+  [key: string]: unknown;
+}
 
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-    view: PropTypes.string.isRequired,
-    navigation: PropTypes.object,
-    metrics: PropTypes.object,
-    useOnboardingErrorHandling: PropTypes.bool,
-  };
+class ErrorBoundary extends Component<ErrorBoundaryProps> {
+  state = { error: null };
 
   static getDerivedStateFromError(error) {
     return { error };

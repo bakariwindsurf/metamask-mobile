@@ -38,21 +38,15 @@ const createStyles = (colors) =>
 /**
  * Copmonent that provides ability to add a bookmark
  */
-export default class AddBookmark extends PureComponent {
+export default // TODO: Replace with proper prop types
+interface AddBookmarkProps {
+  [key: string]: unknown;
+}
+
+class AddBookmark extends PureComponent<AddBookmarkProps> {
   state = {
     title: '',
     url: '',
-  };
-
-  static propTypes = {
-    /**
-    /* navigation object required to push new views
-    */
-    navigation: PropTypes.object,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
   };
 
   updateNavBar = () => {

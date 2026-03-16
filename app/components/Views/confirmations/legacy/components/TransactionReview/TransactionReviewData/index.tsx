@@ -77,29 +77,12 @@ const createStyles = (colors) =>
 /**
  * PureComponent that supports reviewing transaction data
  */
-class TransactionReviewData extends PureComponent {
-  static propTypes = {
-    /**
-     * Transaction object associated with this transaction
-     */
-    transaction: PropTypes.object,
-    /**
-     * Transaction corresponding action key
-     */
-    actionKey: PropTypes.string,
-    /**
-     * Hides or shows transaction data
-     */
-    toggleDataView: PropTypes.func,
-    /**
-     * Height of custom gas and data modal
-     */
-    customGasHeight: PropTypes.number,
-    /**
-     * Triggers global alert
-     */
-    showAlert: PropTypes.func,
-  };
+// TODO: Replace with proper prop types
+interface TransactionReviewDataProps {
+  [key: string]: unknown;
+}
+
+class TransactionReviewData extends PureComponent<TransactionReviewDataProps> {
 
   applyRootHeight = () => ({ height: this.props.customGasHeight });
 

@@ -8,17 +8,14 @@ import { ThemeContext, mockTheme } from '../../../util/theme';
  * and allows to fade it in / out
  * via the boolean prop visible
  */
-export default class WebviewProgressBar extends PureComponent {
+export default // TODO: Replace with proper prop types
+interface WebviewProgressBarProps {
+  [key: string]: unknown;
+}
+
+class WebviewProgressBar extends PureComponent<WebviewProgressBarProps> {
   state = {
     visible: true,
-  };
-
-  static propTypes = {
-    /**
-     * Float that represents the progress complete
-     * between 0 and 1
-     */
-    progress: PropTypes.any,
   };
 
   componentDidMount() {

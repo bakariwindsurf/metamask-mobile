@@ -29,28 +29,12 @@ const customGasHeightPlaceHolder = 400;
 /**
  * PureComponent that handles most of the animation/transition logic
  */
-class AnimatedTransactionModal extends PureComponent {
-  static propTypes = {
-    /**
-     * Changes the mode to 'review'
-     */
-    review: PropTypes.func,
-    /**
-     * Called when a user changes modes
-     */
-    onModeChange: PropTypes.func,
-    /**
-     * Whether or not basic gas estimates have been fetched
-     */
-    ready: PropTypes.bool,
-    /**
-     * Children components
-     */
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]).isRequired,
-  };
+// TODO: Replace with proper prop types
+interface AnimatedTransactionModalProps {
+  [key: string]: unknown;
+}
+
+class AnimatedTransactionModal extends PureComponent<AnimatedTransactionModalProps> {
 
   state = {
     originComponent:

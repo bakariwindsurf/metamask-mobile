@@ -23,13 +23,12 @@ const createStyles = (colors) =>
 /**
  * View that is displayed in the flow to agree terms and conditions
  */
-export default class TermsAndConditions extends PureComponent {
-  static propTypes = {
-    /**
-    /* navigation object required to push and pop other views
-    */
-    navigation: PropTypes.object,
-  };
+export default // TODO: Replace with proper prop types
+interface TermsAndConditionsProps {
+  [key: string]: unknown;
+}
+
+class TermsAndConditions extends PureComponent<TermsAndConditionsProps> {
 
   press = () => {
     const { navigation } = this.props;

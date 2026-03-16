@@ -74,30 +74,12 @@ const createStyles = (colors) =>
 /**
  * View that renders an action modal
  */
-class ProtectYourWalletModal extends PureComponent {
-  static propTypes = {
-    navigation: PropTypes.object,
-    /**
-     * Hide this modal
-     */
-    protectWalletModalNotVisible: PropTypes.func,
-    /**
-     * Whether this modal is visible
-     */
-    protectWalletModalVisible: PropTypes.bool,
-    /**
-     * Boolean that determines if the user has set a password before
-     */
-    passwordSet: PropTypes.bool,
-    /**
-     * Metrics injected by withMetricsAwareness HOC
-     */
-    metrics: PropTypes.object,
-    /**
-     * A boolean representing if the user is in the seedless onboarding login flow
-     */
-    isSeedlessOnboardingLoginFlow: PropTypes.bool,
-  };
+// TODO: Replace with proper prop types
+interface ProtectYourWalletModalProps {
+  [key: string]: unknown;
+}
+
+class ProtectYourWalletModal extends PureComponent<ProtectYourWalletModalProps> {
 
   goToBackupFlow = () => {
     this.props.protectWalletModalNotVisible();

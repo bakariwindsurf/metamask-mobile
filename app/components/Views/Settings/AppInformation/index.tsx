@@ -88,13 +88,12 @@ const foxImage = require('../../../../images/branding/fox.png'); // eslint-disab
 /**
  * View that contains app information
  */
-export default class AppInformation extends PureComponent {
-  static propTypes = {
-    /**
-    /* navigation object required to push new views
-    */
-    navigation: PropTypes.object,
-  };
+export default // TODO: Replace with proper prop types
+interface AppInformationProps {
+  [key: string]: unknown;
+}
+
+class AppInformation extends PureComponent<AppInformationProps> {
 
   state = {
     appInfo: '',

@@ -87,24 +87,12 @@ const createStyles = (colors) =>
     },
   });
 
-export default class TransactionReviewDetailsCard extends Component {
-  static propTypes = {
-    toggleViewDetails: PropTypes.func,
-    copyContractAddress: PropTypes.func,
-    toggleViewData: PropTypes.func,
-    address: PropTypes.string,
-    host: PropTypes.string,
-    tokenSpendValue: PropTypes.string,
-    tokenSymbol: PropTypes.string,
-    data: PropTypes.string,
-    displayViewData: PropTypes.bool,
-    method: PropTypes.string,
-    nickname: PropTypes.string,
-    nicknameExists: PropTypes.bool,
-    tokenValue: PropTypes.string,
-    tokenStandard: PropTypes.string,
-    tokenName: PropTypes.string,
-  };
+export default // TODO: Replace with proper prop types
+interface TransactionReviewDetailsCardProps {
+  [key: string]: unknown;
+}
+
+class TransactionReviewDetailsCard extends Component<TransactionReviewDetailsCardProps> {
 
   render() {
     const {

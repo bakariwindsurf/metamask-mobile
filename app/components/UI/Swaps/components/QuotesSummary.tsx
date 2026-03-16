@@ -100,7 +100,4 @@ QuotesSummary.HeaderText = HeaderText;
 QuotesSummary.Separator = Separator;
 
 
-
-
-
 export default QuotesSummary;

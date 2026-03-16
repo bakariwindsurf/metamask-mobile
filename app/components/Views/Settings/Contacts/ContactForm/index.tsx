@@ -151,33 +151,12 @@ const EDIT = 'edit';
 /**
  * View that contains app information
  */
-class ContactForm extends PureComponent {
-  static propTypes = {
-    /**
-     * Object that represents the navigator
-     */
-    navigation: PropTypes.object,
-    /**
-     * An array containing each account with metadata
-     */
-    internalAccounts: PropTypes.array,
-    /**
-     * Map representing the address book
-     */
-    addressBook: PropTypes.object,
-    /**
-     * Object that represents the network configuration
-     */
-    networkConfigurations: PropTypes.object,
-    /**
-     * The current chain ID of the app
-     */
-    chainId: PropTypes.string,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-  };
+// TODO: Replace with proper prop types
+interface ContactFormProps {
+  [key: string]: unknown;
+}
+
+class ContactForm extends PureComponent<ContactFormProps> {
 
   state = {
     name: null,

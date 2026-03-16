@@ -60,30 +60,12 @@ const createStyles = (colors) =>
  * View that renders a list of Collectibles
  * also known as ERC-721 Tokens
  */
-export default class Collectibles extends PureComponent {
-  static propTypes = {
-    /**
-     * Navigation object required to push
-     * the Asset detail view
-     */
-    navigation: PropTypes.object,
-    /**
-     * Array of assets (in this case Collectibles)
-     */
-    collectibles: PropTypes.array,
-    /**
-     * Collectible contract object
-     */
-    collectibleContract: PropTypes.object,
-    /**
-     * Callback triggered when collectible pressed from collectibles list
-     */
-    onPress: PropTypes.func,
-    /**
-     * Selected network client id
-     */
-    selectedNetworkClientId: PropTypes.string,
-  };
+export default // TODO: Replace with proper prop types
+interface CollectiblesProps {
+  [key: string]: unknown;
+}
+
+class Collectibles extends PureComponent<CollectiblesProps> {
 
   state = {
     refreshing: false,

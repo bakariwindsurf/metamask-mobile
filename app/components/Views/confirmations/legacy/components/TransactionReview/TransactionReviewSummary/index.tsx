@@ -61,37 +61,12 @@ const createStyles = (colors) =>
 /**
  * PureComponent that supports reviewing transaction summary
  */
-class TransactionReviewSummary extends PureComponent {
-  static propTypes = {
-    /**
-     * ETH to current currency conversion rate
-     */
-    conversionRate: PropTypes.number,
-    /**
-     * Transaction corresponding action key
-     */
-    actionKey: PropTypes.string,
-    /**
-     * Transaction amount in ETH before gas
-     */
-    assetAmount: PropTypes.string,
-    /**
-     * Transaction amount in fiat before gas
-     */
-    fiatValue: PropTypes.string,
-    /**
-     * Approve type transaction or not
-     */
-    approveTransaction: PropTypes.bool,
-    /**
-     * ETH or fiat, depending on user setting
-     */
-    primaryCurrency: PropTypes.string,
-    /**
-     * Network provider chain id
-     */
-    chainId: PropTypes.string,
-  };
+// TODO: Replace with proper prop types
+interface TransactionReviewSummaryProps {
+  [key: string]: unknown;
+}
+
+class TransactionReviewSummary extends PureComponent<TransactionReviewSummaryProps> {
 
   renderWarning = () => (
     <Text>{`${strings('transaction.approve_warning')} ${

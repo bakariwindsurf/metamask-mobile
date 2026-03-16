@@ -160,25 +160,12 @@ const createStyles = (theme) =>
 /**
  * View to interact with a previously generated payment request link
  */
-class PaymentRequestSuccess extends PureComponent {
-  static propTypes = {
-    /**
-     * Navigation object
-     */
-    navigation: PropTypes.object,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-    /**
-    /* Triggers global alert
-    */
-    showAlert: PropTypes.func,
-    /**
-    /* Prompts protect wallet modal
-    */
-    protectWalletModalVisible: PropTypes.func,
-  };
+// TODO: Replace with proper prop types
+interface PaymentRequestSuccessProps {
+  [key: string]: unknown;
+}
+
+class PaymentRequestSuccess extends PureComponent<PaymentRequestSuccessProps> {
 
   state = {
     link: '',

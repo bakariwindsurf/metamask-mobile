@@ -64,33 +64,12 @@ const createStyles = (colors) =>
  * UI PureComponent that renders inside the navbar
  * showing the view title and the selected network
  */
-class NavbarBrowserTitle extends PureComponent {
-  static propTypes = {
-    /**
-     * Object representing the configuration for the selected network
-     */
-    providerConfig: PropTypes.object.isRequired,
-    /**
-     * hostname of the current webview
-     */
-    hostname: PropTypes.string.isRequired,
-    /**
-     * Boolean that specifies if it is a secure website
-     */
-    https: PropTypes.bool,
-    /**
-     * Boolean that specifies if there is an error
-     */
-    error: PropTypes.bool,
-    /**
-     * Website icon
-     */
-    icon: PropTypes.string,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-  };
+// TODO: Replace with proper prop types
+interface NavbarBrowserTitleProps {
+  [key: string]: unknown;
+}
+
+class NavbarBrowserTitle extends PureComponent<NavbarBrowserTitleProps> {
 
   onTitlePress = () => {
     this.props.route.params?.showUrlModal?.();

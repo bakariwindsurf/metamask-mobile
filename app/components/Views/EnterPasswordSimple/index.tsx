@@ -47,17 +47,12 @@ const createStyles = (colors) =>
 /**
  * View where users can re-enter their password
  */
-export default class EnterPasswordSimple extends PureComponent {
-  static propTypes = {
-    /**
-     * The navigator object
-     */
-    navigation: PropTypes.object,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-  };
+export default // TODO: Replace with proper prop types
+interface EnterPasswordSimpleProps {
+  [key: string]: unknown;
+}
+
+class EnterPasswordSimple extends PureComponent<EnterPasswordSimpleProps> {
 
   state = {
     password: '',

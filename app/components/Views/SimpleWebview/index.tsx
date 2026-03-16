@@ -7,17 +7,12 @@ import Logger from '../../../util/Logger';
 import { baseStyles } from '../../../styles/common';
 import { ThemeContext, mockTheme } from '../../../util/theme';
 
-export default class SimpleWebview extends PureComponent {
-  static propTypes = {
-    /**
-     * react-navigation object used to switch between screens
-     */
-    navigation: PropTypes.object,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-  };
+export default // TODO: Replace with proper prop types
+interface SimpleWebviewProps {
+  [key: string]: unknown;
+}
+
+class SimpleWebview extends PureComponent<SimpleWebviewProps> {
 
   updateNavBar = () => {
     const { navigation, route } = this.props;

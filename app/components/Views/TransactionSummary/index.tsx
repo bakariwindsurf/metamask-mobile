@@ -20,17 +20,12 @@ const createStyles = (colors) =>
     },
   });
 
-export default class TransactionSummary extends PureComponent {
-  static propTypes = {
-    amount: PropTypes.string,
-    fee: PropTypes.string,
-    totalAmount: PropTypes.string,
-    secondaryTotalAmount: PropTypes.string,
-    gasEstimationReady: PropTypes.bool,
-    onEditPress: PropTypes.func,
-    transactionType: PropTypes.string,
-    chainId: PropTypes.string,
-  };
+export default // TODO: Replace with proper prop types
+interface TransactionSummaryProps {
+  [key: string]: unknown;
+}
+
+class TransactionSummary extends PureComponent<TransactionSummaryProps> {
 
   renderIfGastEstimationReady = (children) => {
     const { gasEstimationReady } = this.props;

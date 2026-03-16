@@ -44,26 +44,12 @@ const createStyles = (colors) =>
 /**
  * View that displays a specific collectible asset
  */
-class CollectibleView extends PureComponent {
-  static propTypes = {
-    /**
-    /* navigation object required to access the props
-    /* passed by the parent component
-    */
-    navigation: PropTypes.object,
-    /**
-     * Start transaction with asset
-     */
-    newAssetTransaction: PropTypes.func,
-    /**
-     * Object that represents the current route info like params passed to it
-     */
-    route: PropTypes.object,
-    /**
-     * Whether the send redesign feature flag is enabled
-     */
-    isSendRedesignEnabled: PropTypes.bool,
-  };
+// TODO: Replace with proper prop types
+interface CollectibleViewProps {
+  [key: string]: unknown;
+}
+
+class CollectibleView extends PureComponent<CollectibleViewProps> {
 
   updateNavBar = () => {
     const { navigation, route } = this.props;
