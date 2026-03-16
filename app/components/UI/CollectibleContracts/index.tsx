@@ -189,7 +189,7 @@ interface CollectibleContractsProps {
   networkType?: unknown;
   navigation?: unknown;
   collectibleContracts?: unknown;
-  collectibles: allCollectibles?: unknown;
+  collectibles?: unknown;
   isNftFetchingProgress: boolean;
   favoriteCollectibles?: unknown;
   removeFavoriteCollectible?: unknown;

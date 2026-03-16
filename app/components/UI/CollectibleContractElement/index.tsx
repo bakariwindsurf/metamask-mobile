@@ -91,7 +91,7 @@ const splitIntoSubArrays = (array, count) => {
 interface CollectibleContractElementProps {
   asset?: unknown;
   contractCollectibles?: unknown;
-  collectiblesVisible: propsCollectiblesVisible?: unknown;
+  collectiblesVisible?: unknown;
   onPress: (...args: unknown[]) => void;
   chainId: string;
   selectedAddress: string;
