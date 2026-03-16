@@ -28,7 +28,7 @@ const foxImage = require('../../../images/branding/fox.png'); // eslint-disable-
  * View component that displays the MetaMask fox
  * in the middle of the screen
  */
-export default class FoxScreen extends PureComponent {
+export default class FoxScreen extends PureComponent<Record<string, never>> {
   render = () => {
     const colors = this.context.colors || mockTheme.colors;
     const styles = createStyles(colors);

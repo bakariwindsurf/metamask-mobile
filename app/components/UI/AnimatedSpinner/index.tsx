@@ -82,7 +82,11 @@ const createStyles = (colors: Record<string, Record<string, string>>, measures: 
     },
   });
 
-export default class AnimatedSpinner extends PureComponent {
+interface AnimatedSpinnerProps {
+  size?: string;
+}
+
+export default class AnimatedSpinner extends PureComponent<AnimatedSpinnerProps> {
   spinValue = new Animated.Value(0);
 
   state = {

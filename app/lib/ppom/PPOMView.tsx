@@ -85,7 +85,7 @@ export const ppomInit = async () => {
   await invoke.bindAsync('ppomInit')();
 };
 
-export class PPOMView extends Component {
+export class PPOMView extends Component<Record<string, never>> {
   webViewRef: RefObject<WebView> = React.createRef();
   invoke = createInvoke(() => this.webViewRef?.current);
 

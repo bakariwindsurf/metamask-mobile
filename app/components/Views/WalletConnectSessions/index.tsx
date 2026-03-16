@@ -80,7 +80,11 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
 /**
  * View that displays all the active WalletConnect Sessions
  */
-export default class WalletConnectSessions extends PureComponent {
+interface WalletConnectSessionsProps {
+  navigation: unknown;
+}
+
+export default class WalletConnectSessions extends PureComponent<WalletConnectSessionsProps> {
   state = {
     sessions: [],
     sessionsV2: [],

@@ -30,7 +30,11 @@ interface WebViewState {
 }
 
 // This is a class component because storing the references we are don't work in functional components.
-export class SnapsExecutionWebView extends Component {
+interface SnapsExecutionWebViewProps {
+  uri: string;
+}
+
+export class SnapsExecutionWebView extends Component<SnapsExecutionWebViewProps> {
   webViews: Record<string, WebViewState> = {};
 
   constructor(props: EmptyObject) {

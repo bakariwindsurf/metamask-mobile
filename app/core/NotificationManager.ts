@@ -31,7 +31,7 @@ export const PERPS_DEPOSIT_SKIP_STATUS = [
   TransactionStatus.submitted,
 ];
 
-export const constructTitleAndMessage = (notification) => {
+export const constructTitleAndMessage = (notification: Record<string, unknown>) => {
   let title, message;
   switch (notification.type) {
     case NotificationTransactionTypes.pending:
@@ -333,11 +333,11 @@ class NotificationManager {
   /**
    * Navigates to a specific view
    */
-  goTo(view) {
+  goTo(view: string) {
     this._navigation.navigate(view);
   }
 
-  onMessageReceived(data) {
+  onMessageReceived(data: Record<string, unknown>) {
     this._showNotification(data);
   }
 
@@ -565,7 +565,7 @@ export default {
   showSimpleNotification(data) {
     return instance?.showSimpleNotification(data);
   },
-  onMessageReceived(data) {
-    return instance?.onMessageReceived(data);
+  onMessageReceived(data: Record<string, unknown>) {
+    return instance?.onMessageReceived(data: Record<string, unknown>);
   },
 };

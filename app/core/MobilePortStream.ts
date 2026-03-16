@@ -6,7 +6,7 @@ import { Duplex } from 'readable-stream';
 const noop = () => {};
 
 export default class PortDuplexStream extends Duplex {
-  constructor(port, url) {
+  constructor(port: unknown, url: string) {
     super({
       objectMode: true,
     });

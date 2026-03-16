@@ -53,7 +53,7 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const getButtonStyle = (type, styles) => {
+const getButtonStyle = (type: string, styles: Record<string, unknown>) => {
   switch (type) {
     case AlertType.Error: {
       return styles.errorButton;
@@ -65,7 +65,7 @@ const getButtonStyle = (type, styles) => {
   }
 };
 
-const getInfoIconStyle = (type, styles) => {
+const getInfoIconStyle = (type: string, styles: Record<string, unknown>) => {
   switch (type) {
     case AlertType.Error: {
       return styles.errorInfoIcon;
