@@ -29,7 +29,7 @@ import { getDecimalChainId } from '../../../util/networks';
 const DEVICE_WIDTH = Device.getDeviceWidth();
 const COLLECTIBLE_WIDTH = (DEVICE_WIDTH - 30 - 16) / 3;
 
-const createStyles = (colors, brandColors) =>
+const createStyles = (colors: Record<string, Record<string, string>>, brandColors: unknown) =>
   StyleSheet.create({
     itemWrapper: {
       paddingBottom: 16,

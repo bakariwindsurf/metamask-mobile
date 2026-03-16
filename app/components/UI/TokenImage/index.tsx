@@ -19,7 +19,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const TokenImage = ({ asset, containerStyle, iconStyle, tokenList }) => {
+interface TokenImageProps {
+  asset?: unknown;
+  containerStyle?: unknown;
+  iconStyle?: unknown;
+  tokenList?: unknown;
+}
+
+const TokenImage = ({  asset, containerStyle, iconStyle, tokenList  }: TokenImageProps) => {
   const isIpfsGatewayEnabled = useSelector(selectIsIpfsGatewayEnabled);
 
   const assetImage = isUrl(asset?.image) ? asset.image : null;

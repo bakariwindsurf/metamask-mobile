@@ -58,7 +58,11 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
       marginBottom: 8,
     },
   });
-const DetailsModal = ({ children }) => {
+interface DetailsModalProps {
+  children: React.ReactNode;
+}
+
+const DetailsModal = ({  children  }: DetailsModalProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -69,13 +73,21 @@ const DetailsModal = ({ children }) => {
   );
 };
 
-const DetailsModalHeader = ({ style, ...props }) => {
+interface DetailsModalHeaderProps {
+  style?: unknown;
+}
+
+const DetailsModalHeader = ({  style, ...props  }: DetailsModalHeaderProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
   return <View style={[styles.header, style]} {...props} />;
 };
-const DetailsModalTitle = ({ style, ...props }) => {
+interface DetailsModalTitleProps {
+  style?: unknown;
+}
+
+const DetailsModalTitle = ({  style, ...props  }: DetailsModalTitleProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -87,7 +99,11 @@ const DetailsModalTitle = ({ style, ...props }) => {
     />
   );
 };
-const DetailsModalCloseIcon = ({ style, ...props }) => {
+interface DetailsModalCloseIconProps {
+  style?: unknown;
+}
+
+const DetailsModalCloseIcon = ({  style, ...props  }: DetailsModalCloseIconProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -101,7 +117,11 @@ const DetailsModalCloseIcon = ({ style, ...props }) => {
     </TouchableOpacity>
   );
 };
-const DetailsModalBody = ({ style, ...props }) => {
+interface DetailsModalBodyProps {
+  style?: unknown;
+}
+
+const DetailsModalBody = ({  style, ...props  }: DetailsModalBodyProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -113,7 +133,12 @@ const DetailsModalBody = ({ style, ...props }) => {
     />
   );
 };
-const DetailsModalSection = ({ style, borderBottom, ...props }) => {
+interface DetailsModalSectionProps {
+  style?: unknown;
+  borderBottom?: unknown;
+}
+
+const DetailsModalSection = ({  style, borderBottom, ...props  }: DetailsModalSectionProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -124,13 +149,22 @@ const DetailsModalSection = ({ style, borderBottom, ...props }) => {
     />
   );
 };
-const DetailsModalSectionTitle = ({ style, ...props }) => {
+interface DetailsModalSectionTitleProps {
+  style?: unknown;
+}
+
+const DetailsModalSectionTitle = ({  style, ...props  }: DetailsModalSectionTitleProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
   return <Text style={[styles.sectionTitle, style]} {...props} />;
 };
-const DetailsModalColumn = ({ style, end, ...props }) => {
+interface DetailsModalColumnProps {
+  style?: unknown;
+  end?: unknown;
+}
+
+const DetailsModalColumn = ({  style, end, ...props  }: DetailsModalColumnProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

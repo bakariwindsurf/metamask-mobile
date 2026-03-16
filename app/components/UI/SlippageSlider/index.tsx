@@ -28,7 +28,7 @@ const TOOLTIP_HEIGHT = 36;
 const TOOLTIP_WIDTH = 40;
 const COMPONENT_HEIGHT = DIAMETER + TOOLTIP_HEIGHT + 10;
 
-const createStyles = (colors, shadows) =>
+const createStyles = (colors: Record<string, Record<string, string>>, shadows: unknown) =>
   StyleSheet.create({
     root: {
       position: 'relative',

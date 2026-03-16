@@ -22,7 +22,7 @@ const swapsAggregatorsLight = require('../../../../images/swaps_aggs-light.png')
 const swapsAggregatorsDark = require('../../../../images/swaps_aggs-dark.png');
 /* eslint-enable import/no-commonjs */
 
-const createStyles = (colors, bottomInset) =>
+const createStyles = (colors: Record<string, Record<string, string>>, bottomInset: unknown) =>
   StyleSheet.create({
     screen: {
       flex: 1,
@@ -71,7 +71,11 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-function Onboarding({ setHasOnboarded }) {
+interface OnboardingProps {
+  setHasOnboarded?: unknown;
+}
+
+function Onboarding({  setHasOnboarded  }: OnboardingProps) {
   const navigation = useNavigation();
   const { colors } = useTheme();
   const { bottom: bottomInset } = useSafeAreaInsets();

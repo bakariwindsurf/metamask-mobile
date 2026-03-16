@@ -11,7 +11,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function TokenSelectButton({ icon, symbol, onPress, disabled, label, testID }) {
+interface TokenSelectButtonProps {
+  icon: string;
+  symbol: string;
+  onPress: (...args: unknown[]) => void;
+  disabled: boolean;
+  label: string;
+  testID: string;
+}
+
+function TokenSelectButton({  icon, symbol, onPress, disabled, label, testID  }: TokenSelectButtonProps) {
   return (
     <SelectorButton onPress={onPress} disabled={disabled} testID={testID}>
       <View style={styles.icon}>

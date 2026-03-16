@@ -57,7 +57,7 @@ import { selectContractExchangeRatesByChainId } from '../../../selectors/tokenRa
 import { selectTokensByChainIdAndAddress } from '../../../selectors/tokensController';
 import Routes from '../../../constants/navigation/Routes';
 
-const createStyles = (colors, typography) =>
+const createStyles = (colors: Record<string, Record<string, string>>, typography: unknown) =>
   StyleSheet.create({
     row: {
       backgroundColor: colors.background.default,

@@ -55,7 +55,14 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-function TokenImportModal({ isVisible, dismiss, token, onPressImport }) {
+interface TokenImportModalProps {
+  isVisible?: unknown;
+  dismiss?: unknown;
+  token?: unknown;
+  onPressImport: (...args: unknown[]) => void;
+}
+
+function TokenImportModal({  isVisible, dismiss, token, onPressImport  }: TokenImportModalProps) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

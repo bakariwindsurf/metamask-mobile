@@ -34,7 +34,7 @@ import {
 import { selectSwapsQuoteValues } from '../../../../reducers/swaps';
 import { QuotesModalSelectorIDs } from '../../../../../e2e/selectors/swaps/QuotesModal.selectors';
 
-const createStyles = (colors, shadows) =>
+const createStyles = (colors: Record<string, Record<string, string>>, shadows: unknown) =>
   StyleSheet.create({
     modalView: {
       backgroundColor: colors.background.default,

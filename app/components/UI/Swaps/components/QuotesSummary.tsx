@@ -59,7 +59,13 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
 
 const QuotesSummary = (props) => <View {...props} />;
 
-const Header = ({ style, savings, children, ...props }) => {
+interface HeaderProps {
+  style?: unknown;
+  savings?: unknown;
+  children: React.ReactNode;
+}
+
+const Header = ({  style, savings, children, ...props  }: HeaderProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   return (
@@ -78,17 +84,29 @@ const Header = ({ style, savings, children, ...props }) => {
   );
 };
 
-const Body = ({ style, ...props }) => {
+interface BodyProps {
+  style?: unknown;
+}
+
+const Body = ({  style, ...props  }: BodyProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   return <View style={[styles.body, style]} {...props} />;
 };
-const HeaderText = ({ style, ...props }) => {
+interface HeaderTextProps {
+  style?: unknown;
+}
+
+const HeaderText = ({  style, ...props  }: HeaderTextProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   return <Text style={[styles.headerText, style]} {...props} />;
 };
-const Separator = ({ style }) => {
+interface SeparatorProps {
+  style?: unknown;
+}
+
+const Separator = ({  style  }: SeparatorProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   return <View style={[styles.separator, style]} />;

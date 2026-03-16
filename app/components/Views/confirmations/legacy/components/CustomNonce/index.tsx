@@ -22,7 +22,12 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const CustomNonce = ({ nonce, onNonceEdit }) => {
+interface CustomNonceProps {
+  nonce?: unknown;
+  onNonceEdit: (...args: unknown[]) => void;
+}
+
+const CustomNonce = ({  nonce, onNonceEdit  }: CustomNonceProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

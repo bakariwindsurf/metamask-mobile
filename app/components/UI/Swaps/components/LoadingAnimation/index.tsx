@@ -35,7 +35,7 @@ const PAN_RADIO = STAGE_SIZE * 0.6;
 // "finalizing" animationg
 const FINALIZING_PERCENTAGE = 80;
 
-const createStyles = (colors, shadows) =>
+const createStyles = (colors: Record<string, Record<string, string>>, shadows: unknown) =>
   StyleSheet.create({
     screen: {
       flex: 1,

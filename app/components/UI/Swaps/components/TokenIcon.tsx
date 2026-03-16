@@ -62,7 +62,14 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const EmptyIcon = ({ medium, big, biggest, style, ...props }) => {
+interface EmptyIconProps {
+  medium: boolean;
+  big: boolean;
+  biggest: boolean;
+  style?: unknown;
+}
+
+const EmptyIcon = ({  medium, big, biggest, style, ...props  }: EmptyIconProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -82,7 +89,17 @@ const EmptyIcon = ({ medium, big, biggest, style, ...props }) => {
 };
 
 
-function TokenIcon({ symbol, icon, medium, big, biggest, style, testID }) {
+interface TokenIconProps {
+  symbol: string;
+  icon: string;
+  medium: boolean;
+  big: boolean;
+  biggest: boolean;
+  style?: unknown;
+  testID: string;
+}
+
+function TokenIcon({  symbol, icon, medium, big, biggest, style, testID  }: TokenIconProps) {
   const [showFallback, setShowFallback] = useState(false);
   const { colors } = useTheme();
   const styles = createStyles(colors);

@@ -177,7 +177,12 @@ const createStyles = (colors, layout = 'horizontal') => {
   });
 };
 
-const AddressName = ({ toAddressName, confusableCollection = [] }) => {
+interface AddressNameProps {
+  toAddressName?: unknown;
+  confusableCollection?: unknown;
+}
+
+const AddressName = ({  toAddressName, confusableCollection = []  }: AddressNameProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   if (confusableCollection.length) {

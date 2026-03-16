@@ -30,7 +30,7 @@ const ROWS_VISIBLE = Math.floor(
 );
 const TABS_VISIBLE = ROWS_VISIBLE;
 
-const createStyles = (colors, shadows) =>
+const createStyles = (colors: Record<string, Record<string, string>>, shadows: unknown) =>
   StyleSheet.create({
     noTabs: {
       flex: 1,

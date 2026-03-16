@@ -77,7 +77,13 @@ const getInfoIconStyle = (type, styles) => {
   }
 };
 
-function Button({ type, onPress, children }) {
+interface ButtonProps {
+  type: string;
+  onPress: (...args: unknown[]) => void;
+  children: React.ReactNode;
+}
+
+function Button({  type, onPress, children  }: ButtonProps) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
@@ -99,7 +105,16 @@ function Button({ type, onPress, children }) {
 }
 
 
-function ActionAlert({ type, style, action, onInfoPress, onPress, children }) {
+interface ActionAlertProps {
+  type: string;
+  style?: unknown;
+  action?: unknown;
+  onInfoPress: (...args: unknown[]) => void;
+  onPress: (...args: unknown[]) => void;
+  children: React.ReactNode;
+}
+
+function ActionAlert({  type, style, action, onInfoPress, onPress, children  }: ActionAlertProps) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

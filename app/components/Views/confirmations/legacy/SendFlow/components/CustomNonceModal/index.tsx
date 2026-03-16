@@ -115,7 +115,14 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const CustomModalNonce = ({ proposedNonce, nonceValue, close, save }) => {
+interface CustomModalNonceProps {
+  proposedNonce?: unknown;
+  nonceValue?: unknown;
+  close?: unknown;
+  save?: unknown;
+}
+
+const CustomModalNonce = ({  proposedNonce, nonceValue, close, save  }: CustomModalNonceProps) => {
   const [nonce, onChangeText] = React.useState(nonceValue);
   const { colors, themeAppearance } = useTheme();
   const styles = createStyles(colors);

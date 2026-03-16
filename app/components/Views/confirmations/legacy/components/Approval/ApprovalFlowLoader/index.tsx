@@ -26,7 +26,11 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const ApprovalFlowLoader = ({ loadingText }) => {
+interface ApprovalFlowLoaderProps {
+  loadingText?: unknown;
+}
+
+const ApprovalFlowLoader = ({  loadingText  }: ApprovalFlowLoaderProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

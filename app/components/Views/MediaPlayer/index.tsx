@@ -51,7 +51,15 @@ const styleSheet = ({ theme: { colors }, vars: { isPlaying } }) =>
     },
   });
 
-function MediaPlayer({ uri, style, onClose, textTracks, selectedTextTrack }) {
+interface MediaPlayerProps {
+  uri?: unknown;
+  style?: unknown;
+  onClose: (...args: unknown[]) => void;
+  textTracks?: unknown;
+  selectedTextTrack?: unknown;
+}
+
+function MediaPlayer({  uri, style, onClose, textTracks, selectedTextTrack  }: MediaPlayerProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const videoRef = useRef();

@@ -68,7 +68,11 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const SkipAccountSecurityModal = ({ route }) => {
+interface SkipAccountSecurityModalProps {
+  route: string;
+}
+
+const SkipAccountSecurityModal = ({  route  }: SkipAccountSecurityModalProps) => {
   const sheetRef = useRef(null);
   const { colors } = useTheme();
   const styles = createStyles(colors);

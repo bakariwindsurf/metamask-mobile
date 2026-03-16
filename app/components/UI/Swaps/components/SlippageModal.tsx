@@ -37,7 +37,14 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-function SlippageModal({ isVisible, dismiss, onChange, slippage }) {
+interface SlippageModalProps {
+  isVisible?: unknown;
+  dismiss?: unknown;
+  onChange: (...args: unknown[]) => void;
+  slippage?: unknown;
+}
+
+function SlippageModal({  isVisible, dismiss, onChange, slippage  }: SlippageModalProps) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

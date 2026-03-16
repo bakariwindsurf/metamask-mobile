@@ -17,7 +17,7 @@ import Text, {
   TextColor,
 } from '../../../component-library/components/Texts/Text';
 
-const createStyles = (colors, titleColor) =>
+const createStyles = (colors: Record<string, Record<string, string>>, titleColor: unknown) =>
   StyleSheet.create({
     root: {
       backgroundColor: colors.background.default,

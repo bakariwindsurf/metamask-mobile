@@ -62,7 +62,7 @@ const measures = {
   },
 };
 
-const createStyles = (colors, measures) =>
+const createStyles = (colors: Record<string, Record<string, string>>, measures: unknown) =>
   StyleSheet.create({
     view: {
       position: 'relative',

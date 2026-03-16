@@ -8,10 +8,10 @@ import {
 import { safeToChecksumAddress } from '../../../../util/address';
 
 function useBalance(
-  accounts,
-  balances,
-  selectedAddress,
-  sourceToken,
+  accounts: Record<string, { balance: string }>,
+  balances: Record<string, string>,
+  selectedAddress: string,
+  sourceToken: { address: string; decimals: number } | null,
   { asUnits = false } = {},
 ) {
   // TODO: This doesn't always return type BN. Objects down the line may attempt to call functions on the BN object.

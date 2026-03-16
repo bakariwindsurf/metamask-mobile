@@ -67,7 +67,12 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
   });
 
 // eslint-disable-next-line react/prop-types
-const Skeleton = ({ width, noStyle }) => {
+interface SkeletonProps {
+  width: number;
+  noStyle?: unknown;
+}
+
+const Skeleton = ({  width, noStyle  }: SkeletonProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

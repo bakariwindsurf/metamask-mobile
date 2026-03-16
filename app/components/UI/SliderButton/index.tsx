@@ -28,7 +28,7 @@ const MARGIN = DIAMETER * 0.16;
 const COMPLETE_VERTICAL_THRESHOLD = DIAMETER * 2;
 const COMPLETE_THRESHOLD = 0.85;
 
-const createStyles = (colors, shadows) =>
+const createStyles = (colors: Record<string, Record<string, string>>, shadows: unknown) =>
   StyleSheet.create({
     container: {
       ...shadows.size.sm,
