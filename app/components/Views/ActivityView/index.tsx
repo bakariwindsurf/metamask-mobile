@@ -60,7 +60,7 @@ import {
   NetworkType,
 } from '../../hooks/useNetworksByNamespace/useNetworksByNamespace';
 
-const createStyles = (params) => {
+const createStyles = (params: Record<string, unknown>) => {
   const { theme } = params;
   const { colors } = theme;
   return StyleSheet.create({

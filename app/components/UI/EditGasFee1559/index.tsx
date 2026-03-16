@@ -282,7 +282,7 @@ const EditGasFee1559 = ({
     onChange(gas, selectedOption);
   };
 
-  const changedMaxPriorityFee = (value) => {
+  const changedMaxPriorityFee = (value: string) => {
     const lowerValue = new BigNumber(
       gasOptions?.[warningMinimumEstimateOption]?.suggestedMaxPriorityFeePerGas,
     );
@@ -320,7 +320,7 @@ const EditGasFee1559 = ({
     changeGas(newGas, null);
   };
 
-  const changedMaxFeePerGas = (value) => {
+  const changedMaxFeePerGas = (value: string) => {
     const lowerValue = new BigNumber(
       gasOptions?.[warningMinimumEstimateOption]?.suggestedMaxFeePerGas,
     );
@@ -353,19 +353,19 @@ const EditGasFee1559 = ({
     changeGas(newGas, null);
   };
 
-  const changedGasLimit = (value) => {
+  const changedGasLimit = (value: string) => {
     const newGas = { ...gasFee, suggestedGasLimit: value };
     changeGas(newGas, null);
   };
 
-  const selectOption = (option) => {
+  const selectOption = (option: string) => {
     setSelectedOption(option);
     setMaxFeeError('');
     setMaxPriorityFeeError('');
     changeGas({ ...gasOptions[option] }, option);
   };
 
-  const shouldIgnore = (option) =>
+  const shouldIgnore = (option: string) =>
     ignoreOptions.find((item) => item === option);
 
   const renderLabel = (selected, disabled, label) => (

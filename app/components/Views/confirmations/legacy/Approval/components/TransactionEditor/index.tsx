@@ -175,7 +175,7 @@ class TransactionEditor extends PureComponent<TransactionEditorProps> {
       );
     } else if (this.props.gasEstimateType !== GAS_ESTIMATE_TYPES.NONE) {
       const suggestedGasLimit = fromWei(transaction.gas, 'wei');
-      const getGas = (selected) =>
+      const getGas = (selected: string) =>
         dappSuggestedGasPrice
           ? fromWei(dappSuggestedGasPrice, 'gwei')
           : gasEstimateType === GAS_ESTIMATE_TYPES.LEGACY

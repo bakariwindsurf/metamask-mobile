@@ -24,7 +24,7 @@ import { baseStyles, colors as importedColors } from '../../../styles/common';
 import { useTheme } from '../../../util/theme';
 import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
-const createStyles = (theme) =>
+const createStyles = (theme: Record<string, unknown>) =>
   StyleSheet.create({
     playerContainer: {
       flex: 0,

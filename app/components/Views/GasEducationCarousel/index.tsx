@@ -234,7 +234,7 @@ const GasEducationCarousel = ({
 
   const renderTabBar = () => <View />;
 
-  const onChangeTab = (obj) => {
+  const onChangeTab = (obj: Record<string, unknown>) => {
     setCurrentTab(obj.i + 1);
   };
 
@@ -246,7 +246,7 @@ const GasEducationCarousel = ({
       },
     });
 
-  const renderText = (key) => {
+  const renderText = (key: string) => {
     if (key === 1) {
       return (
         <View style={styles.tab}>

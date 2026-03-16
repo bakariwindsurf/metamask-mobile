@@ -345,7 +345,7 @@ const CollectibleContracts = ({
    * @param collectible - Collectible object.
    * @returns Boolean indicating if the collectible should be updated.
    */
-  const shouldUpdateCollectibleMetadata = (collectible) =>
+  const shouldUpdateCollectibleMetadata = (collectible: Record<string, unknown>) =>
     typeof collectible.tokenId === 'number' ||
     (typeof collectible.tokenId === 'string' && !isNaN(collectible.tokenId));
 

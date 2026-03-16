@@ -21,7 +21,7 @@ import WebsiteIcon from '../../../../../UI/WebsiteIcon';
 import BlockaidBanner from '../BlockaidBanner/BlockaidBanner';
 import { ResultType } from '../BlockaidBanner/BlockaidBanner.types';
 
-const getCleanUrl = (url) => {
+const getCleanUrl = (url: string) => {
   try {
     const urlObject = new URL(url);
 

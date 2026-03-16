@@ -20,7 +20,7 @@ export const ConfirmButtonState = {
   Normal: 'normal',
 };
 
-const getStyles = (colors) =>
+const getStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     actionContainer: {
       flexDirection: 'row',

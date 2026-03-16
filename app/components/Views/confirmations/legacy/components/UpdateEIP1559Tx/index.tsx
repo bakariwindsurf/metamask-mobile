@@ -226,12 +226,12 @@ const UpdateEIP1559Tx = ({
     isMaxPriorityFeePerGasMoreThanLegacy,
   ]);
 
-  const update1559TempGasValue = (selected) => {
+  const update1559TempGasValue = (selected: string) => {
     stopUpdateGas.current = !selected;
     setGasSelected(selected);
   };
 
-  const onSaveTxnWithError = (gasTxn) => {
+  const onSaveTxnWithError = (gasTxn: Record<string, unknown>) => {
     gasTxn.error = validateAmount(gasTxn);
     onSave(gasTxn);
   };

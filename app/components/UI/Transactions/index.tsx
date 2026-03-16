@@ -484,7 +484,7 @@ class Transactions extends PureComponent<TransactionsProps> {
   signLedgerTransaction = async (transaction) => {
     const deviceId = await getDeviceId();
 
-    const onConfirmation = (isComplete) => {
+    const onConfirmation = (isComplete: boolean) => {
       if (isComplete) {
         transaction.speedUpParams &&
         transaction.speedUpParams?.type === 'SpeedUp'
@@ -676,7 +676,7 @@ class Transactions extends PureComponent<TransactionsProps> {
     const filteredTransactions =
       filterDuplicateOutgoingTransactions(transactions);
 
-    const renderRetryGas = (rate) => {
+    const renderRetryGas = (rate: string) => {
       if (!this.existingGas) return null;
 
       if (this.existingGas.isEIP1559Transaction) return null;

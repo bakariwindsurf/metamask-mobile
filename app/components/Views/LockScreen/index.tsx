@@ -233,7 +233,12 @@ LockScreen.contextType = ThemeContext;
 const ConnectedLockScreen = connect(mapStateToProps)(LockScreen);
 
 // Wrapper that forces LockScreen to re-render when bioStateMachineId changes.
-const LockScreenFCWrapper = (props) => {
+interface LockScreenFCWrapperProps {
+  navigation: unknown;
+  [key: string]: unknown;
+}
+
+const LockScreenFCWrapper = (props: LockScreenFCWrapperProps) => {
   const { bioStateMachineId } = props.route.params;
   return (
     <ConnectedLockScreen

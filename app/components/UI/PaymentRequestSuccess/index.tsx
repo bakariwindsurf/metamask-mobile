@@ -33,7 +33,7 @@ import { SendLinkViewSelectorsIDs } from '../../../../e2e/selectors/Receive/Send
 
 const isIos = Device.isIos();
 
-const createStyles = (theme) =>
+const createStyles = (theme: Record<string, unknown>) =>
   StyleSheet.create({
     wrapper: {
       backgroundColor: theme.colors.background.default,

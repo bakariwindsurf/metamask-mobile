@@ -5,7 +5,7 @@ export default function migrate(state: Record<string, unknown>) {
   const ignoredTokens =
     state.engine.backgroundState.TokensController.ignoredTokens || [];
 
-  const reduceTokens = (tokens) =>
+  const reduceTokens = (tokens: Record<string, unknown>[]) =>
     tokens.reduce((final, token) => {
       const tokenAddress =
         (typeof token === 'string' && token) || token?.address || '';

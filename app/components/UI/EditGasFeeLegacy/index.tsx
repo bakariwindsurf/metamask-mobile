@@ -216,7 +216,7 @@ const EditGasFeeLegacy = ({
     onChange(gas, selectedOption);
   };
 
-  const changedGasPrice = (value) => {
+  const changedGasPrice = (value: string) => {
     const lowerValue = new BigNumber(
       gasEstimateType === GAS_ESTIMATE_TYPES.LEGACY
         ? gasOptions?.[warningMinimumEstimateOption]
@@ -243,19 +243,19 @@ const EditGasFeeLegacy = ({
     changeGas(newGas, null);
   };
 
-  const changedGasLimit = (value) => {
+  const changedGasLimit = (value: string) => {
     const newGas = { ...gasFee, suggestedGasLimit: value };
 
     changeGas(newGas, null);
   };
 
-  const selectOption = (option) => {
+  const selectOption = (option: string) => {
     setGasPriceError('');
     setSelectedOption(option);
     changeGas({ ...gasFee, suggestedGasPrice: gasOptions[option] }, option);
   };
 
-  const shouldIgnore = (option) =>
+  const shouldIgnore = (option: string) =>
     ignoreOptions.find((item) => item === option);
 
   const renderLabel = (selected, disabled, label) => (

@@ -22,7 +22,7 @@ import { isEthAddress } from '../../../util/address';
 
 const WIDTH = Dimensions.get('window').width - 88;
 
-const createStyles = (theme) =>
+const createStyles = (theme: Record<string, unknown>) =>
   StyleSheet.create({
     root: {
       flex: 1,

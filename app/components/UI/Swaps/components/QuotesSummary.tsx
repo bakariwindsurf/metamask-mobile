@@ -57,7 +57,11 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const QuotesSummary = (props) => <View {...props} />;
+interface QuotesSummaryProps {
+  [key: string]: unknown;
+}
+
+const QuotesSummary = (props: QuotesSummaryProps) => <View {...props} />;
 
 interface HeaderProps {
   style?: unknown;

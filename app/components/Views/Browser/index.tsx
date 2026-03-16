@@ -130,12 +130,12 @@ export const Browser = (props) => {
     [updateTab],
   );
 
-  const hideTabsAndUpdateUrl = (url) => {
+  const hideTabsAndUpdateUrl = (url: string) => {
     setShouldShowTabs(false);
     setCurrentUrl(url);
   };
 
-  const switchToTab = (tab) => {
+  const switchToTab = (tab: Record<string, unknown>) => {
     trackEvent(
       createEventBuilder(MetaMetricsEvents.BROWSER_SWITCH_TAB).build(),
     );
@@ -187,7 +187,7 @@ export const Browser = (props) => {
   }, [tabs, activeTabId, updateTab]);
 
   useEffect(() => {
-    const checkIfActiveAccountChanged = (hostnameForToastCheck) => {
+    const checkIfActiveAccountChanged = (hostnameForToastCheck: string) => {
       const permittedAccounts = getPermittedCaipAccountIdsByHostname(
         permittedAccountsList,
         hostnameForToastCheck,
@@ -355,7 +355,7 @@ export const Browser = (props) => {
     }
   };
 
-  const closeTab = (tab) => {
+  const closeTab = (tab: Record<string, unknown>) => {
     // If the tab was selected we have to select
     // the next one, and if there's no next one,
     // we select the previous one.

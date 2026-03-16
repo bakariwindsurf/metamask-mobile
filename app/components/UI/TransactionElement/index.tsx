@@ -675,7 +675,14 @@ const mapStateToProps = (state, ownProps) => ({
 TransactionElement.contextType = ThemeContext;
 
 // Create a wrapper functional component
-const TransactionElementWithBridge = (props) => {
+interface TransactionElementWithBridgeProps {
+  tx: Record<string, unknown>;
+  i: number;
+  selectedAddress?: string;
+  [key: string]: unknown;
+}
+
+const TransactionElementWithBridge = (props: TransactionElementWithBridgeProps) => {
   const bridgeTxHistoryData = useBridgeTxHistoryData({ evmTxMeta: props.tx });
 
   return (

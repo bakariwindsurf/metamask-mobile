@@ -57,7 +57,7 @@ const baseChange = {
 };
 
 // Utility function for checking base types
-const isValidBase = (base) => Number.isInteger(base) && base > 1;
+const isValidBase = (base: number) => Number.isInteger(base) && base > 1;
 
 /**
  * Defines the base type of numeric value

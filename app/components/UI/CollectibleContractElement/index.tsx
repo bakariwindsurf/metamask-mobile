@@ -169,7 +169,7 @@ function CollectibleContractElement({
     );
   };
 
-  const handleMenuAction = (index) => {
+  const handleMenuAction = (index: number) => {
     if (index === 1) {
       removeNft();
     } else if (index === 0) {

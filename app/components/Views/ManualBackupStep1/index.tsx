@@ -170,7 +170,7 @@ const ManualBackupStep1 = ({
     updateNavBar();
   }, [updateNavBar]);
 
-  const onPasswordChange = (password) => {
+  const onPasswordChange = (password: string) => {
     setPassword(password);
   };
 

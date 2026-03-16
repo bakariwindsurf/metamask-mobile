@@ -132,7 +132,12 @@ export const useSwapConfirmedEvent = ({ trackSwaps }) => {
   };
 };
 
-const RootRPCMethodsUI = (props) => {
+interface RootRPCMethodsUIProps {
+  navigation: unknown;
+  [key: string]: unknown;
+}
+
+const RootRPCMethodsUI = (props: RootRPCMethodsUIProps) => {
   const { trackEvent, createEventBuilder } = useMetrics();
   const [transactionModalType, setTransactionModalType] = useState(undefined);
   const tokenList = useSelector(selectTokenList);

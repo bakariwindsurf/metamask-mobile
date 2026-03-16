@@ -105,7 +105,13 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
  * View that's shown during the first step of
  * the backup seed phrase flow
  */
-const AccountBackupStep1 = (props) => {
+interface AccountBackupStep1Props {
+  navigation: unknown;
+  route?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+const AccountBackupStep1 = (props: AccountBackupStep1Props) => {
   const [hasFunds, setHasFunds] = useState(false);
   const { colors, themeAppearance } = useTheme();
   const styles = createStyles(colors);

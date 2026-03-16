@@ -121,7 +121,12 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
     },
   });
 
-const Main = (props) => {
+interface MainProps {
+  navigation: unknown;
+  [key: string]: unknown;
+}
+
+const Main = (props: MainProps) => {
   const [forceReload, setForceReload] = useState(false);
   const [showDeprecatedAlert, setShowDeprecatedAlert] = useState(true);
   const { colors } = useTheme();

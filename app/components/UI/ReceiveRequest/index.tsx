@@ -38,7 +38,7 @@ import { selectIsEvmNetworkSelected } from '../../../selectors/multichainNetwork
 
 const { height: windowHeight } = Dimensions.get('window');
 
-const createStyles = (theme) => ({
+const createStyles = (theme: Record<string, unknown>) => ({
   wrapper: {
     backgroundColor: theme.colors.background.default,
     borderTopLeftRadius: 10,

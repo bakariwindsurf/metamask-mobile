@@ -101,10 +101,10 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import SrpInput from '../SrpInput';
 
-const checkValidSeedWord = (text) => wordlist.includes(text);
+const checkValidSeedWord = (text: string) => wordlist.includes(text);
 
 // Custom masking function to replace characters with dots (avoids iOS ellipsis)
-const maskText = (text) => {
+const maskText = (text: string) => {
   if (!text) return '';
   return '••••';
 };
@@ -466,7 +466,7 @@ const ImportFromSecretRecoveryPhrase = ({
     updateBiometryChoice(false);
   };
 
-  const onPasswordChange = (value) => {
+  const onPasswordChange = (value: string) => {
     const passInfo = zxcvbn(value);
 
     setPassword(value);
@@ -476,7 +476,7 @@ const ImportFromSecretRecoveryPhrase = ({
     }
   };
 
-  const onPasswordConfirmChange = (value) => {
+  const onPasswordConfirmChange = (value: string) => {
     setConfirmPassword(value);
   };
 
@@ -486,7 +486,7 @@ const ImportFromSecretRecoveryPhrase = ({
   };
 
   const renderSwitch = () => {
-    const handleUpdateRememberMe = (rememberMe) => {
+    const handleUpdateRememberMe = (rememberMe: boolean) => {
       setRememberMe(rememberMe);
     };
     return (
@@ -568,7 +568,7 @@ const ImportFromSecretRecoveryPhrase = ({
     [password, confirmPassword, learnMore],
   );
 
-  const toggleShowPassword = (index) => {
+  const toggleShowPassword = (index: number) => {
     setShowPasswordIndex((prev) => {
       if (prev.includes(index)) {
         return prev.filter((item) => item !== index);
@@ -779,7 +779,7 @@ const ImportFromSecretRecoveryPhrase = ({
     }
   };
 
-  const handleEnterKeyPress = (index) => {
+  const handleEnterKeyPress = (index: number) => {
     handleSeedPhraseChangeAtIndex(`${seedPhrase[index]} `, index);
   };
 

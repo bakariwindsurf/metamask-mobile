@@ -202,7 +202,13 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
  * View that's shown during the first step of
  * the backup seed phrase flow
  */
-const AccountBackupStep1B = (props) => {
+interface AccountBackupStep1BProps {
+  navigation: unknown;
+  route?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+const AccountBackupStep1B = (props: AccountBackupStep1BProps) => {
   const { navigation, route } = props;
   const [showWhySecureWalletModal, setWhySecureWalletModal] = useState(false);
   const { colors } = useTheme();

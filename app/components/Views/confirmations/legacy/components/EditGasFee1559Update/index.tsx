@@ -431,7 +431,7 @@ interface TextComponentProps {
     </>
   );
 
-  const renderInputs = (option) => (
+  const renderInputs = (option: string) => (
     <View>
       <FadeAnimationView
         valueToWatch={valueToWatch}

@@ -1009,7 +1009,7 @@ class ApproveTransactionReview extends PureComponent<ApproveTransactionReviewPro
       token: { tokenSymbol },
     } = this.state;
 
-    const toggleBlockExplorerModal = (address) => {
+    const toggleBlockExplorerModal = (address: string) => {
       closeVerifyContractDetails();
       this.setState({
         showBlockExplorerModal: !showBlockExplorerModal,
@@ -1017,7 +1017,7 @@ class ApproveTransactionReview extends PureComponent<ApproveTransactionReviewPro
       });
     };
 
-    const showNickname = (address) => {
+    const showNickname = (address: string) => {
       toggleModal(address);
     };
 

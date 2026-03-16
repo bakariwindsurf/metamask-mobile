@@ -26,7 +26,13 @@ const createStyles = (colors: Record<string, Record<string, string>>) =>
  * If you would like to help with the replacement of the old `Button` component, please submit a pull request against this GitHub issue:
  * {@link https://github.com/MetaMask/metamask-mobile/issues/8108}
  */
-const Button = (props) => {
+interface ButtonComponentProps {
+  children?: React.ReactNode;
+  style?: unknown;
+  [key: string]: unknown;
+}
+
+const Button = (props: ButtonComponentProps) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 

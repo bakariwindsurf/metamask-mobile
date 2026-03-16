@@ -10,7 +10,7 @@ axios.defaults.headers.common['Access-Control-Allow-Methods'] =
 axios.defaults.headers.common['Access-Control-Allow-Headers'] =
   'Origin, X-Requested-With, Content-Type, Accept';
 
-const fetchWithTimeout = (url) =>
+const fetchWithTimeout = (url: string) =>
   new Promise((resolve, reject) => {
     axios
       .get(url)

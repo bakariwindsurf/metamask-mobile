@@ -56,7 +56,13 @@ const createStyles = () =>
     },
   });
 
-const RemoteImage = (props) => {
+interface RemoteImageProps {
+  source?: { uri?: string } | number;
+  style?: unknown;
+  [key: string]: unknown;
+}
+
+const RemoteImage = (props: RemoteImageProps) => {
   const [error, setError] = useState(undefined);
   // Avoid using this component with animated SVG
   const source = resolveAssetSource(props.source);

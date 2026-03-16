@@ -152,7 +152,7 @@ const WalletModalFlow = () => (
 );
 
 /* eslint-disable react/prop-types */
-const AssetStackFlow = (props) => (
+const AssetStackFlow = (props: Record<string, unknown>) => (
   <Stack.Navigator>
     <Stack.Screen
       name={'Asset'}
@@ -167,7 +167,7 @@ const AssetStackFlow = (props) => (
   </Stack.Navigator>
 );
 
-const AssetModalFlow = (props) => (
+const AssetModalFlow = (props: Record<string, unknown>) => (
   <Stack.Navigator
     mode={'modal'}
     initialRouteName={'AssetStackFlow'}
@@ -270,7 +270,7 @@ const RewardsHome = () => {
 };
 
 /* eslint-disable react/prop-types */
-const BrowserFlow = (props) => (
+const BrowserFlow = (props: Record<string, unknown>) => (
   <Stack.Navigator
     initialRouteName={Routes.BROWSER.VIEW}
     mode={'modal'}
@@ -493,7 +493,7 @@ const SettingsFlow = () => (
   </Stack.Navigator>
 );
 
-const UnmountOnBlurComponent = (children) => (
+const UnmountOnBlurComponent = (children: Record<string, unknown>) => (
   <UnmountOnBlur>{children}</UnmountOnBlur>
 );
 
@@ -680,7 +680,7 @@ const SendView = () => (
 );
 
 /* eslint-disable react/prop-types */
-const NftDetailsModeView = (props) => (
+const NftDetailsModeView = (props: Record<string, unknown>) => (
   <Stack.Navigator>
     <Stack.Screen
       name=" " // No name here because this title will be displayed in the header of the page
@@ -693,7 +693,7 @@ const NftDetailsModeView = (props) => (
 );
 
 /* eslint-disable react/prop-types */
-const NftDetailsFullImageModeView = (props) => (
+const NftDetailsFullImageModeView = (props: Record<string, unknown>) => (
   <Stack.Navigator>
     <Stack.Screen
       name=" " // No name here because this title will be displayed in the header of the page
@@ -765,7 +765,7 @@ const PaymentRequestView = () => (
 );
 
 /* eslint-disable react/prop-types */
-const NotificationsModeView = (props) => (
+const NotificationsModeView = (props: Record<string, unknown>) => (
   <Stack.Navigator>
     <Stack.Screen
       name={Routes.NOTIFICATIONS.VIEW}
