@@ -12,7 +12,7 @@ const IPHONE_11_PRO_HEIGHT = 812;
 const IPHONE_11_PRO_MAX_WIDTH = 414;
 const IPHONE_11_PRO_MAX_HEIGHT = 896;
 
-const getBaseModel = (baseModel) => {
+const getBaseModel = (baseModel: number) => {
   if (baseModel === 1) {
     return { width: IPHONE_11_PRO_WIDTH, height: IPHONE_11_PRO_HEIGHT };
   } else if (baseModel === 2) {
@@ -22,7 +22,7 @@ const getBaseModel = (baseModel) => {
   return { width: IPHONE_6_WIDTH, height: IPHONE_6_HEIGHT };
 };
 
-const _getSizes = (scaleVertical, baseModel) => {
+const _getSizes = (scaleVertical: boolean, baseModel: number) => {
   const { width, height } = Dimensions.get('window');
   const CURR_WIDTH = width < height ? width : height;
   const CURR_HEIGHT = height > width ? height : width;

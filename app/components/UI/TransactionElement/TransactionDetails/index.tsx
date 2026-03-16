@@ -68,7 +68,7 @@ import {
 import { CHAIN_IDS } from '@metamask/transaction-controller';
 import TagBase from '../../../../component-library/base-components/TagBase';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     viewOnEtherscan: {
       fontSize: 16,

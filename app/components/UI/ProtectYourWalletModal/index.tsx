@@ -16,7 +16,7 @@ import { selectSeedlessOnboardingLoginFlow } from '../../../selectors/seedlessOn
 
 const protectWalletImage = require('../../../images/explain-backup-seedphrase.png'); // eslint-disable-line
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       marginTop: 24,

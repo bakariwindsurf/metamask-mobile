@@ -60,7 +60,7 @@ import { getNetworkNonce } from '../../../../../../../util/transaction-controlle
 import { selectNativeCurrencyByChainId } from '../../../../../../../selectors/networkController';
 import { selectContractExchangeRatesByChainId } from '../../../../../../../selectors/tokenRatesController';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     overviewAlert: {
       alignItems: 'center',

@@ -17,7 +17,7 @@ import AppConstants from '../../../../../../../core/AppConstants';
 import Device from '../../../../../../../util/device';
 import { useTheme } from '../../../../../../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     overview: (noMargin) => ({
       marginHorizontal: noMargin ? 0 : 24,

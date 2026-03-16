@@ -33,7 +33,7 @@ import Identicon from '../Identicon';
 import { selectInternalAccounts } from '../../../selectors/accountsController';
 import { selectSignatureRequests } from '../../../selectors/signatureController';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     accountInformation: {
       flexDirection: 'row',

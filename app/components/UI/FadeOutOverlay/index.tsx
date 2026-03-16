@@ -3,7 +3,7 @@ import { Animated, StyleSheet } from 'react-native';
 import Device from '../../../util/device';
 import { ThemeContext, mockTheme } from '../../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     view: {
       backgroundColor: colors.background.default,

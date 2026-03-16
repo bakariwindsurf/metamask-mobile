@@ -15,7 +15,7 @@ import Button, {
 } from '../../../component-library/components/Buttons/Button';
 import { useNavigation } from '@react-navigation/native';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     modalContainer: {
       padding: 16,

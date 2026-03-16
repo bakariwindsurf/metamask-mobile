@@ -18,7 +18,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { useTheme } from '../../../../../../../util/theme';
 import { isNumber } from '../../../../../../../util/number';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     bottomModal: {
       justifyContent: 'flex-end',

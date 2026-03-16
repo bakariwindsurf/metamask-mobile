@@ -108,7 +108,7 @@ import { CardVerification } from '../../UI/Card/sdk';
 
 const Stack = createStackNavigator();
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     flex: {
       flex: 1,

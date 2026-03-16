@@ -97,7 +97,7 @@ import Text, {
 } from '../../../component-library/components/Texts/Text';
 ///: END:ONLY_INCLUDE_IF
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     container: { backgroundColor: colors.background.default },
     screen: {

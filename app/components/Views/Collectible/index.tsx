@@ -15,7 +15,7 @@ import { selectSelectedNetworkClientId } from '../../../selectors/networkControl
 import { areAddressesEqual } from '../../../util/address';
 import { endTrace, trace, TraceName } from '../../../util/trace';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       backgroundColor: colors.background.default,

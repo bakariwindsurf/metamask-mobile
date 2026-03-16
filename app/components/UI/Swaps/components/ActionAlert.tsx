@@ -7,7 +7,7 @@ import { useTheme } from '../../../../util/theme';
 const AlertTypeKeys = Object.keys(AlertType);
 
 const VERTICAL_DISPLACEMENT = 12;
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     content: {
       flex: 1,

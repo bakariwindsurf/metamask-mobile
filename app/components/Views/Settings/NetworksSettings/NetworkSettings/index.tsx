@@ -108,7 +108,7 @@ const formatNetworkRpcUrl = (rpcUrl) => {
   return stripProtocol(stripKeyFromInfuraUrl(rpcUrl));
 };
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     baseAll: {
       padding: 16,

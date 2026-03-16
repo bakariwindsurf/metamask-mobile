@@ -48,7 +48,7 @@ export function getEtherscanTransactionUrl(networkType, tx_hash) {
  * @param {networkType} string - name of the network
  * @returns - string
  */
-export function getEtherscanBaseUrl(networkType) {
+export function getEtherscanBaseUrl(networkType: string) {
   if (networkType === LINEA_GOERLI) return LINEA_GOERLI_BLOCK_EXPLORER;
   if (networkType === LINEA_SEPOLIA) return LINEA_SEPOLIA_BLOCK_EXPLORER;
   if (networkType === LINEA_MAINNET) return LINEA_MAINNET_BLOCK_EXPLORER;

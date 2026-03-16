@@ -82,7 +82,7 @@ import Avatar, {
   AvatarVariant,
 } from '../../../component-library/components/Avatars/Avatar';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       backgroundColor: colors.background.default,

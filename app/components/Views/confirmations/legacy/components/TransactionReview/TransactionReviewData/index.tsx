@@ -15,7 +15,7 @@ import {
   selectCurrentCurrency,
 } from '../../../../../../../selectors/currencyRateController';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     root: {
       paddingHorizontal: 24,

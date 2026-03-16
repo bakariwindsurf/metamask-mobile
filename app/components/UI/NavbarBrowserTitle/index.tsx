@@ -9,7 +9,7 @@ import { mockTheme, ThemeContext } from '../../../util/theme';
 import { selectProviderConfig } from '../../../selectors/networkController';
 import { CommonSelectorsIDs } from '../../../../e2e/selectors/Common.selectors';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       alignItems: 'center',

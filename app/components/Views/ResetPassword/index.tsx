@@ -89,7 +89,7 @@ const getCommonButtonProps = () => ({
   width: ButtonWidthTypes.Full,
 });
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     mainWrapper: {
       backgroundColor: colors.background.default,

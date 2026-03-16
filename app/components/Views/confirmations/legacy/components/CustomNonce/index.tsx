@@ -4,7 +4,7 @@ import { strings } from '../../../../../../../locales/i18n';
 import Text from '../../../../../Base/Text';
 import { useTheme } from '../../../../../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     customNonce: {
       marginTop: 10,

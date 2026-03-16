@@ -18,7 +18,7 @@ import { withMetricsAwareness } from '../../../components/hooks/useMetrics';
 // const HOME_INDICATOR_HEIGHT = 0;
 // const defaultBottomBarPadding = 0;
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     bottomBar: {
       backgroundColor: colors.background.default,

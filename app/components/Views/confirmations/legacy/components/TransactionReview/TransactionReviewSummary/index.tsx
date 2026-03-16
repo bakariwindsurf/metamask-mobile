@@ -6,7 +6,7 @@ import WarningMessage from '../../../SendFlow/WarningMessage';
 import { ThemeContext, mockTheme } from '../../../../../../../util/theme';
 import { isTestNet } from '../../../../../../../util/networks';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     confirmBadge: {
       ...fontStyles.normal,

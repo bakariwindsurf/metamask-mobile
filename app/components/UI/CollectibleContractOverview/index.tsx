@@ -20,7 +20,7 @@ import { selectSendRedesignFlags } from '../../../selectors/featureFlagControlle
 import { InitSendLocation } from '../../Views/confirmations/constants/send';
 import { handleSendPageNavigation } from '../../Views/confirmations/utils/send';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       flex: 1,

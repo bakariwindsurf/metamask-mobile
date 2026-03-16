@@ -4,7 +4,7 @@ import { fontStyles } from '../../../../styles/common';
 import { strings } from '../../../../../locales/i18n';
 import { useTheme } from '../../../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     modalView: {
       flexDirection: 'column',

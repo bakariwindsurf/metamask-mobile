@@ -5,7 +5,7 @@ import { useTheme } from '../../../../../../../util/theme';
 import Text from '../../../../../../Base/Text';
 import Spinner from '../../../../../../UI/AnimatedSpinner';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     root: {
       backgroundColor: colors.background.default,

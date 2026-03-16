@@ -4,7 +4,7 @@ import GenericButton from '../GenericButton'; // eslint-disable-line import/no-u
 import { useTheme } from '../../../util/theme';
 import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     button: {
       flex: 1,

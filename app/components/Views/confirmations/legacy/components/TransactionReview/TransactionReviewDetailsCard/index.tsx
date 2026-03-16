@@ -15,7 +15,7 @@ const {
   ASSET: { ERC20 },
 } = TransactionTypes;
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     uppercase: {
       textTransform: 'capitalize',

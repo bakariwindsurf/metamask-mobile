@@ -15,7 +15,7 @@ import { ThemeContext, mockTheme } from '../../../util/theme';
 import { InitSendLocation } from '../confirmations/constants/send';
 import { handleSendPageNavigation } from '../confirmations/utils/send';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     root: {
       flex: 1,

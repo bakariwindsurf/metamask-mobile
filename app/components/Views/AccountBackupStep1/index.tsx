@@ -41,7 +41,7 @@ import { ONBOARDING_SUCCESS_FLOW } from '../../../constants/onboarding';
 import { TraceName, endTrace } from '../../../util/trace';
 import { AppThemeKey } from '../../../util/theme/models';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     mainWrapper: {
       backgroundColor: colors.background.default,

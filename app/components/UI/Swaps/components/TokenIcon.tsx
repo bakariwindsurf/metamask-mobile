@@ -19,7 +19,7 @@ const BIG_RADIUS = 25;
 const BIGGEST_SIZE = 70;
 const BIGGEST_RADIUS = 35;
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     icon: {
       width: REGULAR_SIZE,

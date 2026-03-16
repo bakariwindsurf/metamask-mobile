@@ -10,7 +10,7 @@ import Text from '../../../Base/Text';
 import { useTheme } from '../../../../util/theme';
 import { ToastSelectorsIDs } from '../../../../../e2e/selectors/wallet/ToastModal.selectors';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     floatingBackground: {
       backgroundColor: colors.background.default,

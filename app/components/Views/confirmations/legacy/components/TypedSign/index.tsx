@@ -28,7 +28,7 @@ import { withMetricsAwareness } from '../../../../../../components/hooks/useMetr
 import { selectProviderTypeByChainId } from '../../../../../../selectors/networkController';
 import { selectSignatureRequestById } from '../../../../../../selectors/signatureController';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     messageText: {
       color: colors.text.default,

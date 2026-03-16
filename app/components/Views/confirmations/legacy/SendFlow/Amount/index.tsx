@@ -113,7 +113,7 @@ import { NETWORKS_CHAIN_ID } from '../../../../../../constants/network';
 
 const KEYBOARD_OFFSET = Device.isSmallDevice() ? 80 : 120;
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       flex: 1,

@@ -9,7 +9,7 @@ import { isNumber } from 'lodash';
 import { isFaviconSVG } from '../../../util/favicon';
 import { SvgUri } from 'react-native-svg';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     fallback: {
       alignContent: 'center',

@@ -52,7 +52,7 @@ import { QuoteViewSelectorIDs } from '../../../../../e2e/selectors/swaps/QuoteVi
 import { getDecimalChainId } from '../../../../util/networks';
 import { getSortedTokensByFiatValue } from '../utils/token-list-utils';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     modal: {
       margin: 0,

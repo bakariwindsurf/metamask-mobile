@@ -6,7 +6,7 @@ import { useTheme } from '../../../../util/theme';
 // eslint-disable-next-line import/no-commonjs
 const piggyBank = require('../../../../images/piggybank.png');
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     header: {
       paddingVertical: 10,

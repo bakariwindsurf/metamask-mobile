@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { ThemeContext, mockTheme } from '../../../../util/theme';
 import { BrowserViewSelectorsIDs } from '../../../../../e2e/selectors/Browser/BrowserView.selectors';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     tabIcon: {
       borderWidth: 2,

@@ -72,7 +72,7 @@ import { RequestPaymentViewSelectors } from '../../../../e2e/selectors/Receive/R
 import { MetaMetricsEvents } from '../../../core/Analytics';
 
 const KEYBOARD_OFFSET = 120;
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     wrapper: {
       backgroundColor: colors.background.default,

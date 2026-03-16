@@ -5,7 +5,7 @@ import Text from './Text';
 import BigNumber from 'bignumber.js';
 import { useTheme } from '../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     labelContainer: {
       flexDirection: 'row',

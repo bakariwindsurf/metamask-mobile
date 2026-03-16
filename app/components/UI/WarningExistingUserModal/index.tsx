@@ -5,7 +5,7 @@ import { fontStyles } from '../../../styles/common';
 import ActionModal from '../ActionModal';
 import { useTheme } from '../../../util/theme';
 
-const createStyles = (colors) =>
+const createStyles = (colors: Record<string, Record<string, string>>) =>
   StyleSheet.create({
     warningModalView: {
       margin: 24,
